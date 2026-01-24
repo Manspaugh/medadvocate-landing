@@ -1,31 +1,24 @@
-// Optional: show a nice success message (works best with Formspree AJAX)
-// If you keep plain HTML submit, this won't run (browser will navigate).
-// To keep it simple + smooth, we intercept and submit via fetch.
-
-const form = document.getElementById("waitlistForm");
-const statusEl = document.getElementById("formStatus");
-
-if (form) {
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    statusEl.textContent = "Submitting…";
-
-    try {
-      const formData = new FormData(form);
-      const res = await fetch(form.action, {
-        method: "POST",
-        body: formData,
-        headers: { "Accept": "application/json" }
-      });
-
-      if (res.ok) {
-        form.reset();
-        statusEl.textContent = "You’re on the list. 🎉";
-      } else {
-        statusEl.textContent = "Hmm—something went wrong. Try again.";
-      }
-    } catch {
-      statusEl.textContent = "Network error. Please try again.";
-    }
-  });
-}
+// Phone mockup hover interactions
+document.addEventListener('DOMContentLoaded', function() {
+    const phoneContainers = document.querySelectorAll('.phone-container');
+    
+    phoneContainers.forEach(container => {
+        container.addEventListener('mouseenter', function() {
+            phoneContainers.forEach(other => {
+                if (other !== container) {
+                    other.style.transform = 'scale(0.9)';
+                    other.style.opacity = '0.5';
+                }
+            });
+            container.style.transform = 'scale(1.1)';
+            container.style.opacity = '1';
+        });
+        
+        container.addEventListener('mouseleave', function() {
+            phoneContainers.forEach(other => {
+                other.style.transform = 'scale(1)';
+                other.style.opacity = '0.7';
+            });
+        });
+    });
+});
