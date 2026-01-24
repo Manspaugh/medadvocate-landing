@@ -1,74 +1,139 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MedAdvocate — Coming Soon</title>
-    <meta name="description" content="Find savings in your medical bills." />
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
-  <body>
-    <main class="wrap">
-      <section class="hero">
-        <div class="mark" aria-hidden="true">
-          <div class="pill p1"></div>
-          <div class="pill p2"></div>
-          <div class="pill p3"></div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedAdvocate - Finding medical billing errors to save you money</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="logo">
+                <div class="logo-bars">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+            <h1 class="brand-name">Med<span>Advocate</span></h1>
+            <h2 class="tagline">Finding medical billing errors<br>to save you money</h2>
+            
+            <div class="form-card">
+                <h3>Join the waitlist.</h3>
+                <p class="form-date">Coming April 2026</p>
+                <form action="YOUR_FORMSPREE_URL" method="POST">
+                    <input type="text" name="name" placeholder="Full Name" required>
+                    <input type="email" name="email" placeholder="Email Address" required>
+                    <button type="submit" class="btn-primary">
+                        Join the Waitlist
+                        <span class="arrow">→</span>
+                    </button>
+                </form>
+            </div>
         </div>
+    </section>
 
-        <h1 class="brand">Med<span>Advocate</span></h1>
-        <p class="tagline">Find savings in your medical bills</p>
+    <!-- Discover Errors Section -->
+    <section class="discover-section">
+        <h2>Discover errors in seconds</h2>
+        <p class="discover-description">
+            Our analysis finds duplicate charges, wrong codes, overpricing, bundling codes, and other<br>
+            medical billing errors...instantly. <strong>Then we show your potential savings.</strong>
+        </p>
 
-        <div class="divider" aria-hidden="true"></div>
+        <div class="phone-mockups">
+            <div class="phone-container" data-step="1">
+                <div class="phone">
+                    <img src="phone1.png" alt="Take a photo of your medical bill">
+                </div>
+                <div class="step-info">
+                    <div class="step-number">1</div>
+                    <p>Take a photo of your medical bill. If your bill is multiple pages, that's okay too!</p>
+                </div>
+            </div>
 
-        <div class="card">
-          <h2 class="card-title">Coming soon. Join the waitlist.</h2>
+            <div class="phone-container" data-step="2">
+                <div class="phone">
+                    <img src="phone2.png" alt="Our analysis scans for errors">
+                </div>
+                <div class="step-info">
+                    <div class="step-number">2</div>
+                    <p>Our analysis scans for duplicate charges, overpricing, bundling codes, and other billing errors... instantly. Then we display your potential savings.</p>
+                </div>
+            </div>
 
-          <!-- OPTION A: Formspree (recommended) -->
-          <!-- 1) Create a Formspree form and replace the action URL below -->
-          <form id="waitlistForm" action="https://formspree.io/f/mnjjlrap" method="POST">
-            <label class="label" for="fullName">Full Name</label>
-            <input
-              class="input"
-              id="fullName"
-              name="fullName"
-              type="text"
-              autocomplete="name"
-              placeholder=""
-              required
-            />
-
-            <label class="label" for="email">Email Address</label>
-            <input
-              class="input"
-              id="email"
-              name="email"
-              type="email"
-              autocomplete="email"
-              placeholder=""
-              required
-            />
-
-            <button class="btn" type="submit">
-              <span>Join the Waitlist</span>
-              <span class="arrow" aria-hidden="true">→</span>
-            </button>
-
-            <p class="fineprint" id="formStatus" role="status" aria-live="polite"></p>
-          </form>
-
-          <!-- OPTIONAL: Simple contact link under the form -->
-          <div class="links">
-            <a href="mailto:hello@yourdomain.com">Get in touch</a>
-            <span class="dot">•</span>
-            <a href="#" aria-disabled="true" title="Add your App Store link when ready">App Store</a>
-            <span class="dot">•</span>
-            <a href="#" aria-disabled="true" title="Add your Play Store link when ready">Google Play</a>
-          </div>
+            <div class="phone-container" data-step="3">
+                <div class="phone">
+                    <img src="phone3.png" alt="Receive a customized dispute letter">
+                </div>
+                <div class="step-info">
+                    <div class="step-number">3</div>
+                    <p>Receive a customized dispute letter, including evidence, to send to your provider and decrease your medical bill.</p>
+                </div>
+            </div>
         </div>
-      </section>
-    </main>
+    </section>
 
-    <script src="./main.js"></script>
-  </body>
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <h2>Your medical bill has problems</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value">80<span class="percent">%</span></div>
+                <p>of medical bills contain errors</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value"><span class="dollar">$</span>1,380</div>
+                <p>overpaid by Americans each year</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">78<span class="percent">%</span></div>
+                <p>of disputes result in reduced bills</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value"><span class="dollar">$</span>1,200</div>
+                <p>average savings on disputed bills</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">67<span class="k">k</span></div>
+                <p>billing codes to search through</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">45<span class="min">min</span></div>
+                <p>average time wasted on phone calls</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom CTA Section -->
+    <section class="bottom-cta">
+        <div class="cta-content">
+            <div class="cta-left">
+                <h3>Join the waitlist.</h3>
+                <p class="form-date">Coming April 2026</p>
+                <form action="YOUR_FORMSPREE_URL" method="POST">
+                    <input type="text" name="name" placeholder="Full Name" required>
+                    <input type="email" name="email" placeholder="Email Address" required>
+                    <button type="submit" class="btn-primary">
+                        Join the Waitlist
+                        <span class="arrow">→</span>
+                    </button>
+                </form>
+            </div>
+            <div class="cta-right">
+                <h3>Decrease what you owe on each medical bill</h3>
+                <p>Stop overpaying on medical bills. Scan your bill, discover hidden errors instantly, and get a professional dispute letter to reduce what you owe.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>MedAdvocate, LLC © 2026. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>
