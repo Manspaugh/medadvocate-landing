@@ -37,28 +37,10 @@ body {
     justify-content: center;
 }
 
-.logo-bars {
-    display: inline-flex;
-    gap: 8px;
-}
-
-.bar {
-    width: 12px;
-    height: 40px;
-    background: white;
-    border-radius: 3px;
-}
-
 .bar:nth-child(1) { height: 30px; }
 .bar:nth-child(2) { height: 40px; }
 .bar:nth-child(3) { height: 35px; }
 
-.brand-name {
-    font-size: 32px;
-    font-weight: 400;
-    margin-bottom: 30px;
-    letter-spacing: 1px;
-}
 
 .brand-name span {
     font-weight: 600;
