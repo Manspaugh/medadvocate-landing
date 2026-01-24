@@ -1,24 +1,38 @@
+console.log('script loaded');
+
 // Phone mockup hover interactions
 document.addEventListener('DOMContentLoaded', function() {
-    const phoneContainers = document.querySelectorAll('.phone-container');
+    console.log('DOM loaded');
+    const phones = document.querySelectorAll('.phone');
+    console.log('Number of phones found:', phones.length);
     
-    phoneContainers.forEach(container => {
-        container.addEventListener('mouseenter', function() {
-            phoneContainers.forEach(other => {
-                if (other !== container) {
-                    other.style.transform = 'scale(0.9)';
-                    other.style.opacity = '0.5';
-                }
-            });
-            container.style.transform = 'scale(1.1)';
-            container.style.opacity = '1';
+    // Function to reset all phones
+    function resetAllPhones() {
+        phones.forEach(p => {
+            p.style.transform = 'scale(0.85)';
+            p.style.opacity = '0.5';
         });
-        
-        container.addEventListener('mouseleave', function() {
-            phoneContainers.forEach(other => {
-                other.style.transform = 'scale(1)';
-                other.style.opacity = '0.7';
-            });
+    }
+    
+    // Function to activate a phone
+    function activatePhone(phone) {
+        phone.style.transform = 'scale(1)';
+        phone.style.opacity = '1';
+    }
+    
+    // Activate first phone on load
+    resetAllPhones();
+    if (phones.length > 0) {
+        activatePhone(phones[0]);
+        console.log('First phone activated');
+    }
+    
+    // Add hover listeners
+    phones.forEach(phone => {
+        phone.addEventListener('mouseenter', function() {
+            console.log('Phone hovered');
+            resetAllPhones();
+            activatePhone(phone);
         });
     });
 });
