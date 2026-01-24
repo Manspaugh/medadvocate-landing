@@ -14,17 +14,27 @@ body {
 .hero {
     background: linear-gradient(135deg, #2E9EE8 0%, #1E7AC7 100%);
     color: white;
-    padding: 60px 20px 80px;
+    padding: 24px 20px 100px;
     text-align: center;
+    position: relative;
 }
 
 .hero-content {
     max-width: 600px;
     margin: 0 auto;
+    position: relative;
 }
 
 .logo {
-    margin-bottom: 15px;
+    width: 260px;
+    height: 260px;
+    margin: 0 auto 20px;
+    background-image: url('backgroundImage.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .logo-bars {
@@ -59,6 +69,7 @@ body {
     font-weight: 300;
     margin-bottom: 50px;
     line-height: 1.4;
+    color: #FFD700;
 }
 
 .form-card {
@@ -67,6 +78,9 @@ body {
     padding: 35px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
     text-align: left;
+    position: relative;
+    z-index: 10;
+    margin-top: 50px;
 }
 
 .form-card h3 {
@@ -89,6 +103,10 @@ body {
     border-radius: 6px;
     font-size: 16px;
     font-family: inherit;
+}
+
+.form-card input::placeholder {
+    color: #ccc;
 }
 
 .form-card input:focus {
@@ -123,7 +141,7 @@ body {
 
 /* Discover Section */
 .discover-section {
-    padding: 80px 20px;
+    padding: 120px 20px 80px;
     text-align: center;
     background: #f8f8f8;
 }
@@ -309,6 +327,11 @@ footer {
 @media (max-width: 768px) {
     .tagline {
         font-size: 22px;
+    }
+    
+    .logo {
+        width: 200px;
+        height: 200px;
     }
     
     .phone-mockups {
