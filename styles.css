@@ -30,11 +30,9 @@ body {
     height: 260px;
     margin: 0 auto 20px;
     background-image: url('backgroundImage.png');
-    background-size: cover;
+    background-size: contain;
     background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-repeat: no-repeat;
 }
 
 .bar:nth-child(1) { height: 30px; }
