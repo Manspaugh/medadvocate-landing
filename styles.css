@@ -437,13 +437,16 @@ footer {
 }
 
 @media (max-width: 480px) {
+    .tagline {
+        font-size: 40px;
+    }
     
     .tagline2 {
-        font-size: 28px;
+        font-size: 40px;
     }
     
     .discover-section h2 {
-        font-size: 28px;
+        font-size: 32px;
     }
     
     .discover-description {
