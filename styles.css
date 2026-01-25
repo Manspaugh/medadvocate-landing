@@ -439,7 +439,7 @@ footer {
 @media (max-width: 480px) {
     .tagline {
         font-size: 40px;
-        line-height: 52px;
+        line-height: 48px;
     }
     
     .tagline2 {
