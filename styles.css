@@ -87,7 +87,7 @@ body {
     font-family: "Source Sans Pro", sans-serif;
     font-weight: 300;
     color: #212529;
-    font-size: 14px;
+    font-size: 16px;
     margin-bottom: 16px;
     margin-top: -4px;
 }
@@ -114,6 +114,7 @@ body {
 
 .btn-primary {
     font-family: "Source Sans Pro", sans-serif;
+    position: relative;
     width: 100%;
     padding: 16px;
     background: #E91E8C;
@@ -143,7 +144,7 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     position: absolute;
-    right: 24px;
+    right: 16px;
 }
 
 /* Discover Section */
@@ -163,12 +164,16 @@ body {
 
 .discover-description {
     font-family: "Source Sans Pro", sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 20px;
     max-width: 900px;
-    color: #212529;
+    color: #454B52;
     margin: 0 auto 80px;
     line-height: 1.5;
+}
+
+.discover-description .description2 {
+  font-weight: 600;
 }
 
 .phone-mockups {
@@ -215,53 +220,64 @@ body {
     font-family: "Source Sans Pro", sans-serif;
     font-size: 16px;
     line-height: 24px;
-    color: #212529;
+    color: #454B52;
 }
 
 /* Stats Section */
 .stats-section {
-    background: linear-gradient(135deg, #1a3a52 0%, #0f2537 100%);
+    background: linear-gradient(135deg, #153B62 0%, #153B62 100%);
     color: white;
-    padding: 80px 20px;
+    padding: 80px 20px 104px;
     text-align: center;
 }
 
 .stats-section h2 {
-    font-size: 36px;
-    margin-bottom: 60px;
-    font-weight: 400;
+    font-family: "Source Serif Pro", sans-serif;
+    font-size: 40px;
+    margin-bottom: 24px;
+    font-weight: 300;
 }
 
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .stat-card {
     background: rgba(255, 255, 255, 0.05);
-    padding: 40px 30px;
+    padding: 20px 24px;
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    min-height: 200px;
+    position: relative;
 }
 
-.stat-value {
-    font-size: 64px;
-    font-weight: 700;
-    color: #FFD700;
-    margin-bottom: 15px;
-    font-style: italic;
+.stat-icon {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 32px;
+    height: 32px;
 }
 
-.percent, .dollar, .k, .min {
-    font-size: 36px;
+.stat-value-img {
+    width: auto;
+    height: 80px;
+    margin-bottom: 12px;
 }
 
 .stat-card p {
-    font-size: 16px;
-    color: rgba(255, 255, 255, 0.8);
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 18px;
+    color: white;
+    text-align: left;
 }
 
 /* Bottom CTA Section */
@@ -271,61 +287,82 @@ body {
 }
 
 .cta-content {
-    max-width: 1200px;
+    max-width: 880px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 56px;
+}
+
+.cta-left {
+    width: 344px;
+    padding: 12px;
+    border-radius: 12px;
+    background-color: #F7F9FC;
+    border: 1px solid #E9ECF0;
+    flex-shrink: 0;
+}
+
+.cta-right {
+    flex: 1;
 }
 
 .cta-left h3 {
-    color: #333;
-    font-size: 28px;
+    font-family: "Source Serif Pro", sans-serif;
+    color: #212529;
+    font-size: 24px;
+    font-weight: 400;
     margin-bottom: 5px;
 }
 
 .cta-left .form-date {
-    color: #999;
-    font-size: 14px;
-    margin-bottom: 25px;
+    font-family: "Source Serif Pro", sans-serif;
+    color: #212529;
+    font-size: 16px;
+    margin-bottom: 16px;
 }
 
 .cta-left input {
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 300;
     width: 100%;
-    padding: 15px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #D3DAE0;
+    border-radius: 8px;
     font-size: 16px;
-    font-family: inherit;
 }
 
 .cta-left input:focus {
     outline: none;
-    border-color: #E91E8C;
+    border-color: #268BEB;
 }
 
 .cta-right h3 {
-    color: #333;
-    font-size: 28px;
-    margin-bottom: 20px;
-    line-height: 1.4;
+    font-family: "Source Serif Pro", sans-serif;
+    font-weight: 400;
+    line-height: 44px;
+    color: #212529;
+    font-size: 32px;
+    margin-bottom: 8px;
 }
 
 .cta-right p {
-    font-size: 18px;
-    color: #666;
-    line-height: 1.8;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #454B52;
+    line-height: 28px;
 }
 
 /* Footer */
 footer {
-    background: #f8f8f8;
-    padding: 30px 20px;
+    background: #F7F9FC;
+    padding: 16px;
     text-align: center;
-    color: #999;
-    font-size: 14px;
+    color: #454B52;
+    font-size: 16px;
 }
 
 /* Responsive */

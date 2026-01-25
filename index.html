@@ -20,16 +20,22 @@
             <h2 class="tagline2">to save you money</h2>
             
             <div class="form-card">
-                <h3>Join the waitlist.</h3>
-                <p class="form-date">Coming April 2026</p>
-                <form action="YOUR_FORMSPREE_URL" method="POST">
-                    <input type="text" name="name" placeholder="Full Name" required>
-                    <input type="email" name="email" placeholder="Email Address" required>
-                    <button type="submit" class="btn-primary">
-                        Join the Waitlist
-                        <span class="arrow"></span>
-                    </button>
-                </form>
+              <h3>Join the waitlist.</h3>
+              <p class="form-date">Coming April 2026</p>
+
+              <form action="YOUR_FORMSPREE_URL" method="POST">
+
+                <!-- Honeypot for Formspree -->
+                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+
+                <button type="submit" class="btn-primary">
+                  Join the Waitlist
+                  <span class="arrow"></span>
+                </button>
+
+              </form>
             </div>
         </div>
     </section>
@@ -38,7 +44,7 @@
     <section class="discover-section">
         <h2>Discover errors in seconds</h2>
         <p class="discover-description">
-            Our analysis finds duplicate charges, wrong codes, overpricing, bundling codes, and other medical billing errors...instantly. <strong>Then we show your potential savings.</strong>
+            Our analysis finds duplicate charges, wrong codes, overpricing, bundling codes, and other medical billing errors...instantly. <span class="description2">Then we show your potential savings.</span>
         </p>
 
         <div class="phone-mockups">
@@ -78,30 +84,36 @@
     <section class="stats-section">
         <h2>Your medical bill has problems</h2>
         <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-value">80<span class="percent">%</span></div>
-                <p>of medical bills contain errors</p>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value"><span class="dollar">$</span>1,380</div>
-                <p>overpaid by Americans each year</p>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">78<span class="percent">%</span></div>
-                <p>of disputes result in reduced bills</p>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value"><span class="dollar">$</span>1,200</div>
-                <p>average savings on disputed bills</p>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">67<span class="k">k</span></div>
-                <p>billing codes to search through</p>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">45<span class="min">min</span></div>
-                <p>average time wasted on phone calls</p>
-            </div>
+          <div class="stat-card">
+              <img src="../images/errorIcon.png" alt="" class="stat-icon">
+              <img src="../images/80percent.png" alt="80%" class="stat-value-img">
+              <p>of medical bills contain errors</p>
+          </div>
+          <div class="stat-card">
+              <img src="../images/dollarIcon.png" alt="" class="stat-icon">
+              <img src="../images/1380.png" alt="$1,380" class="stat-value-img">
+              <p>overpaid by Americans each year</p>
+          </div>
+          <div class="stat-card">
+              <img src="../images/receiptIcon.png" alt="" class="stat-icon">
+              <img src="../images/78percent.png" alt="78%" class="stat-value-img">
+              <p>of disputes result in reduced bills</p>
+          </div>
+          <div class="stat-card">
+              <img src="../images/dollarIcon2.png" alt="" class="stat-icon">
+              <img src="../images/1200.png" alt="$1,200" class="stat-value-img">
+              <p>average savings on disputed bills</p>
+          </div>
+          <div class="stat-card">
+              <img src="../images/codeIcon.png" alt="" class="stat-icon">
+              <img src="../images/67k.png" alt="67k" class="stat-value-img">
+              <p>billing codes to search through</p>
+          </div>
+          <div class="stat-card">
+              <img src="../images/phoneIcon.png" alt="" class="stat-icon">
+              <img src="../images/45min.png" alt="45min" class="stat-value-img">
+              <p>average time wasted on phone calls</p>
+          </div>
         </div>
     </section>
 
@@ -116,7 +128,7 @@
                     <input type="email" name="email" placeholder="Email Address" required>
                     <button type="submit" class="btn-primary">
                         Join the Waitlist
-                        <span class="arrow">→</span>
+                        <span class="arrow"></span>
                     </button>
                 </form>
             </div>
