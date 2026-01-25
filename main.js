@@ -20,19 +20,45 @@ document.addEventListener('DOMContentLoaded', function() {
         phone.style.opacity = '1';
     }
     
-    // Activate first phone on load
-    resetAllPhones();
-    if (phones.length > 0) {
-        activatePhone(phones[0]);
-        console.log('First phone activated');
+    // Function to activate all phones (for mobile)
+    function activateAllPhones() {
+        phones.forEach(p => {
+            p.style.transform = 'scale(1)';
+            p.style.opacity = '1';
+        });
     }
     
-    // Add hover listeners
+    // Check if mobile
+    function isMobile() {
+        return window.innerWidth <= 768;
+    }
+    
+    // Update phone states based on screen size
+    function updatePhoneStates() {
+        if (isMobile()) {
+            activateAllPhones();
+        } else {
+            resetAllPhones();
+            if (phones.length > 0) {
+                activatePhone(phones[0]);
+            }
+        }
+    }
+    
+    // Initial setup
+    updatePhoneStates();
+    
+    // Add hover listeners (only work on desktop due to mouse events)
     phones.forEach(phone => {
         phone.addEventListener('mouseenter', function() {
-            console.log('Phone hovered');
-            resetAllPhones();
-            activatePhone(phone);
+            if (!isMobile()) {
+                console.log('Phone hovered');
+                resetAllPhones();
+                activatePhone(phone);
+            }
         });
     });
+    
+    // Update on window resize
+    window.addEventListener('resize', updatePhoneStates);
 });
