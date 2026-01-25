@@ -406,7 +406,7 @@ footer {
     }
     
     .phone-step {
-        max-width: 280px;
+        max-width: 300px;
     }
 
     .step-info {
@@ -439,6 +439,7 @@ footer {
 @media (max-width: 480px) {
     .tagline {
         font-size: 40px;
+        line-height: 52px;
     }
     
     .tagline2 {
