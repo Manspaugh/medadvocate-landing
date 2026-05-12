@@ -1,0 +1,313 @@
+/* ============================================================
+   MedAdvocate Design System — Colors & Typography
+   Source: Manspaugh/MedAdvocate constants/designSystem.ts
+   ============================================================ */
+
+/* ── Web Fonts ─────────────────────────────────────────────── */
+@font-face {
+  font-family: 'SourceSansPro';
+  src: url('./fonts/SourceSansPro-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SourceSansPro';
+  src: url('./fonts/SourceSansPro-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SourceSansPro';
+  src: url('./fonts/SourceSansPro-It.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'SourceSansPro';
+  src: url('./fonts/SourceSansPro-Semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SourceSerifPro';
+  src: url('./fonts/SourceSerifPro-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SourceSerifPro';
+  src: url('./fonts/SourceSerifPro-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SourceSerifPro';
+  src: url('./fonts/SourceSerifPro-Semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Smooch';
+  src: url('./fonts/Smooch-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  /* ── Base Color Tokens ──────────────────────────────────── */
+
+  /* White */
+  --color-white: #ffffff;
+
+  /* Grey Scale */
+  --color-grey-900: #1f2937;
+  --color-grey-800: #212529;
+  --color-grey-700: #454B52;
+  --color-grey-600: #69727A;
+  --color-grey-500: #9099A3;
+  --color-grey-400: #B8C2CC;
+  --color-grey-300: #D3DAE0;
+  --color-grey-200: #E9ECF0;
+  --color-grey-100: #F7F9FC;
+
+  /* Blue */
+  --color-blue-primary:    #268BEB;
+  --color-blue-secondary:  #57A8F5;
+  --color-blue-tertiary:   #F5FAFF;
+  --color-blue-medium:     #2563eb;
+  --color-blue-dark:       #3b82f6;
+  --color-blue-light-bg:   #dbeafe;
+  --color-blue-navy:       #153B62;  /* landing stats bg */
+
+  /* Pink */
+  --color-pink-primary:    #E91E8C;
+  --color-pink-secondary:  #FD7EC2;
+  --color-pink-tertiary:   #FFEDF7;
+
+  /* Green */
+  --color-green-primary:   #00BA3E;
+  --color-green-secondary: #59D683;
+  --color-green-tertiary:  #EFFFF4;
+  --color-green-success:   #16a34a;
+
+  /* Yellow */
+  --color-yellow-primary:  #FFDE39;
+  --color-yellow-secondary:#FFEC8D;
+  --color-yellow-tertiary: #FFFEF7;
+
+  /* Purple */
+  --color-purple-primary:  #A26DEB;
+  --color-purple-secondary:#CAA3FF;
+  --color-purple-tertiary: #F7F2FF;
+
+  /* Orange */
+  --color-orange-primary:  #FC761F;
+  --color-orange-secondary:#FFA56B;
+  --color-orange-tertiary: #FFF8F4;
+
+  /* Red */
+  --color-red-primary:     #EB2344;
+  --color-red-secondary:   #FE667F;
+  --color-red-tertiary:    #FFF0F3;
+
+  /* Teal */
+  --color-teal-primary:    #14B8A6;
+  --color-teal-secondary:  #5EEAD4;
+  --color-teal-tertiary:   #E8FFFB;
+
+  /* Indigo */
+  --color-indigo-primary:  #5C6AE4;
+  --color-indigo-secondary:#A5B4FC;
+  --color-indigo-tertiary: #E5EBFF;
+
+  /* ── Semantic Color Tokens ──────────────────────────────── */
+  --bg-app:           var(--color-grey-100);       /* app screen background */
+  --bg-card:          var(--color-white);          /* card surface */
+  --bg-header:        var(--color-blue-primary);   /* navigation header */
+  --bg-hero-start:    #2E9EE8;                     /* landing hero gradient start */
+  --bg-hero-end:      #1E7AC7;                     /* landing hero gradient end */
+  --bg-stats:         var(--color-blue-navy);      /* landing stats section */
+
+  --fg-primary:       var(--color-grey-800);       /* primary text */
+  --fg-secondary:     var(--color-grey-600);       /* secondary/muted text */
+  --fg-tertiary:      var(--color-grey-500);       /* placeholder text */
+  --fg-inverse:       var(--color-white);          /* text on dark bg */
+  --fg-accent-blue:   var(--color-blue-primary);   /* link / savings highlight */
+  --fg-accent-yellow: var(--color-yellow-primary); /* hero tagline text */
+
+  --border-default:   var(--color-grey-300);       /* default input border */
+  --border-card:      var(--color-grey-200);       /* card border */
+
+  --btn-primary-bg:   var(--color-blue-primary);
+  --btn-primary-text: var(--color-white);
+  --btn-secondary-bg: var(--color-grey-200);
+  --btn-secondary-text: var(--color-grey-600);
+  --btn-cta-bg:       var(--color-pink-primary);   /* landing CTA / scan buttons */
+  --btn-cta-text:     var(--color-white);
+
+  --status-error-bg:   var(--color-red-tertiary);
+  --status-error-border: var(--color-red-secondary);
+  --status-error-text: var(--color-red-primary);
+  --status-success-bg: var(--color-green-tertiary);
+  --status-success-border: var(--color-green-secondary);
+  --status-success-text: var(--color-green-primary);
+  --status-info-bg:    var(--color-blue-tertiary);
+  --status-info-border: var(--color-blue-secondary);
+  --status-info-text:  var(--color-blue-primary);
+  --status-warn-bg:    var(--color-yellow-tertiary);
+  --status-warn-border: var(--color-yellow-secondary);
+  --status-warn-text:  var(--color-yellow-primary);
+
+  /* ── Shadows ──────────────────────────────────────────────── */
+  --shadow-small:  0 1px 4px rgba(0, 39, 68, 0.08);
+  --shadow-medium: 0 4px 12px rgba(33, 37, 41, 0.24);
+  --shadow-drawer: 0 -2px 16px rgba(0, 39, 68, 0.08);
+
+  /* ── Border Radius ────────────────────────────────────────── */
+  --radius-xs:  6px;   /* status tags */
+  --radius-sm:  8px;   /* inputs, bill list items */
+  --radius-md:  12px;  /* buttons, inner cards, modals */
+  --radius-lg:  16px;  /* outer info cards */
+  --radius-xl:  24px;  /* bottom drawer top corners */
+  --radius-full: 9999px;
+
+  /* ── Spacing Scale ────────────────────────────────────────── */
+  --space-2:   2px;
+  --space-4:   4px;
+  --space-6:   6px;
+  --space-8:   8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+
+  /* ── Typography ───────────────────────────────────────────── */
+  --font-sans:  'SourceSansPro', 'Source Sans Pro', -apple-system, sans-serif;
+  --font-serif: 'SourceSerifPro', 'Source Serif Pro', Georgia, serif;
+  --font-brand: 'Smooch', cursive;  /* display / logo only */
+
+  /* Type Scale */
+  --text-xs:   12px;
+  --text-sm:   14px;
+  --text-base: 16px;
+  --text-md:   18px;
+  --text-lg:   20px;
+  --text-xl:   24px;
+  --text-2xl:  32px;
+  --text-3xl:  40px;
+  --text-4xl:  56px;
+}
+
+/* ── Semantic Type Styles (as classes) ──────────────────────── */
+
+/* Display / Landing */
+.display-hero {
+  font-family: var(--font-sans);
+  font-size: var(--text-4xl);
+  font-weight: 300;
+  line-height: 1.4;
+  color: var(--fg-accent-yellow);
+}
+
+/* Screen / Section Headers */
+.h1 {
+  font-family: var(--font-serif);
+  font-size: var(--text-3xl);
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--fg-primary);
+}
+.h2 {
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--fg-primary);
+}
+.h3 {
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--fg-primary);
+}
+
+/* Navigation / Screen Header Title */
+.nav-title {
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--fg-inverse);
+}
+
+/* Section Label */
+.section-label {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--fg-primary);
+}
+
+/* Body */
+.body-lg {
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--fg-primary);
+}
+.body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--fg-primary);
+}
+.body-semibold {
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--fg-primary);
+}
+
+/* Card / List Titles */
+.card-title {
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--fg-primary);
+}
+
+/* Small / Metadata */
+.meta {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--fg-secondary);
+}
+.meta-semibold {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--fg-secondary);
+}
+
+/* Financial values */
+.financial-value {
+  font-family: var(--font-sans);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--fg-primary);
+}
+.financial-value-lg {
+  font-family: var(--font-sans);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--fg-primary);
+}

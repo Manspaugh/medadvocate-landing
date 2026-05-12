@@ -1,0 +1,215 @@
+/* Shared landing-page base styles. Direction-specific tokens live in each section. */
+
+@import url('design-tokens.css');
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'SourceSansPro', 'Source Sans Pro', -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; }
+
+button { font-family: inherit; cursor: pointer; }
+
+/* ── Reveal animation utility ────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+.reveal-delay-1 { transition-delay: .08s; }
+.reveal-delay-2 { transition-delay: .16s; }
+.reveal-delay-3 { transition-delay: .24s; }
+.reveal-delay-4 { transition-delay: .32s; }
+.reveal-delay-5 { transition-delay: .40s; }
+
+/* ── Phone frame ──────────────────────────────────────────── */
+.phone-frame {
+  position: relative;
+  border-radius: 48px;
+  background: #1A1A1F;
+  padding: 10px;
+  box-shadow:
+    0 30px 60px -20px rgba(0,39,68,.35),
+    0 10px 20px -10px rgba(0,39,68,.2),
+    0 0 0 2px rgba(0,0,0,.6) inset;
+}
+.phone-frame::before {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  height: 28px;
+  background: #0A0A0A;
+  border-radius: 14px;
+  z-index: 2;
+}
+.phone-frame img {
+  display: block;
+  width: 100%;
+  border-radius: 38px;
+}
+
+/* ── App store badge buttons ──────────────────────────────── */
+.store-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  background: #000;
+  color: #fff;
+  border-radius: 12px;
+  border: 1px solid #000;
+  text-decoration: none;
+  transition: transform .2s ease, box-shadow .2s ease;
+  min-width: 168px;
+}
+.store-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0,0,0,.18);
+}
+.store-badge svg { width: 28px; height: 28px; flex-shrink: 0; }
+.store-badge .sb-eyebrow {
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  opacity: .9;
+  margin-bottom: 2px;
+}
+.store-badge .sb-label {
+  font-size: 18px;
+  font-family: 'SourceSerifPro', Georgia, serif;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.store-badge.outline {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255,255,255,.6);
+}
+.store-badge.invert {
+  background: #fff;
+  color: #000;
+  border-color: #000;
+}
+
+/* ── Sample bill — "spot the error" ───────────────────────── */
+.bill-doc {
+  background: #FFFCF6;
+  border: 1px solid #E2DDD0;
+  font-family: 'Courier New', ui-monospace, monospace;
+  color: #1F1F1F;
+  position: relative;
+  box-shadow: 0 30px 60px -30px rgba(0,0,0,.25);
+}
+.bill-doc::before {
+  /* Faux paper texture */
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,0) 0 27px, rgba(0,0,0,.03) 27px 28px);
+  pointer-events: none;
+}
+.bill-row {
+  display: grid;
+  grid-template-columns: 1.6fr 0.5fr 0.5fr;
+  gap: 12px;
+  padding: 10px 24px;
+  border-top: 1px dashed rgba(0,0,0,.18);
+  align-items: center;
+}
+.bill-row.hit {
+  cursor: pointer;
+  position: relative;
+}
+.bill-row.hit::after {
+  content: '';
+  position: absolute;
+  inset: 4px 8px;
+  border-radius: 6px;
+  border: 2px dashed transparent;
+  pointer-events: none;
+  transition: border-color .2s, background .2s;
+}
+.bill-row.hit:not(.found):hover::after {
+  border-color: rgba(233, 30, 140, .55);
+  background: rgba(233, 30, 140, .06);
+}
+.bill-row.found {
+  background: rgba(233, 30, 140, .07);
+}
+.bill-row.found .bill-amount {
+  text-decoration: line-through;
+  text-decoration-color: rgba(233, 30, 140, .8);
+  text-decoration-thickness: 2px;
+}
+.bill-callout {
+  position: absolute;
+  z-index: 5;
+  background: #fff;
+  border: 1.5px solid #E91E8C;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-family: 'SourceSansPro', sans-serif;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #212529;
+  width: 240px;
+  box-shadow: 0 12px 24px -8px rgba(0,0,0,.18);
+  animation: callout-pop .25s cubic-bezier(.2,1.4,.4,1);
+}
+.bill-callout strong {
+  display: block;
+  color: #E91E8C;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+@keyframes callout-pop {
+  from { opacity: 0; transform: translateY(-4px) scale(.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Form input base */
+.form-input {
+  width: 100%;
+  padding: 16px 18px;
+  border-radius: 10px;
+  border: 1.5px solid var(--color-grey-300);
+  font-family: 'SourceSansPro', sans-serif;
+  font-size: 16px;
+  background: #fff;
+  color: var(--color-grey-800);
+  transition: border-color .15s, box-shadow .15s;
+}
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-blue-primary);
+  box-shadow: 0 0 0 4px rgba(38, 139, 235, .14);
+}
+
+/* Vertical marquee (used in Bold direction) */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 60s linear infinite;
+}
