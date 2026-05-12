@@ -1,152 +1,2183 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MedAdvocate - Finding medical billing errors to save you money</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="main.js"></script>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MedAdvocate — Stop paying for medical-billing errors</title>
+    <meta
+      name="description"
+      content="MedAdvocate scans your medical bill, finds the errors hospitals hope you won't notice, and writes the dispute letter for you."
+    />
+    <meta name="theme-color" content="#153B62" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&family=Source+Serif+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="logo"></div>
-            <h2 class="tagline">Finding medical billing errors</h2>
-            <h2 class="tagline2">to save you money</h2>
-            
-            <div class="form-card">
-              <h3>Join the waitlist.</h3>
-              <p class="form-date">Coming April 2026</p>
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="MedAdvocate — Stop paying for medical-billing errors"
+    />
+    <meta
+      property="og:description"
+      content="Snap a photo of your medical bill. We find the errors, write, and send a dispute letter on your behalf."
+    />
+    <meta property="og:type" content="website" />
 
-              <form action="https://formspree.io/f/mnjjlrap" method="POST">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap"
+    />
 
-                <!-- Honeypot for Formspree -->
-                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-                <input type="text" name="name" placeholder="Full Name" required>
-                <input type="email" name="email" placeholder="Email Address" required>
+    <style>
+      /* ─────────────────────────────────────────────────────────
+       Tokens
+       ───────────────────────────────────────────────────────── */
+      :root {
+        --bg: #f4efe5;
+        --bg-deep: #ebe3d2;
+        --ink: #1b2c3d;
+        --ink-soft: #4a5968;
+        --navy: #153b62;
+        --yellow: #ffde39;
+        --blue: #268beb;
+        --rule: rgba(27, 44, 61, 0.14);
+        --white: #ffffff;
 
-                <button type="submit" class="btn-primary">
-                  Join the Waitlist
-                  <span class="arrow"></span>
+        --font-sans: "Source Sans 3", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", system-ui, sans-serif;
+        --font-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+
+        --max: 1280px;
+        --gutter: clamp(20px, 5vw, 80px);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001ms !important;
+        }
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--font-sans);
+        font-size: 16px;
+        color: var(--ink);
+        background: var(--bg);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        line-height: 1.5;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      a {
+        color: inherit;
+      }
+      button {
+        font-family: inherit;
+        cursor: pointer;
+      }
+
+      /* Visually hidden — for a11y labels */
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      /* Skip link */
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 16px;
+        z-index: 100;
+        background: var(--navy);
+        color: var(--yellow);
+        padding: 10px 16px;
+        border-radius: 4px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .skip-link:focus {
+        top: 16px;
+      }
+
+      /* Focus */
+      :focus-visible {
+        outline: 3px solid var(--yellow);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      /* Container */
+      .wrap {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 var(--gutter);
+      }
+
+      /* Eyebrow label */
+      .eyebrow {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+        margin: 0;
+      }
+
+      /* Reveal animation */
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+      .reveal.in {
+        opacity: 1;
+        transform: none;
+      }
+      .reveal.d1 {
+        transition-delay: 0.08s;
+      }
+      .reveal.d2 {
+        transition-delay: 0.16s;
+      }
+      .reveal.d3 {
+        transition-delay: 0.24s;
+      }
+      .reveal.d4 {
+        transition-delay: 0.32s;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      /* ─────────────────────────────────────────────────────────
+       Header / Nav
+       ───────────────────────────────────────────────────────── */
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(244, 239, 229, 0.85);
+        backdrop-filter: saturate(180%) blur(12px);
+        -webkit-backdrop-filter: saturate(180%) blur(12px);
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.2s, background 0.2s;
+      }
+      .site-header.scrolled {
+        border-bottom-color: var(--rule);
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 0;
+        gap: 24px;
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: var(--ink);
+      }
+      .brand-logo {
+        width: 28px;
+        height: 28px;
+        flex-shrink: 0;
+      }
+      .brand-name {
+        font-family: var(--font-serif);
+        font-size: 22px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+      .brand-name span {
+        font-weight: 400;
+      }
+
+      .nav-links {
+        display: none;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        gap: 36px;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: var(--ink-soft);
+        font-size: 15px;
+        padding: 8px 0;
+        transition: color 0.15s;
+      }
+      .nav-links a:hover {
+        color: var(--ink);
+      }
+
+      .nav-cta {
+        display: none;
+        background: var(--navy);
+        color: var(--white);
+        text-decoration: none;
+        padding: 10px 18px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 14px;
+      }
+      .nav-cta:hover {
+        background: #0f2a47;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: 1px solid var(--rule);
+        width: 44px;
+        height: 44px;
+        border-radius: 8px;
+        color: var(--ink);
+      }
+      .nav-toggle svg {
+        width: 20px;
+        height: 20px;
+      }
+      .nav-toggle .icon-close {
+        display: none;
+      }
+      .nav-toggle[aria-expanded="true"] .icon-open {
+        display: none;
+      }
+      .nav-toggle[aria-expanded="true"] .icon-close {
+        display: block;
+      }
+
+      /* Mobile menu drawer */
+      .nav-drawer {
+        position: fixed;
+        inset: 64px 0 0 0;
+        background: var(--bg);
+        padding: 24px var(--gutter);
+        transform: translateY(-100%);
+        transition: transform 0.3s ease;
+        z-index: 49;
+        overflow-y: auto;
+      }
+      .nav-drawer[data-open="true"] {
+        transform: translateY(0);
+      }
+      .nav-drawer ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 4px;
+      }
+      .nav-drawer a {
+        display: block;
+        padding: 18px 8px;
+        font-family: var(--font-serif);
+        font-size: 26px;
+        text-decoration: none;
+        color: var(--ink);
+        border-bottom: 1px solid var(--rule);
+        min-height: 44px;
+      }
+      .nav-drawer .drawer-cta {
+        margin-top: 24px;
+        display: block;
+        text-align: center;
+        background: var(--navy);
+        color: var(--white);
+        padding: 18px 24px;
+        border-radius: 12px;
+        font-weight: 600;
+        text-decoration: none;
+        min-height: 44px;
+      }
+
+      @media (min-width: 768px) {
+        .nav-links {
+          display: flex;
+        }
+        .nav-toggle {
+          display: none;
+        }
+        .nav-drawer {
+          display: none;
+        }
+      }
+      @media (min-width: 1024px) {
+        .nav-cta {
+          display: inline-block;
+        }
+      }
+
+      /* ─────────────────────────────────────────────────────────
+       Hero
+       ───────────────────────────────────────────────────────── */
+      .hero {
+        padding: 48px 0 72px;
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 48px;
+        align-items: center;
+      }
+      .hero h1 {
+        font-family: var(--font-serif);
+        font-weight: 300;
+        font-size: clamp(48px, 9vw, 96px);
+        line-height: 0.98;
+        letter-spacing: -0.025em;
+        margin: 18px 0 22px;
+        text-wrap: pretty;
+      }
+      .hero h1 em {
+        font-style: italic;
+        background-image: linear-gradient(
+          transparent 62%,
+          var(--yellow) 62%,
+          var(--yellow) 92%,
+          transparent 92%
+        );
+        padding: 0 4px;
+      }
+      .hero-lede {
+        font-size: clamp(18px, 2.4vw, 22px);
+        line-height: 1.5;
+        color: var(--ink-soft);
+        font-weight: 300;
+        max-width: 540px;
+        margin: 0 0 32px;
+      }
+      .hero-trust {
+        margin-top: 18px;
+        font-size: 13px;
+        color: var(--ink-soft);
+        display: flex;
+        gap: 12px 24px;
+        flex-wrap: wrap;
+      }
+      .hero-trust span:nth-child(2) {
+        display: none;
+      }
+      @media (min-width: 480px) {
+        .hero-trust span:nth-child(2) {
+          display: inline;
+        }
+      }
+
+      .hero-visual {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        min-height: 420px;
+      }
+      .hero-decor {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        z-index: 0;
+        font-family: var(--font-serif);
+        font-weight: 300;
+        font-size: clamp(140px, 28vw, 280px);
+        color: var(--bg-deep);
+        line-height: 0.85;
+        letter-spacing: -0.04em;
+        pointer-events: none;
+        user-select: none;
+      }
+      .phone {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 320px;
+        border-radius: 44px;
+        background: #1a1a1f;
+        padding: 9px;
+        box-shadow: 0 30px 60px -20px rgba(0, 39, 68, 0.35),
+          0 10px 20px -10px rgba(0, 39, 68, 0.2);
+      }
+      .phone::before {
+        content: "";
+        position: absolute;
+        top: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 26px;
+        background: #0a0a0a;
+        border-radius: 13px;
+        z-index: 2;
+      }
+      .phone img {
+        width: 100%;
+        border-radius: 36px;
+      }
+      .phone-tag {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        z-index: 2;
+        background: var(--navy);
+        color: var(--yellow);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 9px 12px;
+        border-radius: 4px;
+        transform: rotate(-4deg);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+        max-width: 200px;
+      }
+
+      @media (min-width: 768px) {
+        .hero {
+          padding: 64px 0 96px;
+        }
+        .phone {
+          max-width: 340px;
+        }
+        .phone-tag {
+          left: -10px;
+          top: 70px;
+        }
+      }
+      @media (min-width: 1024px) {
+        .hero {
+          padding: 36px 0 100px;
+        }
+        .hero-grid {
+          grid-template-columns: 1.25fr 1fr;
+          gap: 60px;
+        }
+      }
+
+      /* App-store buttons */
+      .store-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .store-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 18px;
+        min-height: 56px;
+        background: #000;
+        color: #fff;
+        border-radius: 12px;
+        border: 1px solid #000;
+        text-decoration: none;
+        transition: transform 0.15s, box-shadow 0.15s;
+        min-width: 168px;
+      }
+      .store-badge:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+      .store-badge svg {
+        width: 26px;
+        height: 26px;
+        flex-shrink: 0;
+      }
+      .sb-eyebrow {
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 1;
+        letter-spacing: 0.04em;
+        opacity: 0.9;
+        margin-bottom: 2px;
+      }
+      .sb-label {
+        font-family: var(--font-serif);
+        font-size: 17px;
+        font-weight: 600;
+        line-height: 1.1;
+        letter-spacing: -0.01em;
+      }
+
+      /* ─────────────────────────────────────────────────────────
+       Problem (Stats) — navy
+       ───────────────────────────────────────────────────────── */
+      .problem {
+        background: var(--navy);
+        color: var(--white);
+        padding: 72px 0 80px;
+      }
+      .problem-head {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+        margin-bottom: 56px;
+      }
+      .problem h2 {
+        font-family: var(--font-serif);
+        font-weight: 300;
+        font-size: clamp(36px, 5.5vw, 56px);
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        margin: 14px 0 0;
+      }
+      .problem h2 em {
+        font-style: italic;
+      }
+      .problem .eyebrow {
+        color: var(--yellow);
+      }
+      .problem-quote {
+        font-family: var(--font-serif);
+        font-weight: 300;
+        font-size: clamp(17px, 2.2vw, 22px);
+        line-height: 1.55;
+        color: rgba(255, 255, 255, 0.8);
+        padding-left: 20px;
+        border-left: 3px solid var(--yellow);
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
+      }
+      .stat {
+        padding: 32px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+      }
+      .stat:last-child {
+        border-bottom: none;
+      }
+      .stat-num {
+        font-family: var(--font-serif);
+        font-weight: 300;
+        font-size: clamp(64px, 11vw, 88px);
+        color: var(--yellow);
+        line-height: 1;
+        letter-spacing: -0.03em;
+      }
+      .stat-label {
+        font-size: clamp(15px, 1.7vw, 17px);
+        line-height: 1.4;
+        font-weight: 300;
+        margin: 14px 0 12px;
+        color: rgba(255, 255, 255, 0.92);
+      }
+      .stat-src {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.5);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      @media (min-width: 768px) {
+        .problem {
+          padding: 96px 0 100px;
+        }
+        .problem-head {
+          grid-template-columns: 1fr 1.4fr;
+          gap: 60px;
+          align-items: end;
+        }
+        .stats-grid {
+          grid-template-columns: 1fr 1fr;
+          border-top: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        .stat {
+          padding: 36px 24px 36px 0;
+          border-right: 1px solid rgba(255, 255, 255, 0.18);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        .stat:nth-child(2n) {
+          border-right: none;
+          padding-right: 0;
+          padding-left: 24px;
+        }
+        .stat:nth-last-child(-n + 2) {
+          border-bottom: none;
+          padding-bottom: 0;
+        }
+      }
+      @media (min-width: 1024px) {
+        .problem {
+          padding: 100px 0 96px;
+        }
+        .stats-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+        .stat {
+          padding: 40px 24px 0;
+          border-right: 1px solid rgba(255, 255, 255, 0.18);
+          border-bottom: none;
+        }
+        .stat:nth-child(2n) {
+          padding-left: 24px;
+          padding-right: 24px;
+          border-right: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        .stat:last-child {
+          border-right: none;
+          padding-right: 0;
+        }
+        .stat:first-child {
+          padding-left: 0;
+        }
+      }
+
+      /* ─────────────────────────────────────────────────────────
+       How it works
+       ───────────────────────────────────────────────────────── */
+      .how {
+        background: var(--bg);
+        padding: 72px 0 80px;
+      }
+      .how-head {
+        max-width: 720px;
+        margin: 0 0 40px;
+      }
+      .how h2 {
+        font-family: var(--font-serif);
+        font-weight: 300;
+        font-size: clamp(36px, 5.5vw, 56px);
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        margin: 14px 0 0;
+      }
+      .how h2 em {
+        font-style: italic;
+      }
+
+      .tabs {
+        display: flex;
+        gap: 0;
+        border-bottom: 1px solid var(--rule);
+        margin-bottom: 40px;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .tabs::-webkit-scrollbar {
+        display: none;
+      }
+
+      .tab {
+        flex: 1 0 200px;
+        padding: 16px 16px;
+        text-align: left;
+        background: transparent;
+        border: none;
+        border-bottom: 3px solid transparent;
+        margin-bottom: -1px;
+        color: var(--ink-soft);
+        transition: color 0.2s, border-color 0.2s;
+        min-height: 60px;
+      }
+      .tab[aria-selected="true"] {
+        color: var(--ink);
+        border-bottom-color: var(--navy);
+      }
+      .tab-num {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        opacity: 0.6;
+      }
+      .tab-title {
+        font-family: var(--font-serif);
+        font-size: 20px;
+        font-weight: 400;
+        margin-top: 4px;
+      }
+      @media (min-width: 768px) {
+        .how {
+          padding: 96px 0 100px;
+        }
+        .how-head {
+          margin-bottom: 56px;
+        }
+        .tab {
+          padding: 20px 24px;
+        }
+        .tab-title {
+          font-size: 24px;
+        }
+      }
+
+      .panel {
+        display: none;
+      }
+      .panel[data-active="true"] {
+        display: grid;
+      }
+
+      .panel {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        align-items: center;
+        animation: panel-fade 0.35s ease;
+      }
+      @keyframes panel-fade {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .panel-num {
+        font-family: var(--font-serif);
+        font-weight: 300;
+        font-size: clamp(120px, 22vw, 240px);
+        line-height: 0.85;
+        letter-spacing: -0.04em;
+        color: var(--bg-deep);
+        margin-bottom: -20px;
+      }
+      .panel-body {
+        font-size: clamp(17px, 2vw, 22px);
+        line-height: 1.55;
+        font-weight: 300;
+        max-width: 520px;
+        margin: 0 0 28px;
+      }
+      .panel-bullets {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 12px;
+      }
+      .panel-bullets li {
+        display: flex;
+        gap: 12px;
+        font-size: 16px;
+        color: var(--ink-soft);
+      }
+      .panel-bullets li::before {
+        content: "→";
+        color: var(--navy);
+        font-weight: 700;
+      }
+      .panel-phone {
+        display: flex;
+        justify-content: center;
+      }
+      @media (min-width: 1024px) {
+        .panel {
+          grid-template-columns: 1.2fr 1fr;
+          gap: 80px;
+          min-height: 460px;
+        }
+        .panel-phone .phone {
+          max-width: 320px;
+        }
+      }
+
+      /* ─────────────────────────────────────────────────────────
+       Errors — interactive bill
+       ───────────────────────────────────────────────────────── */
+      .errors {
+        background: var(--bg-deep);
+        padding: 72px 0 80px;
+      }
+      .errors-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .errors h2 {
+        font-family: var(--font-serif);
+        font-weight: 300;
+        font-size: clamp(36px, 5.5vw, 56px);
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        margin: 14px 0 18px;
+      }
+      .errors-lede {
+        font-size: clamp(16px, 1.8vw, 18px);
+        line-height: 1.55;
+        color: var(--ink-soft);
+        font-weight: 300;
+        margin: 0 0 28px;
+      }
+      .errors-lede strong {
+        color: var(--ink);
+      }
+
+      .progress-card {
+        background: var(--white);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        padding: 18px 22px;
+      }
+      .progress-row {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+      }
+      .progress-num {
+        font-family: var(--font-serif);
+        font-size: 28px;
+        font-weight: 600;
+      }
+      .progress-num span {
+        color: var(--ink-soft);
+        font-weight: 300;
+      }
+      .progress-label {
+        font-size: 12px;
+        color: var(--ink-soft);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .progress-bar {
+        margin-top: 12px;
+        height: 6px;
+        background: var(--rule);
+        border-radius: 3px;
+        overflow: hidden;
+      }
+      .progress-fill {
+        width: 0%;
+        height: 100%;
+        background: var(--navy);
+        transition: width 0.4s ease;
+      }
+      .progress-done {
+        margin-top: 12px;
+        font-size: 14px;
+        color: var(--navy);
+        font-weight: 600;
+        display: none;
+      }
+      .progress-done[data-done="true"] {
+        display: block;
+      }
+
+      .bill {
+        background: #fffcf6;
+        border: 1px solid #e2ddd0;
+        border-radius: 8px;
+        font-family: "Courier New", ui-monospace, monospace;
+        color: #1f1f1f;
+        box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+      }
+      .bill-header {
+        padding: 22px 18px 14px;
+        border-bottom: 2px solid #1f1f1f;
+      }
+      .bill-h-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 14px;
+        flex-wrap: wrap;
+      }
+      .bill-clinic {
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+      .bill-addr {
+        font-size: 11px;
+        opacity: 0.7;
+        margin-top: 2px;
+      }
+      .bill-meta {
+        font-size: 11px;
+        text-align: right;
+      }
+      .bill-cols,
+      .bill-row {
+        display: grid;
+        grid-template-columns: 1.4fr 0.5fr 0.5fr;
+        gap: 10px;
+      }
+      .bill-cols {
+        padding: 0 18px;
+        font-size: 11px;
+        opacity: 0.7;
+        letter-spacing: 0.06em;
+        padding-bottom: 0;
+      }
+      .bill-cols div:last-child {
+        text-align: right;
+      }
+      .bill-rows {
+        position: relative;
+      }
+      .bill-row {
+        padding: 11px 18px;
+        border-top: 1px dashed rgba(0, 0, 0, 0.18);
+        align-items: center;
+        font-size: 13px;
+        position: relative;
+        cursor: default;
+      }
+      .bill-row[data-err] {
+        cursor: pointer;
+        min-height: 44px;
+      }
+      .bill-row[data-err]::after {
+        content: "";
+        position: absolute;
+        inset: 4px 6px;
+        border-radius: 4px;
+        border: 2px dashed transparent;
+        pointer-events: none;
+        transition: border-color 0.15s, background 0.15s;
+      }
+      .bill-row[data-err]:not([data-found="true"]):hover::after,
+      .bill-row[data-err]:not([data-found="true"]):focus-visible::after {
+        border-color: rgba(233, 30, 140, 0.55);
+        background: rgba(233, 30, 140, 0.06);
+      }
+      .bill-row[data-found="true"] {
+        background: rgba(233, 30, 140, 0.07);
+      }
+      .bill-row[data-found="true"] .bill-amt {
+        text-decoration: line-through;
+        text-decoration-color: rgba(233, 30, 140, 0.8);
+        text-decoration-thickness: 2px;
+      }
+      .bill-row .bill-code {
+        opacity: 0.7;
+        font-size: 12px;
+      }
+      .bill-amt {
+        text-align: right;
+        font-weight: 600;
+      }
+      .bill-total {
+        display: flex;
+        justify-content: space-between;
+        padding: 14px 18px;
+        border-top: 2px solid #1f1f1f;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      /* Callout below row when found */
+      .bill-callout {
+        grid-column: 1 / -1;
+        background: var(--white);
+        border: 1.5px solid #e91e8c;
+        border-radius: 8px;
+        padding: 12px 14px;
+        margin-top: 10px;
+        font-family: var(--font-sans);
+        font-size: 13px;
+        line-height: 1.45;
+        color: #212529;
+        animation: callout-pop 0.25s ease;
+      }
+      .bill-callout strong {
+        display: block;
+        color: #e91e8c;
+        font-weight: 600;
+        font-size: 11px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+      }
+      @keyframes callout-pop {
+        from {
+          opacity: 0;
+          transform: translateY(-4px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .errors {
+          padding: 96px 0 100px;
+        }
+        .bill-header {
+          padding: 24px 24px 14px;
+        }
+        .bill-cols,
+        .bill-row {
+          padding-left: 24px;
+          padding-right: 24px;
+        }
+        .bill-total {
+          padding: 16px 24px;
+        }
+        .bill-clinic {
+          font-size: 18px;
+        }
+      }
+      @media (min-width: 1024px) {
+        .errors-grid {
+          grid-template-columns: 1fr 1.4fr;
+          gap: 80px;
+          align-items: start;
+        }
+        .errors-side {
+          position: sticky;
+          top: 100px;
+        }
+      }
+
+      /* ─────────────────────────────────────────────────────────
+       Contact + Footer
+       ───────────────────────────────────────────────────────── */
+      .contact {
+        background: var(--bg);
+        padding: 72px 0 32px;
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+        align-items: start;
+      }
+      .contact h2 {
+        font-family: var(--font-serif);
+        font-weight: 300;
+        font-size: clamp(40px, 6.5vw, 64px);
+        line-height: 1.02;
+        letter-spacing: -0.025em;
+        margin: 14px 0 22px;
+      }
+      .contact h2 em {
+        font-style: italic;
+      }
+      .contact-lede {
+        font-size: clamp(16px, 1.9vw, 19px);
+        line-height: 1.55;
+        font-weight: 300;
+        color: var(--ink-soft);
+        max-width: 480px;
+        margin: 0 0 28px;
+      }
+      .contact-list {
+        display: grid;
+        gap: 10px;
+        font-size: 15px;
+        color: var(--ink-soft);
+      }
+      .contact-list strong {
+        color: var(--ink);
+      }
+      .contact-list a {
+        color: var(--navy);
+      }
+
+      .form-card {
+        background: var(--white);
+        padding: 28px;
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.15);
+      }
+      @media (min-width: 768px) {
+        .form-card {
+          padding: 36px;
+        }
+      }
+
+      .field {
+        display: grid;
+        gap: 8px;
+        margin-bottom: 18px;
+      }
+      .field label {
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+      }
+      .field input {
+        width: 100%;
+        padding: 14px 16px;
+        min-height: 48px;
+        border-radius: 10px;
+        border: 1.5px solid #d3dae0;
+        font-family: var(--font-sans);
+        font-size: 16px;
+        background: var(--white);
+        color: var(--ink);
+        transition: border-color 0.15s, box-shadow 0.15s;
+      }
+      .field input:focus {
+        outline: none;
+        border-color: var(--blue);
+        box-shadow: 0 0 0 4px rgba(38, 139, 235, 0.14);
+      }
+      .field-error {
+        color: #c92a4d;
+        font-size: 13px;
+        display: none;
+      }
+      .field[data-invalid="true"] input {
+        border-color: #c92a4d;
+      }
+      .field[data-invalid="true"] .field-error {
+        display: block;
+      }
+
+      .submit {
+        margin-top: 4px;
+        width: 100%;
+        padding: 16px 22px;
+        min-height: 56px;
+        background: var(--navy);
+        color: var(--white);
+        border: none;
+        border-radius: 12px;
+        font-family: var(--font-sans);
+        font-weight: 600;
+        font-size: 17px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background 0.15s;
+      }
+      .submit:hover {
+        background: #0f2a47;
+      }
+      .submit-arrow {
+        font-size: 22px;
+        line-height: 1;
+      }
+
+      .form-success {
+        display: none;
+        text-align: center;
+        padding: 24px 8px;
+      }
+      .form-success[data-show="true"] {
+        display: block;
+      }
+      .form-success-icon {
+        width: 56px;
+        height: 56px;
+        margin: 0 auto 16px;
+        background: var(--navy);
+        color: var(--white);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 26px;
+      }
+      .form-success-title {
+        font-family: var(--font-serif);
+        font-size: 24px;
+        font-weight: 400;
+        margin-bottom: 6px;
+      }
+      .form-success-msg {
+        color: var(--ink-soft);
+        font-size: 15px;
+      }
+
+      @media (min-width: 1024px) {
+        .contact {
+          padding: 100px 0 40px;
+        }
+        .contact-grid {
+          grid-template-columns: 1.1fr 1fr;
+          gap: 100px;
+        }
+      }
+
+      /* Footer */
+      .footer {
+        padding: 32px 0 32px;
+        border-top: 1px solid var(--rule);
+        margin-top: 60px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        align-items: flex-start;
+        font-size: 13px;
+        color: var(--ink-soft);
+      }
+      .footer-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .footer-links {
+        display: flex;
+        gap: 20px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .footer-links a {
+        text-decoration: none;
+      }
+      .footer-links a:hover {
+        color: var(--ink);
+      }
+      @media (min-width: 768px) {
+        .footer {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <header class="site-header" id="site-header">
+      <div class="wrap nav">
+        <a class="brand" href="#" aria-label="MedAdvocate home">
+          <svg
+            class="brand-logo"
+            viewBox="0 0 80 80"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M20 60C20 71.0457 11.0457 80 0 80V40C0 28.9543 8.95431 20 20 20V60Z"
+              fill="#153B62"
+            />
+            <path
+              d="M50 60C50 71.0457 41.0457 80 30 80V20C30 8.95431 38.9543 0 50 0V60Z"
+              fill="#153B62"
+            />
+            <path
+              d="M80 40C80 51.0457 71.0457 60 60 60V20C60 8.9543 68.9543 0 80 0V40Z"
+              fill="#153B62"
+            />
+          </svg>
+          <span class="brand-name">Med<span>Advocate</span></span>
+        </a>
+
+        <nav aria-label="Primary">
+          <ul class="nav-links">
+            <li><a href="#problem">The problem</a></li>
+            <li><a href="#how">How it works</a></li>
+            <li><a href="#errors">What we catch</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <a class="nav-cta" href="#contact">Get the app</a>
+
+        <button
+          class="nav-toggle"
+          id="nav-toggle"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="nav-drawer"
+        >
+          <svg
+            class="icon-open"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+          <svg
+            class="icon-close"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+      </div>
+
+      <div
+        class="nav-drawer"
+        id="nav-drawer"
+        data-open="false"
+        aria-hidden="true"
+      >
+        <ul>
+          <li><a href="#problem">The problem</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#errors">What we catch</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a class="drawer-cta" href="#contact">Get the app</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- HERO -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="wrap hero-grid">
+          <div class="reveal">
+            <p class="eyebrow">Reducing bills on your behalf</p>
+            <h1 id="hero-title">
+              Your medical bill is <em>probably wrong.</em>
+            </h1>
+            <p class="hero-lede">
+              MedAdvocate scans your bill, finds the errors hospitals hope you
+              won't notice, and writes the dispute letter for you. Flat fee. No
+              insurance jargon.
+            </p>
+            <div class="store-row reveal d1">
+              <a
+                class="store-badge"
+                href="https://apps.apple.com/"
+                aria-label="Download MedAdvocate on the App Store"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.61-2.2.43-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"
+                  />
+                </svg>
+                <span>
+                  <span class="sb-eyebrow">Download on the</span>
+                  <span class="sb-label" style="display: block">App Store</span>
+                </span>
+              </a>
+              <a
+                class="store-badge"
+                href="https://play.google.com/store"
+                aria-label="Get MedAdvocate on Google Play"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="pi-a" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#00DDFF" />
+                      <stop offset="1" stop-color="#00BBFF" />
+                    </linearGradient>
+                    <linearGradient id="pi-b" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stop-color="#FFCE00" />
+                      <stop offset="1" stop-color="#FF9500" />
+                    </linearGradient>
+                    <linearGradient id="pi-c" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0" stop-color="#FF3A44" />
+                      <stop offset="1" stop-color="#C31162" />
+                    </linearGradient>
+                    <linearGradient id="pi-d" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0" stop-color="#00C752" />
+                      <stop offset="1" stop-color="#00A047" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    d="M3.6 2.4 14 12 3.6 21.6c-.3-.2-.5-.5-.5-.9V3.3c0-.4.2-.7.5-.9z"
+                    fill="url(#pi-a)"
+                  />
+                  <path
+                    d="M14 12 3.6 21.6c.4.3 1 .3 1.5.1L17.5 14.6 14 12z"
+                    fill="url(#pi-c)"
+                  />
+                  <path
+                    d="M14 12 3.6 2.4c.4-.3 1-.3 1.5-.1L17.5 9.4 14 12z"
+                    fill="url(#pi-d)"
+                  />
+                  <path
+                    d="m17.5 9.4 3.4 1.9c.7.4.7 1.4 0 1.8l-3.4 1.5L14 12l3.5-2.6z"
+                    fill="url(#pi-b)"
+                  />
+                </svg>
+                <span>
+                  <span class="sb-eyebrow">Get it on</span>
+                  <span class="sb-label" style="display: block"
+                    >Google Play</span
+                  >
+                </span>
+              </a>
+            </div>
+            <p class="hero-trust">
+              <span>★★★★★ 4.9 average</span>
+              <span>·</span>
+              <span>Featured in Wired, Vox, NPR</span>
+            </p>
+          </div>
+
+          <div class="hero-visual reveal d2" aria-hidden="false">
+            <div class="hero-decor" aria-hidden="true">$1.2k</div>
+            <div class="phone">
+              <!-- Replace with your own screenshot -->
+              <img
+                src="assets/phone2.png"
+                alt="MedAdvocate app showing analysis results — 5 errors found, $1,920 in potential savings."
+                width="320"
+                height="640"
+                loading="eager"
+              />
+            </div>
+            <div class="phone-tag">5 errors found · saved $1,920</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROBLEM -->
+      <section class="problem" id="problem" aria-labelledby="problem-title">
+        <div class="wrap">
+          <div class="problem-head">
+            <div class="reveal">
+              <p class="eyebrow">The problem</p>
+              <h2 id="problem-title">
+                Hospitals make billing errors. <em>You</em> end up paying for
+                them.
+              </h2>
+            </div>
+            <p class="problem-quote reveal d1">
+              The American Medical Association estimates that 1 in 5 medical
+              claims is processed incorrectly. The Government Accountability
+              Office puts the figure higher. Either way, the cost lands on the
+              patient — and almost no one disputes.
+            </p>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat reveal" data-counter data-to="80" data-suffix="%">
+              <div class="stat-num">0%</div>
+              <p class="stat-label">
+                of medical bills contain at least one billing error
+              </p>
+              <p class="stat-src">Medical Billing Advocates of America</p>
+            </div>
+            <div
+              class="stat reveal d1"
+              data-counter
+              data-to="1200"
+              data-prefix="$"
+            >
+              <div class="stat-num">$0</div>
+              <p class="stat-label">
+                average overcharge per hospital stay in the U.S.
+              </p>
+              <p class="stat-src">Consumer Reports, 2024</p>
+            </div>
+            <div
+              class="stat reveal d2"
+              data-counter
+              data-to="78"
+              data-suffix="%"
+            >
+              <div class="stat-num">0%</div>
+              <p class="stat-label">
+                of patients who dispute their bill receive a reduction
+              </p>
+              <p class="stat-src">CFPB</p>
+            </div>
+            <div
+              class="stat reveal d3"
+              data-counter
+              data-to="7"
+              data-suffix="%"
+            >
+              <div class="stat-num">0%</div>
+              <p class="stat-label">
+                of Americans actually dispute when they see an error
+              </p>
+              <p class="stat-src">Kaiser Family Foundation</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section class="how" id="how" aria-labelledby="how-title">
+        <div class="wrap">
+          <div class="how-head reveal">
+            <p class="eyebrow">How it works</p>
+            <h2 id="how-title">
+              Three steps. Ninety seconds. <em>One flat fee.</em>
+            </h2>
+          </div>
+
+          <div class="tabs" role="tablist" aria-label="How MedAdvocate works">
+            <button
+              class="tab"
+              role="tab"
+              id="tab-1"
+              aria-selected="true"
+              aria-controls="panel-1"
+              data-tab="1"
+            >
+              <span class="tab-num">STEP 01</span>
+              <span class="tab-title" style="display: block">Snap a photo</span>
+            </button>
+            <button
+              class="tab"
+              role="tab"
+              id="tab-2"
+              aria-selected="false"
+              aria-controls="panel-2"
+              data-tab="2"
+              tabindex="-1"
+            >
+              <span class="tab-num">STEP 02</span>
+              <span class="tab-title" style="display: block"
+                >We find the errors</span
+              >
+            </button>
+            <button
+              class="tab"
+              role="tab"
+              id="tab-3"
+              aria-selected="false"
+              aria-controls="panel-3"
+              data-tab="3"
+              tabindex="-1"
+            >
+              <span class="tab-num">STEP 03</span>
+              <span class="tab-title" style="display: block"
+                >We write the letter</span
+              >
+            </button>
+          </div>
+
+          <div
+            class="panel"
+            role="tabpanel"
+            id="panel-1"
+            aria-labelledby="tab-1"
+            data-active="true"
+          >
+            <div>
+              <div class="panel-num" aria-hidden="true">01</div>
+              <p class="panel-body">
+                Open MedAdvocate and take a picture of any medical bill —
+                itemized statement, EOB, collections notice. We accept PDFs and
+                screenshots from your insurance portal too.
+              </p>
+              <ul class="panel-bullets">
+                <li>One photo, no manual entry</li>
+                <li>Works with paper or digital bills</li>
+                <li>Encrypted at rest, never sold</li>
+              </ul>
+            </div>
+            <div class="panel-phone">
+              <div class="phone">
+                <img
+                  src="assets/phone1.png"
+                  alt="MedAdvocate scan screen with options to take a photo, choose from photo library, or pick a file."
+                  width="320"
+                  height="640"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="panel"
+            role="tabpanel"
+            id="panel-2"
+            aria-labelledby="tab-2"
+            data-active="false"
+            hidden
+          >
+            <div>
+              <div class="panel-num" aria-hidden="true">02</div>
+              <p class="panel-body">
+                Our AI cross-references your charges against Medicare
+                allowables, fair-price databases, and 600+ known billing-error
+                patterns. You get a line-by-line breakdown in under 90 seconds.
+              </p>
+              <ul class="panel-bullets">
+                <li>Duplicate charges, upcoding, unbundling</li>
+                <li>Pricing vs. fair-market benchmarks</li>
+                <li>Win-rate estimate per error</li>
+              </ul>
+            </div>
+            <div class="panel-phone">
+              <div class="phone">
+                <img
+                  src="assets/phone2.png"
+                  alt="MedAdvocate analysis results showing 5 issues with high win rates and a duplicate charge of $850."
+                  width="320"
+                  height="640"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="panel"
+            role="tabpanel"
+            id="panel-3"
+            aria-labelledby="tab-3"
+            data-active="false"
+            hidden
+          >
+            <div>
+              <div class="panel-num" aria-hidden="true">03</div>
+              <p class="panel-body">
+                Pick "Dispute" or "Negotiate" and we generate a formal,
+                citation-backed letter you can sign and send. Print, fax, or
+                email — your choice. One flat fee, no percentage of savings.
+              </p>
+              <ul class="panel-bullets">
+                <li>Backed by FDCPA + state law</li>
+                <li>Mail, fax, or email delivery</li>
+                <li>Average resolution: 14 days</li>
+              </ul>
+            </div>
+            <div class="panel-phone">
+              <div class="phone">
+                <img
+                  src="assets/phone3.png"
+                  alt="MedAdvocate-generated dispute letter ready to print, fax, or email."
+                  width="320"
+                  height="640"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ERRORS -->
+      <section class="errors" id="errors" aria-labelledby="errors-title">
+        <div class="wrap errors-grid">
+          <div class="errors-side reveal">
+            <p class="eyebrow">Try it yourself</p>
+            <h2 id="errors-title">Spot the errors on a real bill.</h2>
+            <p class="errors-lede">
+              This is a redacted ER bill from a MedAdvocate user. Tap the lines
+              you think are wrong. We found
+              <strong>5 errors totaling $2,924</strong>. How many can you?
+            </p>
+            <div class="progress-card" aria-live="polite">
+              <div class="progress-row">
+                <div class="progress-num">
+                  <span id="found-count">0</span><span> / 5</span>
+                </div>
+                <div class="progress-label">Errors found</div>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+              </div>
+              <p class="progress-done" id="progress-done">
+                Nice work. MedAdvocate would have caught all 5 in 90 seconds.
+              </p>
+            </div>
+          </div>
+
+          <div class="reveal d1">
+            <div class="bill" role="region" aria-label="Sample medical bill">
+              <div class="bill-header">
+                <div class="bill-h-row">
+                  <div>
+                    <div class="bill-clinic">ST. MARY'S MEDICAL CENTER</div>
+                    <div class="bill-addr">
+                      1234 Hospital Way, Salt Lake City, UT
+                    </div>
+                  </div>
+                  <div class="bill-meta">
+                    <div>Statement: 04/15/2026</div>
+                    <div>Account: SMH-789456</div>
+                  </div>
+                </div>
+                <div class="bill-cols">
+                  <div>DESCRIPTION</div>
+                  <div>CODE</div>
+                  <div>AMOUNT</div>
+                </div>
+              </div>
+
+              <div class="bill-rows" id="bill-rows">
+                <div class="bill-row">
+                  <div>Emergency room visit, level 4</div>
+                  <div class="bill-code">99284</div>
+                  <div class="bill-amt">$1,250.00</div>
+                </div>
+
+                <div
+                  class="bill-row"
+                  data-err
+                  data-found="false"
+                  tabindex="0"
+                  role="button"
+                  data-err-kind="Overcharge"
+                  data-err-text="Fair market price for a saline bag is roughly $7. The hospital marked this up over 60×."
+                  aria-label="Possible error: IV saline bag $487. Click to reveal."
+                >
+                  <div>IV saline bag, 1000mL</div>
+                  <div class="bill-code">J7030</div>
+                  <div class="bill-amt">$487.00</div>
+                </div>
+
+                <div
+                  class="bill-row"
+                  data-err
+                  data-found="false"
+                  tabindex="0"
+                  role="button"
+                  data-err-kind="Overcharge"
+                  data-err-text="Medicare allowable for this CPT is $431. Average negotiated commercial rate: $850–$1,100."
+                  aria-label="Possible error: CT scan $4,200. Click to reveal."
+                >
+                  <div>CT scan, abdomen, w/ contrast</div>
+                  <div class="bill-code">74177</div>
+                  <div class="bill-amt">$4,200.00</div>
+                </div>
+
+                <div
+                  class="bill-row"
+                  data-err
+                  data-found="false"
+                  tabindex="0"
+                  role="button"
+                  data-err-kind="Overcharge"
+                  data-err-text="A single OTC acetaminophen tablet costs about $0.05 retail. This is a 1,500× markup."
+                  aria-label="Possible error: Acetaminophen $77. Click to reveal."
+                >
+                  <div>Acetaminophen, 325mg tablet</div>
+                  <div class="bill-code">J0131</div>
+                  <div class="bill-amt">$77.00</div>
+                </div>
+
+                <div
+                  class="bill-row"
+                  data-err
+                  data-found="false"
+                  tabindex="0"
+                  role="button"
+                  data-err-kind="Duplicate"
+                  data-err-text="This procedure code appears twice on the same date of service. Standard policy bills it once."
+                  aria-label="Possible error: Suture removal $235. Click to reveal."
+                >
+                  <div>Suture removal</div>
+                  <div class="bill-code">99024</div>
+                  <div class="bill-amt">$235.00</div>
+                </div>
+
+                <div class="bill-row">
+                  <div>Suture removal</div>
+                  <div class="bill-code">99024</div>
+                  <div class="bill-amt">$235.00</div>
+                </div>
+
+                <div class="bill-row">
+                  <div>Room &amp; board, semi-private (1 day)</div>
+                  <div class="bill-code">R&amp;B</div>
+                  <div class="bill-amt">$2,400.00</div>
+                </div>
+
+                <div
+                  class="bill-row"
+                  data-err
+                  data-found="false"
+                  tabindex="0"
+                  role="button"
+                  data-err-kind="Unbundled"
+                  data-err-text="Tray fees are typically bundled into the procedure charge. Billing separately is a known coding violation."
+                  aria-label="Possible error: Surgical tray fee $1,890. Click to reveal."
+                >
+                  <div>Surgical tray fee</div>
+                  <div class="bill-code">99070</div>
+                  <div class="bill-amt">$1,890.00</div>
+                </div>
+              </div>
+
+              <div class="bill-total">
+                <div>TOTAL DUE</div>
+                <div>$10,774.00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section class="contact" id="contact" aria-labelledby="contact-title">
+        <div class="wrap">
+          <div class="contact-grid">
+            <div class="reveal">
+              <p class="eyebrow">Get in touch</p>
+              <h2 id="contact-title">Questions? <em>We answer them.</em></h2>
+              <p class="contact-lede">
+                Press, partnerships, or just curious how the math works on your
+                specific bill — drop a line and a real human will respond within
+                one business day.
+              </p>
+              <div class="contact-list">
+                <div>
+                  <strong>Press:</strong>
+                  <a
+                    href="/cdn-cgi/l/email-protection#1d6d6f786e6e5d7078797c796b727e7c6978337c6d6d"
+                    ><span
+                      class="__cf_email__"
+                      data-cfemail="dfafadbaacac9fb2babbbebba9b0bcbeabbaf1beafaf"
+                      >[email&#160;protected]</span
+                    ></a
+                  >
+                </div>
+                <div>
+                  <strong>Support:</strong>
+                  <a
+                    href="/cdn-cgi/l/email-protection#ef878a839faf828a8b8e8b99808c8e9b8ac18e9f9f"
+                    ><span
+                      class="__cf_email__"
+                      data-cfemail="8ee6ebe2fecee3ebeaefeaf8e1edeffaeba0effefe"
+                      >[email&#160;protected]</span
+                    ></a
+                  >
+                </div>
+                <div><strong>HQ:</strong> Salt Lake City, UT</div>
+              </div>
+            </div>
+
+            <div class="form-card reveal d1">
+              <form id="contact-form" novalidate>
+                <div class="field" id="field-name">
+                  <label for="ma-name">Your name</label>
+                  <input
+                    id="ma-name"
+                    name="name"
+                    type="text"
+                    required
+                    autocomplete="name"
+                    placeholder="Stephen Futrell"
+                  />
+                  <div class="field-error">Please enter your name.</div>
+                </div>
+                <div class="field" id="field-email">
+                  <label for="ma-email">Email</label>
+                  <input
+                    id="ma-email"
+                    name="email"
+                    type="email"
+                    required
+                    autocomplete="email"
+                    placeholder="you@email.com"
+                  />
+                  <div class="field-error">Please enter a valid email.</div>
+                </div>
+                <button class="submit" type="submit">
+                  <span>Send message</span>
+                  <span class="submit-arrow" aria-hidden="true">→</span>
                 </button>
-
               </form>
+              <div
+                class="form-success"
+                id="form-success"
+                data-show="false"
+                role="status"
+                aria-live="polite"
+              >
+                <div class="form-success-icon" aria-hidden="true">✓</div>
+                <div class="form-success-title" id="success-title">Got it.</div>
+                <div class="form-success-msg" id="success-msg">
+                  We'll be in touch within one business day.
+                </div>
+              </div>
             </div>
+          </div>
+
+          <footer class="footer">
+            <div class="footer-brand">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 80 80"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M20 60C20 71.0457 11.0457 80 0 80V40C0 28.9543 8.95431 20 20 20V60Z"
+                  fill="#153B62"
+                />
+                <path
+                  d="M50 60C50 71.0457 41.0457 80 30 80V20C30 8.95431 38.9543 0 50 0V60Z"
+                  fill="#153B62"
+                />
+                <path
+                  d="M80 40C80 51.0457 71.0457 60 60 60V20C60 8.9543 68.9543 0 80 0V40Z"
+                  fill="#153B62"
+                />
+              </svg>
+              <span
+                >© 2026 MedAdvocate, Inc. Reducing medical bills on your
+                behalf.</span
+              >
+            </div>
+            <ul class="footer-links">
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">Terms</a></li>
+              <li><a href="#">HIPAA</a></li>
+            </ul>
+          </footer>
         </div>
-    </section>
+      </section>
+    </main>
 
-    <!-- Discover Errors Section -->
-    <section class="discover-section">
-        <h2>Discover errors in seconds</h2>
-        <p class="discover-description">
-            Our analysis finds duplicate charges, wrong codes, overpricing, bundling codes, and other medical billing errors...instantly. <span class="description2">Then we show your potential savings.</span>
-        </p>
+    <script
+      data-cfasync="false"
+      src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+    ></script>
+    <script>
+      (function () {
+        "use strict";
 
-        <div class="phone-mockups">
-            <div class="phone-step">
-                <div class="phone">
-                    <img src="../images/phone1.png" alt="Take a photo of your medical bill">
-                </div>
-                <div class="step-info">
-                    <img src="../images/number1.png" alt="1" class="step-number-icon">
-                    <p>Take a photo of your medical bill and we'll scan it for billing errors instantly.</p>
-                </div>
-            </div>
+        var prefersReduce = matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
 
-            <div class="phone-step">
-                <div class="phone">
-                    <img src="../images/phone2.png" alt="Our analysis scans for errors">
-                </div>
-                <div class="step-info">
-                    <img src="../images/number2.png" alt="2" class="step-number-icon">
-                    <p>We find duplicate charges, incorrect codes, and overpricing, then show your savings.</p>
-                </div>
-            </div>
+        /* ── Sticky header shadow ───────────────────────────── */
+        var header = document.getElementById("site-header");
+        var setScrolled = function () {
+          header.classList.toggle("scrolled", window.scrollY > 8);
+        };
+        setScrolled();
+        window.addEventListener("scroll", setScrolled, { passive: true });
 
-            <div class="phone-step">
-                <div class="phone">
-                    <img src="../images/phone3.png" alt="Receive a customized dispute letter">
-                </div>
-                <div class="step-info">
-                    <img src="../images/number3.png" alt="3" class="step-number-icon">
-                    <p>Receive a customized dispute letter with evidence to send your provider and reduce your bill.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        /* ── Mobile nav drawer ──────────────────────────────── */
+        var toggle = document.getElementById("nav-toggle");
+        var drawer = document.getElementById("nav-drawer");
+        var setOpen = function (open) {
+          toggle.setAttribute("aria-expanded", String(open));
+          toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+          drawer.setAttribute("data-open", String(open));
+          drawer.setAttribute("aria-hidden", String(!open));
+          document.body.style.overflow = open ? "hidden" : "";
+        };
+        toggle.addEventListener("click", function () {
+          var open = toggle.getAttribute("aria-expanded") !== "true";
+          setOpen(open);
+        });
+        drawer.querySelectorAll("a").forEach(function (a) {
+          a.addEventListener("click", function () {
+            setOpen(false);
+          });
+        });
+        // Close on Escape
+        document.addEventListener("keydown", function (e) {
+          if (
+            e.key === "Escape" &&
+            toggle.getAttribute("aria-expanded") === "true"
+          )
+            setOpen(false);
+        });
 
-    <!-- Stats Section -->
-    <section class="stats-section">
-        <h2>Your medical bill has problems</h2>
-        <div class="stats-grid">
-          <div class="stat-card">
-              <img src="../images/errorIcon.png" alt="" class="stat-icon">
-              <img src="../images/80percent.png" alt="80%" class="stat-value-img">
-              <p>of medical bills contain errors</p>
-          </div>
-          <div class="stat-card">
-              <img src="../images/dollarIcon.png" alt="" class="stat-icon">
-              <img src="../images/1380.png" alt="$1,380" class="stat-value-img">
-              <p>overpaid by Americans each year</p>
-          </div>
-          <div class="stat-card">
-              <img src="../images/receiptIcon.png" alt="" class="stat-icon">
-              <img src="../images/78percent.png" alt="78%" class="stat-value-img">
-              <p>of disputes result in reduced bills</p>
-          </div>
-          <div class="stat-card">
-              <img src="../images/dollarIcon2.png" alt="" class="stat-icon">
-              <img src="../images/1200.png" alt="$1,200" class="stat-value-img">
-              <p>average savings on disputed bills</p>
-          </div>
-          <div class="stat-card">
-              <img src="../images/codeIcon.png" alt="" class="stat-icon">
-              <img src="../images/67k.png" alt="67k" class="stat-value-img">
-              <p>billing codes to search through</p>
-          </div>
-          <div class="stat-card">
-              <img src="../images/phoneIcon.png" alt="" class="stat-icon">
-              <img src="../images/45min.png" alt="45min" class="stat-value-img">
-              <p>average time wasted on phone calls</p>
-          </div>
-        </div>
-    </section>
+        /* ── Reveal on scroll ───────────────────────────────── */
+        if (!prefersReduce && "IntersectionObserver" in window) {
+          var io = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                  e.target.classList.add("in");
+                  io.unobserve(e.target);
+                }
+              });
+            },
+            { threshold: 0.12 }
+          );
+          document.querySelectorAll(".reveal").forEach(function (el) {
+            io.observe(el);
+          });
+        } else {
+          document.querySelectorAll(".reveal").forEach(function (el) {
+            el.classList.add("in");
+          });
+        }
 
-    <!-- Bottom CTA Section -->
-    <section class="bottom-cta">
-        <div class="cta-content">
-            <div class="cta-left">
-                <h3>Join the waitlist.</h3>
-                <p class="form-date">Coming April 2026</p>
-                <form action="https://formspree.io/f/mnjjlrap" method="POST">
+        /* ── Animated counters ──────────────────────────────── */
+        var formatNum = function (val, prefix, suffix) {
+          var n = Math.round(val).toLocaleString();
+          return (prefix || "") + n + (suffix || "");
+        };
+        var animateCounter = function (el) {
+          var to = parseFloat(el.dataset.to);
+          var prefix = el.dataset.prefix || "";
+          var suffix = el.dataset.suffix || "";
+          var num = el.querySelector(".stat-num");
+          if (prefersReduce) {
+            num.textContent = formatNum(to, prefix, suffix);
+            return;
+          }
+          var start = performance.now();
+          var dur = 1500;
+          var tick = function (now) {
+            var t = Math.min(1, (now - start) / dur);
+            var eased = 1 - Math.pow(1 - t, 3);
+            num.textContent = formatNum(to * eased, prefix, suffix);
+            if (t < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        };
+        if ("IntersectionObserver" in window) {
+          var cIo = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                  animateCounter(e.target);
+                  cIo.unobserve(e.target);
+                }
+              });
+            },
+            { threshold: 0.4 }
+          );
+          document.querySelectorAll("[data-counter]").forEach(function (el) {
+            cIo.observe(el);
+          });
+        } else {
+          document.querySelectorAll("[data-counter]").forEach(animateCounter);
+        }
 
-                    <!-- Honeypot for Formspree -->
-                    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-                    <input type="text" name="name" placeholder="Full Name" required>
-                    <input type="email" name="email" placeholder="Email Address" required>
-                    <button type="submit" class="btn-primary">
-                        Join the Waitlist
-                        <span class="arrow"></span>
-                    </button>
-                </form>
-            </div>
-            <div class="cta-right">
-                <h3>Decrease what you owe on each medical bill</h3>
-                <p>Stop overpaying on medical bills. Scan your bill, discover hidden errors instantly, and get a professional dispute letter to reduce what you owe.</p>
-            </div>
-        </div>
-    </section>
+        /* ── Tabs (How it works) ────────────────────────────── */
+        var tabs = Array.prototype.slice.call(
+          document.querySelectorAll(".tab")
+        );
+        var panels = tabs.map(function (t) {
+          return document.getElementById("panel-" + t.dataset.tab);
+        });
+        var selectTab = function (idx) {
+          tabs.forEach(function (t, i) {
+            var sel = i === idx;
+            t.setAttribute("aria-selected", String(sel));
+            t.tabIndex = sel ? 0 : -1;
+            panels[i].setAttribute("data-active", String(sel));
+            if (sel) panels[i].removeAttribute("hidden");
+            else panels[i].setAttribute("hidden", "");
+          });
+        };
+        tabs.forEach(function (tab, i) {
+          tab.addEventListener("click", function () {
+            selectTab(i);
+          });
+          tab.addEventListener("keydown", function (e) {
+            if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+              e.preventDefault();
+              var dir = e.key === "ArrowRight" ? 1 : -1;
+              var next = (i + dir + tabs.length) % tabs.length;
+              tabs[next].focus();
+              selectTab(next);
+            } else if (e.key === "Home") {
+              e.preventDefault();
+              tabs[0].focus();
+              selectTab(0);
+            } else if (e.key === "End") {
+              e.preventDefault();
+              tabs[tabs.length - 1].focus();
+              selectTab(tabs.length - 1);
+            }
+          });
+        });
 
-    <!-- Footer -->
-    <footer>
-        <p>MedAdvocate, LLC © 2026. All Rights Reserved.</p>
-    </footer>
+        /* ── Spot the error ─────────────────────────────────── */
+        var found = 0;
+        var total = document.querySelectorAll("[data-err]").length;
+        var foundCount = document.getElementById("found-count");
+        var fill = document.getElementById("progress-fill");
+        var doneMsg = document.getElementById("progress-done");
+        var revealError = function (row) {
+          if (row.getAttribute("data-found") === "true") return;
+          row.setAttribute("data-found", "true");
+          var kind = row.dataset.errKind;
+          var text = row.dataset.errText;
+          var c = document.createElement("div");
+          c.className = "bill-callout";
+          c.innerHTML = "<strong></strong>";
+          c.querySelector("strong").textContent = kind;
+          c.appendChild(document.createTextNode(text));
+          row.appendChild(c);
+          found++;
+          foundCount.textContent = String(found);
+          fill.style.width = (found / total) * 100 + "%";
+          if (found === total) doneMsg.setAttribute("data-done", "true");
+        };
+        document.querySelectorAll("[data-err]").forEach(function (row) {
+          row.addEventListener("click", function () {
+            revealError(row);
+          });
+          row.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              revealError(row);
+            }
+          });
+        });
 
-    <script src="script.js"></script>
-</body>
+        /* ── Contact form ───────────────────────────────────── */
+        var form = document.getElementById("contact-form");
+        var success = document.getElementById("form-success");
+        var nameField = document.getElementById("field-name");
+        var emailField = document.getElementById("field-email");
+        var nameInput = document.getElementById("ma-name");
+        var emailInput = document.getElementById("ma-email");
+        var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        var validate = function () {
+          var ok = true;
+          if (!nameInput.value.trim()) {
+            nameField.setAttribute("data-invalid", "true");
+            ok = false;
+          } else nameField.removeAttribute("data-invalid");
+          if (!emailRe.test(emailInput.value.trim())) {
+            emailField.setAttribute("data-invalid", "true");
+            ok = false;
+          } else emailField.removeAttribute("data-invalid");
+          return ok;
+        };
+        [nameInput, emailInput].forEach(function (i) {
+          i.addEventListener("input", function () {
+            var fld = i.closest(".field");
+            if (fld.hasAttribute("data-invalid")) validate();
+          });
+        });
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          if (!validate()) return;
+          var first = nameInput.value.trim().split(" ")[0];
+          document.getElementById("success-title").textContent =
+            "Got it, " + first + ".";
+          document.getElementById("success-msg").textContent =
+            "We'll be in touch at " +
+            emailInput.value.trim() +
+            " within one business day.";
+          form.style.display = "none";
+          success.setAttribute("data-show", "true");
+          success.focus();
+        });
+      })();
+    </script>
+  </body>
 </html>
