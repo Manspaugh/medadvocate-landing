@@ -497,39 +497,7 @@
         letter-spacing: -0.01em;
       }
 
-      /* Early-access CTA (replaces store badges while app is in review) */
-      .cta-row {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-      }
-      .cta-primary {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 16px 28px;
-        background: var(--navy);
-        color: var(--white);
-        border-radius: 12px;
-        font-weight: 600;
-        font-size: 17px;
-        text-decoration: none;
-        transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
-        align-self: flex-start;
-        min-height: 56px;
-      }
-      .cta-primary:hover {
-        background: #0f2a47;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(21, 59, 98, 0.22);
-      }
-      .cta-note {
-        font-size: 13px;
-        color: var(--ink-soft);
-        margin: 0;
-      }
-
-      /* ─────────────────────────────────────────────────────────
+/* ─────────────────────────────────────────────────────────
        Problem (Stats) — navy
        ───────────────────────────────────────────────────────── */
       .problem {
@@ -1302,9 +1270,7 @@
           </ul>
         </nav>
 
-        <a class="nav-cta" href="#contact">Get early access</a>
-
-        <button
+<button
           class="nav-toggle"
           id="nav-toggle"
           aria-label="Open menu"
@@ -1348,7 +1314,6 @@
           <li><a href="#errors">What we catch</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <a class="drawer-cta" href="#contact">Get early access</a>
       </div>
     </header>
 
@@ -1366,11 +1331,68 @@
               won't notice, and writes the dispute letter for you. Flat fee. No
               insurance jargon.
             </p>
-            <div class="cta-row reveal d1">
-              <a class="cta-primary" href="#contact">
-                Get early access <span aria-hidden="true">→</span>
+            <div class="store-row reveal d1">
+              <a
+                class="store-badge"
+                href="https://apps.apple.com/"
+                aria-label="Download MedAdvocate on the App Store"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.61-2.2.43-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"
+                  />
+                </svg>
+                <span>
+                  <span class="sb-eyebrow">Download on the</span>
+                  <span class="sb-label" style="display: block">App Store</span>
+                </span>
               </a>
-              <p class="cta-note">iOS + Android · App review in progress</p>
+              <a
+                class="store-badge"
+                href="https://play.google.com/store"
+                aria-label="Get MedAdvocate on Google Play"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="pi-a" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#00DDFF" />
+                      <stop offset="1" stop-color="#00BBFF" />
+                    </linearGradient>
+                    <linearGradient id="pi-b" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stop-color="#FFCE00" />
+                      <stop offset="1" stop-color="#FF9500" />
+                    </linearGradient>
+                    <linearGradient id="pi-c" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0" stop-color="#FF3A44" />
+                      <stop offset="1" stop-color="#C31162" />
+                    </linearGradient>
+                    <linearGradient id="pi-d" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0" stop-color="#00C752" />
+                      <stop offset="1" stop-color="#00A047" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    d="M3.6 2.4 14 12 3.6 21.6c-.3-.2-.5-.5-.5-.9V3.3c0-.4.2-.7.5-.9z"
+                    fill="url(#pi-a)"
+                  />
+                  <path
+                    d="M14 12 3.6 21.6c.4.3 1 .3 1.5.1L17.5 14.6 14 12z"
+                    fill="url(#pi-c)"
+                  />
+                  <path
+                    d="M14 12 3.6 2.4c.4-.3 1-.3 1.5-.1L17.5 9.4 14 12z"
+                    fill="url(#pi-d)"
+                  />
+                  <path
+                    d="m17.5 9.4 3.4 1.9c.7.4.7 1.4 0 1.8l-3.4 1.5L14 12l3.5-2.6z"
+                    fill="url(#pi-b)"
+                  />
+                </svg>
+                <span>
+                  <span class="sb-eyebrow">Get it on</span>
+                  <span class="sb-label" style="display: block">Google Play</span>
+                </span>
+              </a>
             </div>
             <p class="hero-trust">
               <span>Flat fee, not a percentage</span>
@@ -1810,59 +1832,6 @@
               </div>
             </div>
 
-            <div class="form-card reveal d1">
-              <form id="contact-form" novalidate>
-                <div class="field" id="field-name">
-                  <label for="ma-name">Your name</label>
-                  <input
-                    id="ma-name"
-                    name="name"
-                    type="text"
-                    required
-                    autocomplete="name"
-                    placeholder="Stephen Futrell"
-                  />
-                  <div class="field-error">Please enter your name.</div>
-                </div>
-                <div class="field" id="field-email">
-                  <label for="ma-email">Email</label>
-                  <input
-                    id="ma-email"
-                    name="email"
-                    type="email"
-                    required
-                    autocomplete="email"
-                    placeholder="you@email.com"
-                  />
-                  <div class="field-error">Please enter a valid email.</div>
-                </div>
-                <div class="field" id="field-message">
-                  <label for="ma-message">Message</label>
-                  <textarea
-                    id="ma-message"
-                    name="message"
-                    placeholder="Tell us about your bill or question..."
-                  ></textarea>
-                </div>
-                <button class="submit" type="submit">
-                  <span>Send message</span>
-                  <span class="submit-arrow" aria-hidden="true">→</span>
-                </button>
-              </form>
-              <div
-                class="form-success"
-                id="form-success"
-                data-show="false"
-                role="status"
-                aria-live="polite"
-              >
-                <div class="form-success-icon" aria-hidden="true">✓</div>
-                <div class="form-success-title" id="success-title">Got it.</div>
-                <div class="form-success-msg" id="success-msg">
-                  We'll be in touch within one business day.
-                </div>
-              </div>
-            </div>
           </div>
 
           <footer class="footer">
@@ -2089,71 +2058,6 @@
           });
         });
 
-        /* ── Contact form ───────────────────────────────────── */
-        var form = document.getElementById("contact-form");
-        var success = document.getElementById("form-success");
-        var nameField = document.getElementById("field-name");
-        var emailField = document.getElementById("field-email");
-        var nameInput = document.getElementById("ma-name");
-        var emailInput = document.getElementById("ma-email");
-        var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        var validate = function () {
-          var ok = true;
-          if (!nameInput.value.trim()) {
-            nameField.setAttribute("data-invalid", "true");
-            ok = false;
-          } else nameField.removeAttribute("data-invalid");
-          if (!emailRe.test(emailInput.value.trim())) {
-            emailField.setAttribute("data-invalid", "true");
-            ok = false;
-          } else emailField.removeAttribute("data-invalid");
-          return ok;
-        };
-        [nameInput, emailInput].forEach(function (i) {
-          i.addEventListener("input", function () {
-            var fld = i.closest(".field");
-            if (fld.hasAttribute("data-invalid")) validate();
-          });
-        });
-        form.addEventListener("submit", function (e) {
-          e.preventDefault();
-          if (!validate()) return;
-          var first = nameInput.value.trim().split(" ")[0];
-          var submitBtn = form.querySelector(".submit");
-          submitBtn.disabled = true;
-          submitBtn.querySelector("span").textContent = "Sending…";
-          fetch("https://formspree.io/f/xlganlnj", {
-            method: "POST",
-            body: new FormData(form),
-            headers: { Accept: "application/json" },
-          })
-            .then(function (res) {
-              if (res.ok) {
-                document.getElementById("success-title").textContent =
-                  "Got it, " + first + ".";
-                document.getElementById("success-msg").textContent =
-                  "We'll be in touch at " +
-                  emailInput.value.trim() +
-                  " within one business day.";
-                form.style.display = "none";
-                success.setAttribute("data-show", "true");
-                success.focus();
-              } else {
-                submitBtn.disabled = false;
-                submitBtn.querySelector("span").textContent = "Send message";
-                alert(
-                  "Something went wrong. Please email us at support@medadvocate.net."
-                );
-              }
-            })
-            .catch(function () {
-              submitBtn.disabled = false;
-              submitBtn.querySelector("span").textContent = "Send message";
-              alert(
-                "Something went wrong. Please email us at support@medadvocate.net."
-              );
-            });
-        });
       })();
     </script>
   </body>
