@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MedAdvocate — Stop paying for medical-billing errors</title>
+    <title>MedAdvocate — Reducing medical bills on your behalf</title>
     <meta
       name="description"
       content="MedAdvocate scans your medical bill, finds the errors hospitals hope you won't notice, and writes the dispute letter for you."
@@ -13,7 +13,7 @@
     <!-- Open Graph -->
     <meta
       property="og:title"
-      content="MedAdvocate — Stop paying for medical-billing errors"
+      content="MedAdvocate — Reducing medical bills on your behalf"
     />
     <meta
       property="og:description"
@@ -110,7 +110,7 @@
         border: 0;
       }
 
-/* Focus */
+      /* Focus */
       :focus-visible {
         outline: 3px solid var(--yellow);
         outline-offset: 3px;
@@ -194,7 +194,7 @@
         color: var(--ink);
       }
       .brand-logo {
-        width: 28px;
+        width: auto;
         height: 28px;
         flex-shrink: 0;
       }
@@ -497,7 +497,7 @@
         letter-spacing: -0.01em;
       }
 
-/* ─────────────────────────────────────────────────────────
+      /* ─────────────────────────────────────────────────────────
        Problem (Stats) — navy
        ───────────────────────────────────────────────────────── */
       .problem {
@@ -1029,7 +1029,7 @@
        Contact + Footer
        ───────────────────────────────────────────────────────── */
       .contact {
-        background: var(--bg);
+        background: var(--bg-deep);
         padding: 72px 0 32px;
       }
       .contact-grid {
@@ -1236,41 +1236,27 @@
     </style>
   </head>
   <body>
-<header class="site-header" id="site-header">
+    <header class="site-header" id="site-header">
       <div class="wrap nav">
         <a class="brand" href="#" aria-label="MedAdvocate home">
-          <svg
+          <img
             class="brand-logo"
-            viewBox="0 0 80 80"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M20 60C20 71.0457 11.0457 80 0 80V40C0 28.9543 8.95431 20 20 20V60Z"
-              fill="#153B62"
-            />
-            <path
-              d="M50 60C50 71.0457 41.0457 80 30 80V20C30 8.95431 38.9543 0 50 0V60Z"
-              fill="#153B62"
-            />
-            <path
-              d="M80 40C80 51.0457 71.0457 60 60 60V20C60 8.9543 68.9543 0 80 0V40Z"
-              fill="#153B62"
-            />
-          </svg>
-          <span class="brand-name">Med<span>Advocate</span></span>
+            src="assets/logo-horizontal-darkblue.svg"
+            width="187"
+            height="28"
+            alt="MedAdvocate"
+          />
         </a>
 
         <nav aria-label="Primary">
           <ul class="nav-links">
             <li><a href="#problem">The problem</a></li>
             <li><a href="#how">How it works</a></li>
-            <li><a href="#errors">What we catch</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
 
-<button
+        <button
           class="nav-toggle"
           id="nav-toggle"
           aria-label="Open menu"
@@ -1311,7 +1297,6 @@
         <ul>
           <li><a href="#problem">The problem</a></li>
           <li><a href="#how">How it works</a></li>
-          <li><a href="#errors">What we catch</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -1322,7 +1307,7 @@
       <section class="hero" aria-labelledby="hero-title">
         <div class="wrap hero-grid">
           <div class="reveal">
-            <p class="eyebrow">Reducing bills on your behalf</p>
+            <p class="eyebrow">Reducing medical bills on your behalf</p>
             <h1 id="hero-title">
               Your medical bill is <em>probably wrong.</em>
             </h1>
@@ -1390,13 +1375,13 @@
                 </svg>
                 <span>
                   <span class="sb-eyebrow">Get it on</span>
-                  <span class="sb-label" style="display: block">Google Play</span>
+                  <span class="sb-label" style="display: block"
+                    >Google Play</span
+                  >
                 </span>
               </a>
             </div>
             <p class="hero-trust">
-              <span>Flat fee, not a percentage</span>
-              <span>·</span>
               <span>Works on any itemized bill</span>
             </p>
           </div>
@@ -1404,16 +1389,15 @@
           <div class="hero-visual reveal d2" aria-hidden="false">
             <div class="hero-decor" aria-hidden="true">$1.2k</div>
             <div class="phone">
-              <!-- Replace with your own screenshot -->
               <img
-                src="assets/phone2.png"
-                alt="MedAdvocate app showing analysis results — 5 errors found, $1,920 in potential savings."
+                src="assets/phone1.png"
+                alt="MedAdvocate app showing analysis results — 5 errors found, $1,240 in potential savings."
                 width="320"
                 height="676"
                 loading="eager"
               />
             </div>
-            <div class="phone-tag">5 errors found · saved $1,920</div>
+            <div class="phone-tag">5 errors found · saved $1,240</div>
           </div>
         </div>
       </section>
@@ -1433,7 +1417,7 @@
               The American Medical Association estimates that 1 in 5 medical
               claims is processed incorrectly. The Government Accountability
               Office puts the figure higher. Either way, the cost lands on the
-              patient — and almost no one disputes.
+              patient...and almost no one disputes.
             </p>
           </div>
 
@@ -1547,20 +1531,20 @@
             <div>
               <div class="panel-num" aria-hidden="true">01</div>
               <p class="panel-body">
-                Open MedAdvocate and take a picture of any medical bill —
+                Open MedAdvocate and take a picture or upload any medical bill -
                 itemized statement, EOB, collections notice. We accept PDFs and
                 screenshots from your insurance portal too.
               </p>
               <ul class="panel-bullets">
-                <li>One photo, no manual entry</li>
+                <li>Take a photo or upload a file, no manual entry</li>
                 <li>Works with paper or digital bills</li>
-                <li>Encrypted at rest, never sold</li>
+                <li>Completely encrypted, never sold</li>
               </ul>
             </div>
             <div class="panel-phone">
               <div class="phone">
                 <img
-                  src="assets/phone1.png"
+                  src="assets/phone2.png"
                   alt="MedAdvocate scan screen with options to take a photo, choose from photo library, or pick a file."
                   width="320"
                   height="676"
@@ -1581,20 +1565,20 @@
             <div>
               <div class="panel-num" aria-hidden="true">02</div>
               <p class="panel-body">
-                Our AI cross-references your charges against Medicare
-                allowables, fair-price databases, and 600+ known billing-error
-                patterns. You get a line-by-line breakdown in under 90 seconds.
+                We cross-reference your charges against Medicare allowables,
+                fair-price databases, and 600+ known billing-error patterns. You
+                get a line-by-line breakdown in under 90 seconds.
               </p>
               <ul class="panel-bullets">
                 <li>Duplicate charges, upcoding, unbundling</li>
                 <li>Pricing vs. fair-market benchmarks</li>
-                <li>Win-rate estimate per error</li>
+                <li>Win-rate estimate per error with evidence</li>
               </ul>
             </div>
             <div class="panel-phone">
               <div class="phone">
                 <img
-                  src="assets/phone2.png"
+                  src="assets/phone1.png"
                   alt="MedAdvocate analysis results showing 5 issues with high win rates and a duplicate charge of $850."
                   width="320"
                   height="676"
@@ -1615,13 +1599,13 @@
             <div>
               <div class="panel-num" aria-hidden="true">03</div>
               <p class="panel-body">
-                Pick "Dispute" or "Negotiate" and we generate a formal,
-                citation-backed letter you can sign and send. Print, fax, or
-                email — your choice. One flat fee, no percentage of savings.
+                Select a dispute or negotiation and we generate a formal,
+                evidence-backed letter, and then send it on your behalf through
+                certified mail. One flat fee, no percentage of savings.
               </p>
               <ul class="panel-bullets">
                 <li>Backed by FDCPA + state law</li>
-                <li>Mail, fax, or email delivery</li>
+                <li>Certified mail we send for you</li>
                 <li>Average resolution: 14 days</li>
               </ul>
             </div>
@@ -1641,7 +1625,7 @@
       </section>
 
       <!-- ERRORS -->
-      <section class="errors" id="errors" aria-labelledby="errors-title">
+      <section class="errors" id="errors" aria-labelledby="errors-title" hidden>
         <div class="wrap errors-grid">
           <div class="errors-side reveal">
             <p class="eyebrow">Try it yourself</p>
@@ -1806,32 +1790,64 @@
                 one business day.
               </p>
               <div class="contact-list">
-                <div>
-                  <strong>Press:</strong>
-                  <a
-                    href="/cdn-cgi/l/email-protection#1d6d6f786e6e5d7078797c796b727e7c6978337c6d6d"
-                    ><span
-                      class="__cf_email__"
-                      data-cfemail="dfafadbaacac9fb2babbbebba9b0bcbeabbaf1beafaf"
-                      >[email&#160;protected]</span
-                    ></a
-                  >
-                </div>
-                <div>
-                  <strong>Support:</strong>
-                  <a
-                    href="/cdn-cgi/l/email-protection#ef878a839faf828a8b8e8b99808c8e9b8ac18e9f9f"
-                    ><span
-                      class="__cf_email__"
-                      data-cfemail="8ee6ebe2fecee3ebeaefeaf8e1edeffaeba0effefe"
-                      >[email&#160;protected]</span
-                    ></a
-                  >
-                </div>
                 <div><strong>HQ:</strong> Salt Lake City, UT</div>
               </div>
             </div>
 
+            <div class="form-card reveal d1">
+              <form id="contact-form" novalidate>
+                <div class="field" id="field-name">
+                  <label for="ma-name">Your name</label>
+                  <input
+                    id="ma-name"
+                    name="name"
+                    type="text"
+                    required
+                    autocomplete="name"
+                    placeholder="Stephen Futrell"
+                  />
+                  <div class="field-error">Please enter your name.</div>
+                </div>
+                <div class="field" id="field-email">
+                  <label for="ma-email">Email</label>
+                  <input
+                    id="ma-email"
+                    name="email"
+                    type="email"
+                    required
+                    autocomplete="email"
+                    placeholder="you@email.com"
+                  />
+                  <div class="field-error">Please enter a valid email.</div>
+                </div>
+                <div class="field" id="field-message">
+                  <label for="ma-message">Message</label>
+                  <textarea
+                    id="ma-message"
+                    name="message"
+                    placeholder="Tell us about your bill or question..."
+                  ></textarea>
+                </div>
+                <button class="submit" type="submit">
+                  <span>Send message</span>
+                  <span class="submit-arrow" aria-hidden="true">→</span>
+                </button>
+              </form>
+              <div
+                class="form-success"
+                id="form-success"
+                data-show="false"
+                role="status"
+                aria-live="polite"
+                tabindex="-1"
+              >
+                <div class="form-success-icon" aria-hidden="true">✓</div>
+                <div class="form-success-title" id="success-title">Got it.</div>
+                <div class="form-success-msg" id="success-msg">
+                  We'll be in touch within one business day.
+                </div>
+              </div>
+            </div>
           </div>
 
           <footer class="footer">
@@ -1864,7 +1880,6 @@
             <ul class="footer-links">
               <li><a href="#">Privacy</a></li>
               <li><a href="#">Terms</a></li>
-              <li><a href="#">HIPAA</a></li>
             </ul>
           </footer>
         </div>
@@ -2058,6 +2073,73 @@
           });
         });
 
+        /* ── Contact form ───────────────────────────────────── */
+        var form = document.getElementById("contact-form");
+        if (form) {
+          var success = document.getElementById("form-success");
+          var nameField = document.getElementById("field-name");
+          var emailField = document.getElementById("field-email");
+          var nameInput = document.getElementById("ma-name");
+          var emailInput = document.getElementById("ma-email");
+          var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          var validate = function () {
+            var ok = true;
+            if (!nameInput.value.trim()) {
+              nameField.setAttribute("data-invalid", "true");
+              ok = false;
+            } else nameField.removeAttribute("data-invalid");
+            if (!emailRe.test(emailInput.value.trim())) {
+              emailField.setAttribute("data-invalid", "true");
+              ok = false;
+            } else emailField.removeAttribute("data-invalid");
+            return ok;
+          };
+          [nameInput, emailInput].forEach(function (i) {
+            i.addEventListener("input", function () {
+              var fld = i.closest(".field");
+              if (fld.hasAttribute("data-invalid")) validate();
+            });
+          });
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            if (!validate()) return;
+            var first = nameInput.value.trim().split(" ")[0];
+            var submitBtn = form.querySelector(".submit");
+            submitBtn.disabled = true;
+            submitBtn.querySelector("span").textContent = "Sending…";
+            fetch("https://formspree.io/f/xlganlnj", {
+              method: "POST",
+              body: new FormData(form),
+              headers: { Accept: "application/json" },
+            })
+              .then(function (res) {
+                if (res.ok) {
+                  document.getElementById("success-title").textContent =
+                    "Got it, " + first + ".";
+                  document.getElementById("success-msg").textContent =
+                    "We'll be in touch at " +
+                    emailInput.value.trim() +
+                    " within one business day.";
+                  form.style.display = "none";
+                  success.setAttribute("data-show", "true");
+                  success.focus();
+                } else {
+                  submitBtn.disabled = false;
+                  submitBtn.querySelector("span").textContent = "Send message";
+                  alert(
+                    "Something went wrong. Please email us at team@medadvocate.net."
+                  );
+                }
+              })
+              .catch(function () {
+                submitBtn.disabled = false;
+                submitBtn.querySelector("span").textContent = "Send message";
+                alert(
+                  "Something went wrong. Please email us at team@medadvocate.net."
+                );
+              });
+          });
+        }
       })();
     </script>
   </body>
