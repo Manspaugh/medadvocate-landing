@@ -1796,18 +1796,6 @@
 
             <div class="form-card reveal d1">
               <form id="contact-form" novalidate>
-                <div class="field" id="field-name">
-                  <label for="ma-name">Your name</label>
-                  <input
-                    id="ma-name"
-                    name="name"
-                    type="text"
-                    required
-                    autocomplete="name"
-                    placeholder="Stephen Futrell"
-                  />
-                  <div class="field-error">Please enter your name.</div>
-                </div>
                 <div class="field" id="field-email">
                   <label for="ma-email">Email</label>
                   <input
@@ -2077,33 +2065,23 @@
         var form = document.getElementById("contact-form");
         if (form) {
           var success = document.getElementById("form-success");
-          var nameField = document.getElementById("field-name");
           var emailField = document.getElementById("field-email");
-          var nameInput = document.getElementById("ma-name");
           var emailInput = document.getElementById("ma-email");
           var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
           var validate = function () {
             var ok = true;
-            if (!nameInput.value.trim()) {
-              nameField.setAttribute("data-invalid", "true");
-              ok = false;
-            } else nameField.removeAttribute("data-invalid");
             if (!emailRe.test(emailInput.value.trim())) {
               emailField.setAttribute("data-invalid", "true");
               ok = false;
             } else emailField.removeAttribute("data-invalid");
             return ok;
           };
-          [nameInput, emailInput].forEach(function (i) {
-            i.addEventListener("input", function () {
-              var fld = i.closest(".field");
-              if (fld.hasAttribute("data-invalid")) validate();
-            });
+          emailInput.addEventListener("input", function () {
+            if (emailField.hasAttribute("data-invalid")) validate();
           });
           form.addEventListener("submit", function (e) {
             e.preventDefault();
             if (!validate()) return;
-            var first = nameInput.value.trim().split(" ")[0];
             var submitBtn = form.querySelector(".submit");
             submitBtn.disabled = true;
             submitBtn.querySelector("span").textContent = "Sending…";
@@ -2115,7 +2093,7 @@
               .then(function (res) {
                 if (res.ok) {
                   document.getElementById("success-title").textContent =
-                    "Got it, " + first + ".";
+                    "Got it.";
                   document.getElementById("success-msg").textContent =
                     "We'll be in touch at " +
                     emailInput.value.trim() +
