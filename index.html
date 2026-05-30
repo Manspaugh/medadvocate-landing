@@ -183,7 +183,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 18px 0;
+        padding: 18px clamp(24px, 5vw, 80px);
         gap: 24px;
       }
       .brand {
@@ -390,17 +390,24 @@
       }
       .hero-decor {
         position: absolute;
-        top: -10px;
-        right: -10px;
+        top: 24px;
+        left: 50%;
+        transform: translateX(-50%);
         z-index: 0;
         font-family: var(--font-serif);
         font-weight: 300;
-        font-size: clamp(140px, 28vw, 280px);
+        font-size: clamp(120px, 22vw, 240px);
         color: var(--bg-deep);
         line-height: 0.85;
         letter-spacing: -0.04em;
+        white-space: nowrap;
         pointer-events: none;
         user-select: none;
+      }
+      .phone-stage {
+        position: relative;
+        width: 100%;
+        max-width: 320px;
       }
       .phone {
         position: relative;
@@ -415,7 +422,7 @@
       .phone-tag {
         position: absolute;
         top: 60px;
-        left: 0;
+        left: -8px;
         z-index: 2;
         background: var(--navy);
         color: var(--yellow);
@@ -438,8 +445,8 @@
           max-width: 320px;
         }
         .phone-tag {
-          left: -10px;
-          top: 70px;
+          left: -84px;
+          top: 56px;
         }
       }
       @media (min-width: 1024px) {
@@ -1388,17 +1395,19 @@
           </div>
 
           <div class="hero-visual reveal d2" aria-hidden="false">
-            <div class="hero-decor" aria-hidden="true">$1.2k</div>
-            <div class="phone">
-              <img
-                src="assets/phone1.png"
-                alt="MedAdvocate app showing analysis results — 5 errors found, $1,240 in potential savings."
-                width="320"
-                height="676"
-                loading="eager"
-              />
+            <div class="phone-stage">
+              <div class="hero-decor" aria-hidden="true">$1.2k</div>
+              <div class="phone">
+                <img
+                  src="assets/phone1.png"
+                  alt="MedAdvocate app showing analysis results — 5 errors found, $1,240 in potential savings."
+                  width="320"
+                  height="676"
+                  loading="eager"
+                />
+              </div>
+              <div class="phone-tag">5 errors found · saved $1,240</div>
             </div>
-            <div class="phone-tag">5 errors found · saved $1,240</div>
           </div>
         </div>
       </section>
