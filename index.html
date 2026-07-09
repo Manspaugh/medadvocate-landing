@@ -274,12 +274,18 @@
         background: var(--bg);
         padding: 24px var(--gutter);
         transform: translateY(-100%);
-        transition: transform 0.3s ease;
+        /* Keep the closed drawer from painting over / intercepting the
+           header: translateY(-100%) only clears its own height, leaving a
+           strip covering the logo + toggle, so hide it outright when closed. */
+        visibility: hidden;
+        transition: transform 0.3s ease, visibility 0s linear 0.3s;
         z-index: 49;
         overflow-y: auto;
       }
       .nav-drawer[data-open="true"] {
         transform: translateY(0);
+        visibility: visible;
+        transition: transform 0.3s ease, visibility 0s;
       }
       .nav-drawer ul {
         list-style: none;
@@ -1299,20 +1305,23 @@
           </svg>
         </button>
       </div>
-
-      <div
-        class="nav-drawer"
-        id="nav-drawer"
-        data-open="false"
-        aria-hidden="true"
-      >
-        <ul>
-          <li><a href="#problem">The problem</a></li>
-          <li><a href="#how">How it works</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
     </header>
+
+    <!-- Mobile nav drawer: kept OUTSIDE the header so its position:fixed is
+         relative to the viewport. The header's backdrop-filter would otherwise
+         make it the containing block, collapsing/mispositioning the drawer. -->
+    <div
+      class="nav-drawer"
+      id="nav-drawer"
+      data-open="false"
+      aria-hidden="true"
+    >
+      <ul>
+        <li><a href="#problem">The problem</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
 
     <main id="main">
       <!-- HERO -->
