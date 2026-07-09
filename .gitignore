@@ -1,2 +1,5 @@
 .DS_Store
 .claude/
+
+# analytics dashboard passphrase (never commit)
+analytics/.stats_key

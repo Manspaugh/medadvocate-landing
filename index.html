@@ -2211,5 +2211,26 @@
         }
       })();
     </script>
+
+    <!-- Lightweight, cookieless analytics: one pageview beacon + a beacon on
+         each store button tap. Fire-and-forget via sendBeacon so it never
+         delays navigation or the App Store / Play Store hand-off. -->
+    <script>
+      (function () {
+        var ANALYTICS = "https://82bptss0rj.execute-api.us-east-2.amazonaws.com/";
+        function track(ev) {
+          try {
+            navigator.sendBeacon(ANALYTICS, JSON.stringify({ event: ev }));
+          } catch (e) {}
+        }
+        track("pageview");
+        document.querySelectorAll('a[href*="apps.apple.com"]').forEach(function (a) {
+          a.addEventListener("click", function () { track("click_app_store"); });
+        });
+        document.querySelectorAll('a[href*="play.google.com"]').forEach(function (a) {
+          a.addEventListener("click", function () { track("click_google_play"); });
+        });
+      })();
+    </script>
   </body>
 </html>
