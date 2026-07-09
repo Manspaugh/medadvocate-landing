@@ -103,8 +103,15 @@ export const handler = async (event) => {
   }
 
   // GET -> stats for the dashboard. Requires the shared passphrase in the
-  // X-Stats-Key header; the data is never returned without it.
-  const provided = headers["x-stats-key"] || headers["X-Stats-Key"] || "";
+  // X-Stats-Key header, base64-encoded (HTTP headers can't carry non-Latin1
+  // characters, so the browser sends btoa(utf8(passphrase))).
+  const rawKey = headers["x-stats-key"] || headers["X-Stats-Key"] || "";
+  let provided = "";
+  try {
+    provided = Buffer.from(rawKey, "base64").toString("utf8");
+  } catch {
+    provided = "";
+  }
   if (!keyOk(provided))
     return { statusCode: 401, headers: baseHeaders, body: '{"error":"unauthorized"}' };
 
