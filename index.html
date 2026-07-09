@@ -21,6 +21,37 @@
       content="Snap a photo of your medical bill. We find the errors, write, and send a dispute letter on your behalf."
     />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.medadvocate.net/" />
+    <meta
+      property="og:image"
+      content="https://www.medadvocate.net/assets/og-image.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="MedAdvocate — Your medical bill is probably wrong."
+    />
+    <meta property="og:site_name" content="MedAdvocate" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="MedAdvocate — Reducing medical bills on your behalf"
+    />
+    <meta
+      name="twitter:description"
+      content="Snap a photo of your medical bill. We find the errors, write, and send a dispute letter on your behalf."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.medadvocate.net/assets/og-image.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="MedAdvocate — Your medical bill is probably wrong."
+    />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -2217,19 +2248,28 @@
          delays navigation or the App Store / Play Store hand-off. -->
     <script>
       (function () {
-        var ANALYTICS = "https://82bptss0rj.execute-api.us-east-2.amazonaws.com/";
+        var ANALYTICS =
+          "https://82bptss0rj.execute-api.us-east-2.amazonaws.com/";
         function track(ev) {
           try {
             navigator.sendBeacon(ANALYTICS, JSON.stringify({ event: ev }));
           } catch (e) {}
         }
         track("pageview");
-        document.querySelectorAll('a[href*="apps.apple.com"]').forEach(function (a) {
-          a.addEventListener("click", function () { track("click_app_store"); });
-        });
-        document.querySelectorAll('a[href*="play.google.com"]').forEach(function (a) {
-          a.addEventListener("click", function () { track("click_google_play"); });
-        });
+        document
+          .querySelectorAll('a[href*="apps.apple.com"]')
+          .forEach(function (a) {
+            a.addEventListener("click", function () {
+              track("click_app_store");
+            });
+          });
+        document
+          .querySelectorAll('a[href*="play.google.com"]')
+          .forEach(function (a) {
+            a.addEventListener("click", function () {
+              track("click_google_play");
+            });
+          });
       })();
     </script>
   </body>
