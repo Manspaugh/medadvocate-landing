@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Itemized Hospital Bill: How to Request One and What to Look For
+    </title>
+    <meta
+      name="description"
+      content="Learn what an itemized hospital bill is, your right to request one, how to ask for it, and how to read the charges. Includes a free request letter you can copy or print."
+    />
+    <meta name="theme-color" content="#153B62" />
+    <link
+      rel="canonical"
+      href="https://www.medadvocate.net/guides/itemized-hospital-bill/"
+    />
+
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="Itemized Hospital Bill: How to Request One and What to Look For"
+    />
+    <meta
+      property="og:description"
+      content="What an itemized hospital bill is, your right to request one, how to ask for it, and how to read the charges. Includes a free request letter you can copy or print."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://www.medadvocate.net/guides/itemized-hospital-bill/"
+    />
+    <meta
+      property="og:image"
+      content="https://www.medadvocate.net/assets/og-image.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="MedAdvocate" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Itemized Hospital Bill: How to Request One and What to Look For"
+    />
+    <meta
+      name="twitter:description"
+      content="What an itemized hospital bill is, your right to request one, how to ask for it, and how to read the charges. Includes a free request letter you can copy or print."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.medadvocate.net/assets/og-image.png"
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap"
+    />
+
+    <style>
+      /* ─────────────────────────────────────────────────────────
+       Tokens (shared with index.html)
+       ───────────────────────────────────────────────────────── */
+      :root {
+        --bg: #f4efe5;
+        --bg-deep: #ebe3d2;
+        --ink: #1b2c3d;
+        --ink-soft: #4a5968;
+        --navy: #153b62;
+        --yellow: #ffde39;
+        --blue: #268beb;
+        --rule: rgba(27, 44, 61, 0.14);
+        --white: #ffffff;
+
+        --font-sans: "Source Sans 3", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", system-ui, sans-serif;
+        --font-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+
+        --max: 1280px;
+        --gutter: clamp(20px, 5vw, 80px);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001ms !important;
+        }
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--font-sans);
+        font-size: 16px;
+        color: var(--ink);
+        background: var(--bg);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        line-height: 1.5;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      a {
+        color: inherit;
+      }
+      button {
+        font-family: inherit;
+        cursor: pointer;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--yellow);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      .wrap {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 var(--gutter);
+      }
+
+      .eyebrow {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+        margin: 0;
+      }
+
+      /* ─────────────────────────────────────────────────────────
+       Header / Nav (shared with index.html)
+       ───────────────────────────────────────────────────────── */
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(244, 239, 229, 0.85);
+        backdrop-filter: saturate(180%) blur(12px);
+        -webkit-backdrop-filter: saturate(180%) blur(12px);
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.2s, background 0.2s;
+      }
+      .site-header.scrolled {
+        border-bottom-color: var(--rule);
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px clamp(24px, 5vw, 80px);
+        gap: 24px;
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: var(--ink);
+      }
+      .brand-logo {
+        width: auto;
+        height: 28px;
+        aspect-ratio: 160 / 24;
+        flex-shrink: 0;
+      }
+      .nav-links {
+        display: none;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        gap: 36px;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: var(--ink-soft);
+        font-size: 15px;
+        padding: 8px 0;
+        transition: color 0.15s;
+      }
+      .nav-links a:hover {
+        color: var(--ink);
+      }
+      .nav-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: 1px solid var(--rule);
+        width: 44px;
+        height: 44px;
+        border-radius: 8px;
+        color: var(--ink);
+      }
+      .nav-toggle svg {
+        width: 20px;
+        height: 20px;
+      }
+      .nav-toggle .icon-close {
+        display: none;
+      }
+      .nav-toggle[aria-expanded="true"] .icon-open {
+        display: none;
+      }
+      .nav-toggle[aria-expanded="true"] .icon-close {
+        display: block;
+      }
+      .nav-drawer {
+        position: fixed;
+        inset: 64px 0 0 0;
+        background: var(--bg);
+        padding: 24px var(--gutter);
+        transform: translateY(-100%);
+        visibility: hidden;
+        transition: transform 0.3s ease, visibility 0s linear 0.3s;
+        z-index: 49;
+        overflow-y: auto;
+      }
+      .nav-drawer[data-open="true"] {
+        transform: translateY(0);
+        visibility: visible;
+        transition: transform 0.3s ease, visibility 0s;
+      }
+      .nav-drawer ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 4px;
+      }
+      .nav-drawer a {
+        display: block;
+        padding: 18px 8px;
+        font-family: var(--font-serif);
+        font-size: 26px;
+        text-decoration: none;
+        color: var(--ink);
+        border-bottom: 1px solid var(--rule);
+        min-height: 44px;
+      }
+      @media (min-width: 768px) {
+        .nav-links {
+          display: flex;
+        }
+        .nav-toggle {
+          display: none;
+        }
+        .nav-drawer {
+          display: none;
+        }
+      }
+
+      /* ─────────────────────────────────────────────────────────
+       Store badges (shared with index.html)
+       ───────────────────────────────────────────────────────── */
+      .store-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .store-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 4px 16px 12px;
+        min-height: 56px;
+        background: #000;
+        color: #fff;
+        border-radius: 12px;
+        border: 1px solid #000;
+        text-decoration: none;
+        transition: transform 0.15s, box-shadow 0.15s;
+        min-width: 180px;
+      }
+      .store-badge:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+      .store-badge svg {
+        width: 32px;
+        height: 32px;
+        flex-shrink: 0;
+      }
+      .sb-eyebrow {
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 1;
+        letter-spacing: 0.04em;
+        opacity: 0.9;
+        margin-bottom: 2px;
+      }
+      .sb-label {
+        font-family: var(--font-serif);
+        font-size: 17px;
+        font-weight: 600;
+        line-height: 1;
+        letter-spacing: 0em;
+        margin-top: -2px;
+      }
+
+      /* ─────────────────────────────────────────────────────────
+       Guide page: article layout
+       ───────────────────────────────────────────────────────── */
+      .guide-hero {
+        padding: 56px 0 8px;
+      }
+      .guide-hero .eyebrow {
+        margin-bottom: 16px;
+      }
+      .article {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 24px var(--gutter) 40px;
+      }
+      .article h1 {
+        font-family: var(--font-serif);
+        font-weight: 300;
+        font-size: clamp(32px, 5vw, 48px);
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+        margin: 0 0 20px;
+      }
+      .article .lede {
+        font-size: clamp(18px, 2.2vw, 21px);
+        color: var(--ink-soft);
+        margin: 0 0 8px;
+      }
+      .article h2 {
+        font-family: var(--font-serif);
+        font-weight: 400;
+        font-size: clamp(24px, 3.4vw, 32px);
+        line-height: 1.15;
+        letter-spacing: -0.01em;
+        margin: 48px 0 14px;
+      }
+      .article h3 {
+        font-size: 19px;
+        font-weight: 700;
+        margin: 28px 0 8px;
+      }
+      .article p {
+        margin: 0 0 16px;
+      }
+      .article ul,
+      .article ol {
+        margin: 0 0 16px;
+        padding-left: 22px;
+      }
+      .article li {
+        margin: 0 0 8px;
+      }
+      .article strong {
+        font-weight: 700;
+      }
+      .article a.inline {
+        color: var(--navy);
+        text-underline-offset: 2px;
+      }
+
+      /* Callout for the legal note */
+      .callout {
+        background: var(--bg-deep);
+        border: 1px solid var(--rule);
+        border-radius: 14px;
+        padding: 20px 22px;
+        margin: 24px 0;
+        font-size: 15px;
+        color: var(--ink-soft);
+      }
+      .callout strong {
+        color: var(--ink);
+      }
+
+      /* Red flag list */
+      .flags {
+        list-style: none;
+        padding: 0;
+        margin: 8px 0 16px;
+        display: grid;
+        gap: 12px;
+      }
+      .flags li {
+        background: var(--white);
+        border: 1px solid var(--rule);
+        border-radius: 12px;
+        padding: 16px 18px;
+        margin: 0;
+      }
+      .flags .flag-name {
+        font-weight: 700;
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      /* ─────────────────────────────────────────────────────────
+       Letter generator
+       ───────────────────────────────────────────────────────── */
+      .generator {
+        background: var(--white);
+        border: 1px solid var(--rule);
+        border-radius: 16px;
+        padding: clamp(20px, 4vw, 32px);
+        margin: 20px 0 8px;
+      }
+      .gen-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-bottom: 20px;
+      }
+      @media (min-width: 560px) {
+        .gen-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      .field label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--ink-soft);
+        margin-bottom: 6px;
+      }
+      .field input {
+        width: 100%;
+        min-height: 44px;
+        padding: 11px 12px;
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        font: inherit;
+        color: var(--ink);
+        background: var(--bg);
+      }
+      .field input:focus-visible {
+        outline: 3px solid var(--blue);
+        outline-offset: 1px;
+      }
+      .letter {
+        font-family: var(--font-serif);
+        white-space: pre-wrap;
+        background: var(--bg);
+        border: 1px solid var(--rule);
+        border-radius: 12px;
+        padding: 22px 24px;
+        font-size: 15px;
+        line-height: 1.6;
+        color: var(--ink);
+        margin: 0 0 18px;
+        overflow-x: auto;
+      }
+      .btn-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 12px 22px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 15px;
+        text-decoration: none;
+        border: 1px solid transparent;
+      }
+      .btn-primary {
+        background: var(--navy);
+        color: var(--white);
+      }
+      .btn-primary:hover {
+        background: #0f2a47;
+      }
+      .btn-secondary {
+        background: transparent;
+        color: var(--ink);
+        border-color: var(--rule);
+      }
+      .btn-secondary:hover {
+        border-color: var(--ink-soft);
+      }
+      .copy-status {
+        font-size: 14px;
+        color: var(--ink-soft);
+        align-self: center;
+      }
+
+      /* ─────────────────────────────────────────────────────────
+       CTA block
+       ───────────────────────────────────────────────────────── */
+      .cta {
+        background: var(--navy);
+        color: var(--white);
+        border-radius: 20px;
+        padding: clamp(28px, 5vw, 48px);
+        margin: 40px 0;
+        text-align: center;
+      }
+      .cta h2 {
+        font-family: var(--font-serif);
+        font-weight: 300;
+        font-size: clamp(26px, 4vw, 38px);
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        margin: 0 0 12px;
+      }
+      .cta p {
+        color: rgba(255, 255, 255, 0.8);
+        margin: 0 auto 24px;
+        max-width: 48ch;
+      }
+      .cta .store-row {
+        justify-content: center;
+      }
+
+      /* ─────────────────────────────────────────────────────────
+       FAQ
+       ───────────────────────────────────────────────────────── */
+      .faq {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 8px var(--gutter) 24px;
+      }
+      .faq details {
+        border-bottom: 1px solid var(--rule);
+        padding: 6px 0;
+      }
+      .faq summary {
+        list-style: none;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 18px;
+        padding: 16px 40px 16px 0;
+        position: relative;
+        min-height: 44px;
+      }
+      .faq summary::-webkit-details-marker {
+        display: none;
+      }
+      .faq summary::after {
+        content: "+";
+        position: absolute;
+        right: 4px;
+        top: 14px;
+        font-weight: 400;
+        font-size: 26px;
+        color: var(--ink-soft);
+        transition: transform 0.2s;
+      }
+      .faq details[open] summary::after {
+        content: "\2212";
+      }
+      .faq details p {
+        margin: 0 0 18px;
+        color: var(--ink-soft);
+      }
+
+      /* ─────────────────────────────────────────────────────────
+       Footer (shared with index.html)
+       ───────────────────────────────────────────────────────── */
+      .footer {
+        padding: 32px 0 32px;
+        border-top: 1px solid var(--rule);
+        margin-top: 60px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        align-items: center;
+        text-align: center;
+        font-size: 13px;
+        color: var(--ink-soft);
+      }
+      .footer-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .footer-links {
+        display: flex;
+        gap: 20px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .footer-links a {
+        text-decoration: none;
+      }
+      .footer-links a:hover {
+        color: var(--ink);
+      }
+      @media (min-width: 768px) {
+        .footer {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          text-align: left;
+        }
+      }
+
+      /* ─────────────────────────────────────────────────────────
+       Print: show only the generated letter
+       ───────────────────────────────────────────────────────── */
+      @media print {
+        body * {
+          visibility: hidden;
+        }
+        #letter-output,
+        #letter-output * {
+          visibility: visible;
+        }
+        #letter-output {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          border: none;
+          background: #fff;
+          padding: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ============================================================
+         HEADER (reused from index.html; links point back to home)
+    ============================================================= -->
+    <header class="site-header" id="site-header">
+      <div class="wrap nav">
+        <a class="brand" href="/" aria-label="MedAdvocate home">
+          <img
+            class="brand-logo"
+            src="/assets/logo-horizontal-darkblue.svg"
+            width="187"
+            height="28"
+            alt="MedAdvocate"
+          />
+        </a>
+
+        <nav aria-label="Primary">
+          <ul class="nav-links">
+            <li><a href="/#problem">The problem</a></li>
+            <li><a href="/#how">How it works</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <button
+          class="nav-toggle"
+          id="nav-toggle"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="nav-drawer"
+        >
+          <svg
+            class="icon-open"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+          <svg
+            class="icon-close"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="nav-drawer" id="nav-drawer" data-open="false" aria-hidden="true">
+      <ul>
+        <li><a href="/#problem">The problem</a></li>
+        <li><a href="/#how">How it works</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <main id="main">
+      <div class="guide-hero">
+        <div class="wrap">
+          <p class="eyebrow">MedAdvocate Guide</p>
+        </div>
+      </div>
+
+      <article class="article wrap">
+        <h1>Itemized Hospital Bill: How to Request One and What to Look For</h1>
+        <p class="lede">
+          A short summary bill rarely shows what you were actually charged for.
+          An itemized statement breaks the total into individual lines, and that
+          detail is where billing mistakes tend to surface.
+        </p>
+
+        <!-- SECTION 1 -->
+        <h2 id="what">What an itemized bill is</h2>        <p>
+          The bill most people receive after a hospital visit is a summary. It
+          lists a few broad categories and one large balance due. An itemized
+          bill is the full version. It lists every service, supply, medication,
+          and fee on its own line, along with the date, a description, a billing
+          code, the quantity, and the price for each item.
+        </p>
+        <p>
+          The difference matters because a summary hides detail. When charges
+          are grouped into one number, you cannot tell whether a service was
+          counted twice, billed at the wrong level, or added for something you
+          never received. The itemized version puts each charge in the open
+          where you can check it.
+        </p>
+
+        <!-- SECTION 2 -->
+        <h2 id="right">Your right to request an itemized bill</h2>        <p>
+          You can ask for an itemized statement for your own care. Under the
+          federal privacy rule known as HIPAA, patients have the right to access
+          their medical records, and the billing detail for your account is part
+          of that information. Many hospitals also provide an itemized bill on
+          request as a matter of policy, and a number of states have their own
+          rules that support the request.
+        </p>
+        <div class="callout">
+          <p>
+            <strong>Good to know:</strong> asking for an itemized statement is a
+            routine request. You do not need to give a reason, and you do not
+            need to dispute anything to receive one. This page is general
+            information and is not legal advice.
+          </p>
+        </div>
+
+        <!-- SECTION 3 -->
+        <h2 id="request">How to request an itemized hospital bill</h2>        <h3>By phone</h3>
+        <p>
+          Call the billing number printed on your statement and keep it simple.
+          A script that works well:
+        </p>
+        <p class="callout">
+          "Hello, my name is [your name] and I am calling about account number
+          [account number]. I would like to request a fully itemized statement
+          for my visit on [date of service]. Please include the billing code and
+          price for every line. Can you send that to the address on file?"
+        </p>
+        <p>
+          Write down the date you called, the name of the person you spoke with,
+          and any reference number they give you.
+        </p>
+        <h3>In writing</h3>
+        <p>
+          A written request creates a record and is easy to follow up on. You
+          can use the generator below to fill in your details and produce a
+          letter you can copy or print.
+        </p>
+
+        <!-- LETTER GENERATOR -->
+        <div class="generator" id="generator">
+          <h3 style="margin-top: 0">Request letter generator</h3>
+          <p style="color: var(--ink-soft); margin-top: 0">
+            Enter your details. The letter updates as you type. Nothing you enter
+            leaves your device.
+          </p>
+          <div class="gen-grid">
+            <div class="field">
+              <label for="gen-name">Your full name</label>
+              <input id="gen-name" type="text" autocomplete="name" />
+            </div>
+            <div class="field">
+              <label for="gen-provider">Provider or hospital name</label>
+              <input id="gen-provider" type="text" autocomplete="organization" />
+            </div>
+            <div class="field">
+              <label for="gen-account">Account number</label>
+              <input id="gen-account" type="text" autocomplete="off" />
+            </div>
+            <div class="field">
+              <label for="gen-dos">Date of service</label>
+              <input id="gen-dos" type="text" placeholder="Month Day, Year" />
+            </div>
+          </div>
+
+          <pre class="letter" id="letter-output" aria-live="polite"></pre>
+
+          <div class="btn-row">
+            <button class="btn btn-primary" id="copy-btn" type="button">
+              Copy letter
+            </button>
+            <button class="btn btn-secondary" id="print-btn" type="button">
+              Print letter
+            </button>
+            <span class="copy-status" id="copy-status" role="status"></span>
+          </div>
+        </div>
+
+        <!-- SECTION: timing -->
+        <h2 id="timing">How long it takes and when you can ask</h2>
+        <p>
+          Most hospitals can produce an itemized statement within one to two
+          weeks. The detail already exists in their billing system, so the wait
+          is about generating and sending the document, not creating it. If a
+          month passes with nothing, follow up in writing and reference your
+          original request date.
+        </p>
+        <p>
+          You can request an itemized bill at any point, including after you have
+          already paid. If a review of the detail turns up a charge that should
+          not have been there, you can still ask the billing department to
+          review it and refund the difference. There is no requirement to make
+          the request before paying.
+        </p>
+
+        <!-- SECTION 4 -->
+        <h2 id="read">How to read an itemized bill</h2>        <h3>CPT codes</h3>
+        <p>
+          Most lines carry a five digit code called a CPT code, which stands for
+          Current Procedural Terminology. These codes describe the specific
+          service that was billed. You can search a code online to see what it
+          represents, then check that the description matches the care you
+          actually received.
+        </p>
+        <h3>Common red flags</h3>
+        <p>Once you have the detail in front of you, watch for these patterns.</p>
+        <ul class="flags">
+          <li>
+            <span class="flag-name">Duplicate charges</span>
+            The same service or supply billed more than once. Scan for repeated
+            lines on the same date.
+          </li>
+          <li>
+            <span class="flag-name">Upcoding</span>
+            A charge listed as a more complex or costly service than what took
+            place. The code points to a higher level of care than you received.
+          </li>
+        </ul>
+        <h3>A common example: emergency room visit levels</h3>
+        <p>
+          Emergency room visits are billed at one of five levels, from CPT 99281
+          for the simplest visits to 99285 for the most complex. The level is
+          supposed to reflect the complexity of the care documented in your
+          record. A visit for a minor issue that resolves with a basic exam and
+          simple treatment will usually sit at 99282 or 99283. When a
+          straightforward visit is billed at 99284 or 99285, the difference can
+          be hundreds of dollars. If your bill shows a high level code and your
+          visit felt routine, that line is worth a question. You can compare the
+          code against your visit summary or medical record.
+        </p>
+        <ul class="flags">
+          <li>
+            <span class="flag-name">Unbundling</span>
+            Charges that belong together as one code split into several separate
+            lines, which can raise the total.
+          </li>
+          <li>
+            <span class="flag-name">Phantom charges</span>
+            Lines for services, supplies, or medications you never received, such
+            as a room you were not in or a test that was not run.
+          </li>
+        </ul>
+
+        <!-- SECTION 5 -->
+        <h2 id="error">What to do when you find an error</h2>        <p>
+          If a line looks wrong, you do not have to pay it before it is
+          reviewed. A calm, organized approach tends to move things along:
+        </p>
+        <ol>
+          <li>
+            Circle each line you have a question about and note why it looks off.
+          </li>
+          <li>
+            Call the billing department and ask them to explain the charge.
+            Sometimes there is a reasonable answer, and sometimes there is not.
+          </li>
+          <li>
+            Ask for any correction in writing, and put your own request in
+            writing as well so there is a record.
+          </li>
+          <li>
+            If you have insurance, compare the bill against the explanation of
+            benefits from your insurer and flag anything that does not match.
+          </li>
+          <li>
+            Keep notes of every call, including the date, the name of the person,
+            and what was said.
+          </li>
+        </ol>
+        <p>
+          Reviewing an itemized bill line by line takes patience, and the codes
+          are not written for patients. That is the part MedAdvocate can help
+          with.
+        </p>
+
+        <!-- SECTION: stalls -->
+        <h2 id="stalls">If the hospital stalls or refuses</h2>
+        <p>
+          Most requests are filled without friction, but if yours goes nowhere,
+          keep the pressure polite and in writing. Send a short letter or portal
+          message restating the request, the date you first asked, and the
+          account number. Ask for a written response by a specific date.
+        </p>
+        <p>
+          If that fails, ask to speak with a patient advocate or a billing
+          supervisor. Larger hospitals have staff whose job is resolving exactly
+          this kind of issue. You can also check your state attorney general or
+          state health department website, since many states have their own
+          rules about billing transparency and a complaint process when
+          providers do not respond. Keep copies of everything you send and
+          receive.
+        </p>
+      </article>
+
+      <!-- CTA BLOCK 1 (after generator / reading section) -->
+      <div class="wrap">
+      <section class="cta" aria-labelledby="cta1-title">
+        <h2 id="cta1-title">Let AI read the bill with you</h2>        <p>
+          Scan your itemized bill with MedAdvocate and let the app check each
+          line for possible billing errors, then help you write a letter about
+          anything that looks wrong.
+        </p>
+        <div class="store-row">
+          <a
+            class="store-badge"
+            href="https://apps.apple.com/us/app/medadvocate/id6783083802?utm_source=web&utm_medium=seo&utm_campaign=itemized-bill-guide"
+            aria-label="Download MedAdvocate on the App Store"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.61-2.2.43-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"
+              />
+            </svg>
+            <span>
+              <span class="sb-eyebrow">Download on the</span>
+              <span class="sb-label" style="display: block">App Store</span>
+            </span>
+          </a>
+          <a
+            class="store-badge"
+            href="https://play.google.com/store/apps/details?id=com.medadvocate.app&utm_source=web&utm_medium=seo&utm_campaign=itemized-bill-guide"
+            aria-label="Get MedAdvocate on Google Play"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <defs>
+                <linearGradient id="g1-a" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#00DDFF" />
+                  <stop offset="1" stop-color="#00BBFF" />
+                </linearGradient>
+                <linearGradient id="g1-b" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#FFCE00" />
+                  <stop offset="1" stop-color="#FF9500" />
+                </linearGradient>
+                <linearGradient id="g1-c" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#FF3A44" />
+                  <stop offset="1" stop-color="#C31162" />
+                </linearGradient>
+                <linearGradient id="g1-d" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#00C752" />
+                  <stop offset="1" stop-color="#00A047" />
+                </linearGradient>
+              </defs>
+              <path
+                d="M3.6 2.4 14 12 3.6 21.6c-.3-.2-.5-.5-.5-.9V3.3c0-.4.2-.7.5-.9z"
+                fill="url(#g1-a)"
+              />
+              <path
+                d="M14 12 3.6 21.6c.4.3 1 .3 1.5.1L17.5 14.6 14 12z"
+                fill="url(#g1-c)"
+              />
+              <path
+                d="M14 12 3.6 2.4c.4-.3 1-.3 1.5-.1L17.5 9.4 14 12z"
+                fill="url(#g1-d)"
+              />
+              <path
+                d="m17.5 9.4 3.4 1.9c.7.4.7 1.4 0 1.8l-3.4 1.5L14 12l3.5-2.6z"
+                fill="url(#g1-b)"
+              />
+            </svg>
+            <span>
+              <span class="sb-eyebrow">Get it on</span>
+              <span class="sb-label" style="display: block">Google Play</span>
+            </span>
+          </a>
+        </div>
+      </section>
+      </div>
+
+      <!-- FAQ -->
+      <section class="faq wrap" aria-labelledby="faq-title">
+        <h2 id="faq-title" style="font-family: var(--font-serif); font-weight: 400; font-size: clamp(24px, 3.4vw, 32px); letter-spacing: -0.01em;">
+          Frequently asked questions
+        </h2>
+        <details>
+          <summary>What is an itemized hospital bill?</summary>
+          <p>
+            It is a detailed version of your bill that lists every service,
+            supply, medication, and fee on its own line, with the date, a
+            description, a billing code, the quantity, and the price for each
+            item. It replaces the single balance shown on a summary bill.
+          </p>
+        </details>
+        <details>
+          <summary>
+            How is an itemized bill different from the summary bill I received?
+          </summary>
+          <p>
+            A summary bill groups charges into a few broad categories and one
+            total. An itemized bill shows each charge separately, which lets you
+            check individual lines for mistakes that a summary would hide.
+          </p>
+        </details>
+        <details>
+          <summary>Do I have the right to request an itemized bill?</summary>
+          <p>
+            You can request an itemized statement for your own care. The federal
+            privacy rule known as HIPAA gives patients the right to access their
+            records, and many hospitals provide an itemized bill on request as a
+            matter of policy. This page is general information and is not legal
+            advice.
+          </p>
+        </details>
+        <details>
+          <summary>How do I ask the hospital for an itemized bill?</summary>
+          <p>
+            Call the billing number on your statement and ask for a fully
+            itemized statement that includes the billing code and price for every
+            line, or send a written request. The generator on this page can
+            create a letter you can copy or print.
+          </p>
+        </details>
+        <details>
+          <summary>What are common billing errors to look for?</summary>
+          <p>
+            Watch for duplicate charges, upcoding where a service is billed at a
+            higher level than what happened, unbundling where one code is split
+            into several lines, and phantom charges for items you never received.
+          </p>
+        </details>
+        <details>
+          <summary>What should I do if I find a charge that looks wrong?</summary>
+          <p>
+            Note why the line looks off, call the billing department to ask about
+            it, request any correction in writing, compare the bill against your
+            explanation of benefits if you have insurance, and keep notes of
+            every call.
+          </p>
+        </details>
+        <details>
+          <summary>How long does it take to get an itemized bill?</summary>
+          <p>
+            Most hospitals send one within one to two weeks of the request. The
+            information already exists in the billing system. If a month passes,
+            follow up in writing and reference the date of your original request.
+          </p>
+        </details>
+        <details>
+          <summary>Can I request an itemized bill after I have already paid?</summary>
+          <p>
+            Yes. You can request the detail at any time, and if the review turns
+            up a charge that looks wrong, you can still ask the billing
+            department to review it and refund the difference.
+          </p>
+        </details>
+      </section>
+
+      <!-- CTA BLOCK 2 (end of page) -->
+      <div class="wrap">
+      <section class="cta" aria-labelledby="cta2-title">
+        <h2 id="cta2-title">Check your bill for possible errors</h2>        <p>
+          Snap a photo of your itemized bill and let MedAdvocate review each line
+          with AI, then help you write a letter about anything worth questioning.
+        </p>
+        <div class="store-row">
+          <a
+            class="store-badge"
+            href="https://apps.apple.com/us/app/medadvocate/id6783083802?utm_source=web&utm_medium=seo&utm_campaign=itemized-bill-guide"
+            aria-label="Download MedAdvocate on the App Store"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.61-2.2.43-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"
+              />
+            </svg>
+            <span>
+              <span class="sb-eyebrow">Download on the</span>
+              <span class="sb-label" style="display: block">App Store</span>
+            </span>
+          </a>
+          <a
+            class="store-badge"
+            href="https://play.google.com/store/apps/details?id=com.medadvocate.app&utm_source=web&utm_medium=seo&utm_campaign=itemized-bill-guide"
+            aria-label="Get MedAdvocate on Google Play"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <defs>
+                <linearGradient id="g2-a" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#00DDFF" />
+                  <stop offset="1" stop-color="#00BBFF" />
+                </linearGradient>
+                <linearGradient id="g2-b" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#FFCE00" />
+                  <stop offset="1" stop-color="#FF9500" />
+                </linearGradient>
+                <linearGradient id="g2-c" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#FF3A44" />
+                  <stop offset="1" stop-color="#C31162" />
+                </linearGradient>
+                <linearGradient id="g2-d" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#00C752" />
+                  <stop offset="1" stop-color="#00A047" />
+                </linearGradient>
+              </defs>
+              <path
+                d="M3.6 2.4 14 12 3.6 21.6c-.3-.2-.5-.5-.5-.9V3.3c0-.4.2-.7.5-.9z"
+                fill="url(#g2-a)"
+              />
+              <path
+                d="M14 12 3.6 21.6c.4.3 1 .3 1.5.1L17.5 14.6 14 12z"
+                fill="url(#g2-c)"
+              />
+              <path
+                d="M14 12 3.6 2.4c.4-.3 1-.3 1.5-.1L17.5 9.4 14 12z"
+                fill="url(#g2-d)"
+              />
+              <path
+                d="m17.5 9.4 3.4 1.9c.7.4.7 1.4 0 1.8l-3.4 1.5L14 12l3.5-2.6z"
+                fill="url(#g2-b)"
+              />
+            </svg>
+            <span>
+              <span class="sb-eyebrow">Get it on</span>
+              <span class="sb-label" style="display: block">Google Play</span>
+            </span>
+          </a>
+        </div>
+      </section>
+      </div>
+
+      <div class="wrap">
+        <footer class="footer">
+          <div class="footer-brand">
+            <svg width="20" height="20" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+              <path
+                d="M20 60C20 71.0457 11.0457 80 0 80V40C0 28.9543 8.95431 20 20 20V60Z"
+                fill="#153B62"
+              />
+              <path
+                d="M50 60C50 71.0457 41.0457 80 30 80V20C30 8.95431 38.9543 0 50 0V60Z"
+                fill="#153B62"
+              />
+              <path
+                d="M80 40C80 51.0457 71.0457 60 60 60V20C60 8.9543 68.9543 0 80 0V40Z"
+                fill="#153B62"
+              />
+            </svg>
+            <span>© 2026 MedAdvocate, LLC. Helping patients understand and question medical bills.</span>
+          </div>
+          <ul class="footer-links">
+            <li><a href="/privacy">Privacy</a></li>
+            <li><a href="/terms">Terms</a></li>
+          </ul>
+        </footer>
+      </div>
+    </main>
+
+    <!-- FAQPage structured data. Keep answers in sync with the visible FAQ. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is an itemized hospital bill?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It is a detailed version of your bill that lists every service, supply, medication, and fee on its own line, with the date, a description, a billing code, the quantity, and the price for each item. It replaces the single balance shown on a summary bill."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is an itemized bill different from the summary bill I received?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A summary bill groups charges into a few broad categories and one total. An itemized bill shows each charge separately, which lets you check individual lines for mistakes that a summary would hide."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I have the right to request an itemized bill?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can request an itemized statement for your own care. The federal privacy rule known as HIPAA gives patients the right to access their records, and many hospitals provide an itemized bill on request as a matter of policy. This page is general information and is not legal advice."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I ask the hospital for an itemized bill?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Call the billing number on your statement and ask for a fully itemized statement that includes the billing code and price for every line, or send a written request. The generator on this page can create a letter you can copy or print."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are common billing errors to look for?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Watch for duplicate charges, upcoding where a service is billed at a higher level than what happened, unbundling where one code is split into several lines, and phantom charges for items you never received."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What should I do if I find a charge that looks wrong?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Note why the line looks off, call the billing department to ask about it, request any correction in writing, compare the bill against your explanation of benefits if you have insurance, and keep notes of every call."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does it take to get an itemized bill?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most hospitals send one within one to two weeks of the request. The information already exists in the billing system. If a month passes, follow up in writing and reference the date of your original request."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I request an itemized bill after I have already paid?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. You can request the detail at any time, and if the review turns up a charge that looks wrong, you can still ask the billing department to review it and refund the difference."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <script>
+      // Header scroll shadow
+      (function () {
+        var header = document.getElementById("site-header");
+        function onScroll() {
+          header.classList.toggle("scrolled", window.scrollY > 8);
+        }
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+      })();
+
+      // Mobile nav drawer
+      (function () {
+        var toggle = document.getElementById("nav-toggle");
+        var drawer = document.getElementById("nav-drawer");
+        if (!toggle || !drawer) return;
+        function setOpen(open) {
+          toggle.setAttribute("aria-expanded", String(open));
+          toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+          drawer.setAttribute("data-open", String(open));
+          drawer.setAttribute("aria-hidden", String(!open));
+        }
+        toggle.addEventListener("click", function () {
+          setOpen(toggle.getAttribute("aria-expanded") !== "true");
+        });
+        drawer.addEventListener("click", function (e) {
+          if (e.target.tagName === "A") setOpen(false);
+        });
+      })();
+
+      // Request letter generator
+      (function () {
+        var out = document.getElementById("letter-output");
+        if (!out) return;
+        var fields = {
+          name: document.getElementById("gen-name"),
+          provider: document.getElementById("gen-provider"),
+          account: document.getElementById("gen-account"),
+          dos: document.getElementById("gen-dos"),
+        };
+        var today = new Date().toLocaleDateString(undefined, {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+
+        function build() {
+          var name = fields.name.value.trim() || "[Your full name]";
+          var provider = fields.provider.value.trim() || "[Provider name]";
+          var account = fields.account.value.trim() || "[Account number]";
+          var dos = fields.dos.value.trim() || "[Date of service]";
+
+          out.textContent =
+            today +
+            "\n\n" +
+            provider +
+            "\n" +
+            "Attn: Billing Department\n\n" +
+            "Re: Request for an itemized statement\n" +
+            "Account number: " +
+            account +
+            "\n" +
+            "Date of service: " +
+            dos +
+            "\n\n" +
+            "To whom it may concern,\n\n" +
+            "My name is " +
+            name +
+            ". I am asking for a fully itemized statement for the account listed above.\n\n" +
+            "Please include every charge with its date, a clear description of each service or supply, the billing code for each line, the quantity, and the price for each item.\n\n" +
+            "Please send the itemized statement to the address on file for my account. If you need anything else from me to complete this request, please let me know.\n\n" +
+            "Thank you for your time.\n\n" +
+            "Sincerely,\n" +
+            name;
+        }
+
+        Object.keys(fields).forEach(function (k) {
+          fields[k].addEventListener("input", build);
+        });
+        build();
+
+        // Copy
+        var copyBtn = document.getElementById("copy-btn");
+        var status = document.getElementById("copy-status");
+        copyBtn.addEventListener("click", function () {
+          var text = out.textContent;
+          function done() {
+            status.textContent = "Copied to clipboard.";
+            setTimeout(function () {
+              status.textContent = "";
+            }, 3000);
+          }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(done, fallback);
+          } else {
+            fallback();
+          }
+          function fallback() {
+            var ta = document.createElement("textarea");
+            ta.value = text;
+            ta.setAttribute("readonly", "");
+            ta.style.position = "absolute";
+            ta.style.left = "-9999px";
+            document.body.appendChild(ta);
+            ta.select();
+            try {
+              document.execCommand("copy");
+              done();
+            } catch (e) {
+              status.textContent = "Press Ctrl or Cmd plus C to copy.";
+            }
+            document.body.removeChild(ta);
+          }
+        });
+
+        // Print (print stylesheet shows only the letter)
+        document
+          .getElementById("print-btn")
+          .addEventListener("click", function () {
+            window.print();
+          });
+      })();
+    </script>
+  </body>
+</html>
