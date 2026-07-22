@@ -387,7 +387,7 @@ button {
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
-@media (max-width: 560px) {
+@media (max-width: 768px) {
   .article ul.flags {
     grid-template-columns: 1fr;
   }
@@ -543,7 +543,7 @@ button {
 }
 .cta-feature .cta-content p {
   margin: 0 0 24px;
-  max-width: 46ch;
+  max-width: 80ch;
 }
 .cta-feature .store-row {
   justify-content: flex-start;
