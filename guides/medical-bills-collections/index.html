@@ -879,20 +879,28 @@
           },
         };
 
-        function point(current, label, date, note) {
+        function point(current, isFirst, isLast, label, date, note) {
+          // Rail spans the row; dot is centered on the title line (top:5px puts
+          // the 14px dot's center at 12px, matching the title line box center).
+          var railTop = isFirst ? "12px" : "0";
+          var railExtra = isLast ? "height:12px;" : "bottom:0;";
+          var rail =
+            '<div style="position:absolute;left:6px;width:2px;background:var(--rule);top:' +
+            railTop +
+            ";" +
+            railExtra +
+            '"></div>';
           var dot =
-            '<div style="width:14px;height:14px;border-radius:50%;flex-shrink:0;' +
+            '<div style="position:absolute;left:0;top:5px;width:14px;height:14px;border-radius:50%;box-sizing:border-box;' +
             (current
               ? "background:var(--navy);border:2px solid var(--navy);"
               : "background:var(--white);border:2px solid var(--rule);") +
             '"></div>';
-          var rail =
-            '<div style="width:2px;flex:1;background:var(--rule);min-height:26px;"></div>';
           return (
             '<div style="display:flex;gap:14px;">' +
-            '<div style="display:flex;flex-direction:column;align-items:center;">' +
-            dot +
+            '<div style="position:relative;width:14px;flex-shrink:0;">' +
             rail +
+            dot +
             "</div>" +
             '<div style="padding-bottom:18px;">' +
             '<div style="font-weight:' +
@@ -926,24 +934,32 @@
           var html = '<div style="margin: 4px 0 0;">';
           html += point(
             status === "just",
+            true,
+            false,
             "Date of service",
             fmtMY(dos),
             "the month you received care, and the anchor for the credit timeline"
           );
           html += point(
             status === "pastdue",
+            false,
+            false,
             "Past due",
             "the weeks after your statement due date",
             "the bill is unpaid but not yet with a collector"
           );
           html += point(
             status === "letter",
+            false,
+            false,
             "Possible collection agency",
             fmtMY(agencyStart) + " to " + fmtMY(agencyEnd),
             "a provider may hand the bill to a collector around this time; this varies and is not a legal deadline"
           );
           html += point(
             false,
+            false,
+            true,
             "Earliest it could appear on a credit report (estimate)",
             "around " + fmtMY(creditDate),
             "the waiting period is at least one year; exactly when the clock starts can vary, so treat this as approximate. It applies only if the balance is $500 or more and unpaid; paid or under $500 medical debt should not appear"
