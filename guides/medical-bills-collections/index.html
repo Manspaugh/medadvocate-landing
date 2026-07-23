@@ -866,16 +866,16 @@
 
         var STAGES = {
           just: {
-            title: "You just got the bill",
-            body: "It is not in collections. Check that the bill is accurate, and ask the provider about financial assistance or a payment plan before anything moves.",
+            name: "Just got the bill",
+            body: "At this stage the bill is typically still with the provider, not a collector. It is a good time to confirm the bill is accurate and to ask the provider about financial assistance, charity care, or a payment plan before the account moves anywhere.",
           },
           pastdue: {
-            title: "The bill is past due",
-            body: "It may head to a collection agency in the coming months. Verify the bill now. The credit report waiting period is at least one year, anchored roughly to your date of service, so you have time.",
+            name: "Past due",
+            body: "At this stage a bill is often heading toward a collection agency in the following months, though timing varies by provider. This is a good point to verify the bill and contact the provider. The credit report waiting period is at least one year, anchored roughly to the date of service, so there is usually still time before credit is affected.",
           },
           letter: {
-            title: "A collector has contacted you",
-            body: "Your validation rights apply now. Dispute the debt in writing within 30 days and the collector must pause collecting the disputed amount. The debt still cannot appear on your credit report for at least one year, a period anchored roughly to the date of service, and only if it is $500 or more.",
+            name: "Received a collection letter",
+            body: "The federal debt collection rules give you validation rights now. You can dispute the debt in writing within 30 days of receiving the collector's validation notice, and the collector must pause collecting the disputed amount until it verifies the debt. Even here, a medical debt cannot appear on a credit report until at least one year has passed, a period anchored roughly to the date of service, and only if it is $500 or more.",
           },
         };
 
@@ -967,14 +967,23 @@
           html += "</div>";
 
           var s = STAGES[status];
+          var body = s.body;
+          if (status === "just" && dos < addMonths(new Date(), -12)) {
+            body +=
+              " With a service date this far back, it is worth confirming the bill's status directly with the provider.";
+          }
+          body +=
+            " Before you pay or dispute, make sure the amount is right. Scan your bill with MedAdvocate to check each charge.";
           html +=
             '<div class="note"><div class="note-head">' +
             ICON +
-            '<span class="note-title">' +
-            s.title +
-            '</span></div><p class="note-body">' +
-            s.body +
-            " Before you pay or dispute, make sure the amount is right. Scan your bill with MedAdvocate to check each charge.</p></div>";
+            '<span class="note-title">What to do at this stage</span></div>' +
+            '<div style="font-size:13px;color:var(--ink-soft);margin:2px 0 8px;">' +
+            s.name +
+            "</div>" +
+            '<p class="note-body">' +
+            body +
+            "</p></div>";
 
           out.innerHTML = html;
         }
