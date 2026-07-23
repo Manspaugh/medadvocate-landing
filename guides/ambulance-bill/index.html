@@ -342,25 +342,32 @@
             Answer three questions to get a short action list for your situation.
             Nothing you select leaves your device.
           </p>
-          <div class="gen-grid">
-            <div class="field">
+          <div
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              gap: 16px;
+              align-items: flex-end;
+            "
+          >
+            <div class="field" style="flex: 1 1 200px; margin-bottom: 0">
               <label for="ab-transport">Transport Type</label>
-              <select id="ab-transport">
+              <select id="ab-transport" style="max-width: 100%">
                 <option value="ground">Ground ambulance</option>
                 <option value="air">Air ambulance</option>
               </select>
             </div>
-            <div class="field">
+            <div class="field" style="flex: 1 1 200px; margin-bottom: 0">
               <label for="ab-insurance">Insurance Status</label>
-              <select id="ab-insurance">
+              <select id="ab-insurance" style="max-width: 100%">
                 <option value="in">Insured, in network</option>
                 <option value="out">Insured, out of network</option>
                 <option value="uninsured">Uninsured</option>
               </select>
             </div>
-            <div class="field">
+            <div class="field" style="flex: 1 1 200px; margin-bottom: 0">
               <label for="ab-status">Bill Status</label>
-              <select id="ab-status">
+              <select id="ab-status" style="max-width: 100%">
                 <option value="new">Just received</option>
                 <option value="pastdue">Past due</option>
                 <option value="collections">In collections</option>
