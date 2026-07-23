@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      How to Read a Hospital Bill: Codes, Fees, and Charges Explained
+    </title>
+    <meta
+      name="description"
+      content="How to read a hospital bill: the documents you get, the codes and charges explained, facility fees, observation status, upcoding, and trauma activation fees. Includes a free hospital bill decoder."
+    />
+    <meta name="theme-color" content="#153B62" />
+    <link
+      rel="canonical"
+      href="https://www.medadvocate.net/guides/how-to-read-a-hospital-bill/"
+    />
+
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="How to Read a Hospital Bill: Codes, Fees, and Charges Explained"
+    />
+    <meta
+      property="og:description"
+      content="How to read a hospital bill: the documents, the codes and charges, facility fees, observation status, upcoding, and trauma activation fees. Includes a free hospital bill decoder."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://www.medadvocate.net/guides/how-to-read-a-hospital-bill/"
+    />
+    <meta
+      property="og:image"
+      content="https://www.medadvocate.net/assets/og-image.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="MedAdvocate" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="How to Read a Hospital Bill: Codes, Fees, and Charges Explained"
+    />
+    <meta
+      name="twitter:description"
+      content="How to read a hospital bill: the documents, the codes and charges, facility fees, observation status, upcoding, and trauma activation fees. Includes a free hospital bill decoder."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.medadvocate.net/assets/og-image.png"
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap"
+    />
+
+    <link rel="stylesheet" href="/assets/guide.css" />
+
+    <!-- Page specific styles for the hospital bill decoder tool only -->
+    <style>
+      .bd-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .bd-chip {
+        font-family: var(--font-sans);
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--navy);
+        background: #fffcf7;
+        border: 1px solid var(--rule);
+        border-radius: 999px;
+        padding: 9px 16px;
+        min-height: 44px;
+        cursor: pointer;
+        transition: background 0.15s ease, color 0.15s ease;
+      }
+      .bd-chip[aria-pressed="true"] {
+        background: var(--navy);
+        color: var(--white);
+        border-color: var(--navy);
+      }
+      .bd-chip:focus-visible {
+        outline: 2px solid var(--blue);
+        outline-offset: 2px;
+      }
+      .bd-panel {
+        margin-top: 16px;
+        background: #fffcf7;
+        border: 1px solid var(--rule);
+        border-radius: 14px;
+        padding: 20px 22px;
+      }
+      .bd-panel-title {
+        font-family: var(--font-serif);
+        font-weight: 600;
+        font-size: 20px;
+        color: var(--ink);
+        margin: 0 0 12px;
+      }
+      .bd-row {
+        margin-bottom: 12px;
+      }
+      .bd-row:last-child {
+        margin-bottom: 0;
+      }
+      .bd-label {
+        font-family: var(--font-sans);
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--ink-soft);
+        margin-bottom: 2px;
+      }
+      .bd-text {
+        font-size: 16px;
+        color: var(--ink);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .bd-chip {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ============================================================
+         HEADER (reused from index.html; links point back to home)
+    ============================================================= -->
+    <header class="site-header" id="site-header">
+      <div class="wrap nav">
+        <a class="brand" href="/" aria-label="MedAdvocate home">
+          <img
+            class="brand-logo"
+            src="/assets/logo-horizontal-darkblue.svg"
+            width="187"
+            height="28"
+            alt="MedAdvocate"
+          />
+        </a>
+
+        <nav aria-label="Primary">
+          <ul class="nav-links">
+            <li><a href="/#problem">The problem</a></li>
+            <li><a href="/#how">How it works</a></li>
+            <li><a href="/guides/">Guides</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <button
+          class="nav-toggle"
+          id="nav-toggle"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="nav-drawer"
+        >
+          <svg
+            class="icon-open"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+          <svg
+            class="icon-close"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="nav-drawer" id="nav-drawer" data-open="false" aria-hidden="true">
+      <ul>
+        <li><a href="/#problem">The problem</a></li>
+        <li><a href="/#how">How it works</a></li>
+        <li><a href="/guides/">Guides</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <main id="main">
+      <div class="guide-hero">
+        <div class="wrap">
+          <p class="eyebrow">MedAdvocate Guide</p>
+        </div>
+      </div>
+
+      <article class="article wrap">
+        <h1>How to Read a Hospital Bill</h1>
+        <p class="lede">
+          A hospital bill looks like a wall of codes and abbreviations, but it is
+          readable once you know what the parts are. Learning to read yours is
+          also the single best way to catch the errors that quietly inflate the
+          total, since a charge you can understand is a charge you can question.
+        </p>
+
+        <!-- SECTION 1 -->
+        <h2 id="documents">The documents you might receive</h2>
+        <p>
+          The paper that arrives after a hospital visit is not always the same
+          document, and knowing which one you are holding changes what you can do
+          with it. There are four you are likely to run into.
+        </p>
+        <ul>
+          <li>
+            <strong>The summary bill.</strong> The short statement most people
+            get first. It groups charges into a few broad categories and shows one
+            balance due. It is enough to know what is owed, but not enough to check
+            the charges.
+          </li>
+          <li>
+            <strong>The itemized bill.</strong> The full version, with every
+            service, supply, and medication on its own line with a date, a
+            description, a code, a quantity, and a price. This is the document you
+            want for reading and checking a bill. Here is
+            <a class="inline" href="/guides/itemized-hospital-bill/">how to request an itemized hospital bill</a>
+            if you only received a summary.
+          </li>
+          <li>
+            <strong>The UB-04 form.</strong> The standard institutional claim
+            form, also known as the CMS-1450, that hospitals use to bill insurers.
+            It is maintained by the National Uniform Billing Committee and packs
+            the charges into numbered boxes called form locators. You will not
+            always see it, but the codes on it are the same ones that flow onto
+            your itemized bill.
+          </li>
+          <li>
+            <strong>The explanation of benefits.</strong> If you have insurance,
+            your plan sends an EOB showing what the provider charged, what the
+            plan allowed and paid, and what you owe. It is not a bill. Reading it
+            next to the itemized statement is how mismatches surface, and our guide
+            to
+            <a class="inline" href="/guides/what-is-an-eob/">what an EOB is</a>
+            breaks down each amount.
+          </li>
+        </ul>
+        <p>
+          For reading a bill, the two documents that matter most are the itemized
+          bill and, if you are insured, the EOB. Request the itemized version
+          whenever the summary is all you have.
+        </p>
+
+        <!-- SECTION 2 -->
+        <h2 id="anatomy">The anatomy of a hospital bill</h2>
+        <p>
+          Once you have the itemized bill, the layout follows a pattern. Reading
+          it is mostly a matter of knowing what each column is telling you.
+        </p>
+        <h3>Header and account details</h3>
+        <p>
+          The top of the bill carries your name, the account or medical record
+          number, the provider, and the guarantor, which is the person
+          responsible for payment. Confirm these are yours before anything else,
+          because a mixed up account is where some of the worst errors begin.
+        </p>
+        <h3>Dates of service</h3>
+        <p>
+          Every line has a date. These should fall within the days you were
+          actually at the hospital. A charge dated to a day you were not there, or
+          a room charge on your discharge day, is worth flagging.
+        </p>
+        <h3>Codes: what the numbers mean</h3>
+        <p>
+          The codes are the part that looks impenetrable, but there are only a few
+          families, and you do not need to memorize them to use them.
+        </p>
+        <ul>
+          <li>
+            <strong>CPT and HCPCS codes.</strong> Five character procedure codes
+            that describe a specific service, such as an office visit, an x ray,
+            or a lab test. CPT covers most professional services, and HCPCS covers
+            supplies, drugs, and some other items.
+          </li>
+          <li>
+            <strong>Revenue codes.</strong> Three or four digit codes that sort
+            each line into a department or category, such as room and board,
+            pharmacy, laboratory, or the emergency room. They sit next to the
+            charge on a UB-04 form and help you see what a line is for.
+          </li>
+          <li>
+            <strong>Diagnosis codes.</strong> ICD-10 codes that describe the
+            condition being treated. They explain why a service was provided,
+            which matters when an insurer decides whether to cover it.
+          </li>
+        </ul>
+        <h3>Quantities and charges</h3>
+        <p>
+          Each line also shows a quantity and a price. Quantity is a common place
+          for errors, since a single dose or supply can be entered as several. The
+          charge is the hospital's list price, which is often far higher than what
+          an insurer or a cash payer actually pays, so a large number is not proof
+          of an error, but it is a reason to keep reading.
+        </p>
+
+        <!-- SECTION 3 -->
+        <h2 id="facility-fee">What is a facility fee</h2>
+        <p>
+          A facility fee is a charge for the use of the hospital itself, meaning
+          the room, the equipment, the staff, and the overhead, billed separately
+          from the fee for the clinician who actually treated you. On one visit you
+          can see two charges for what felt like one appointment: a professional
+          fee for the provider and a facility fee for the building.
+        </p>
+        <p>
+          Facility fees are common and generally legitimate, and they show up most
+          often at hospital owned outpatient clinics and in emergency departments.
+          What surprises people is that the same care at an independent practice
+          would not carry one. If a routine visit at a hospital owned office
+          produced a large facility fee, it is fair to ask what the fee covers and
+          whether you were told about it in advance. The charge itself is allowed,
+          but the size of it is a reasonable thing to question.
+        </p>
+
+        <!-- SECTION 4 -->
+        <h2 id="observation-vs-inpatient">Observation vs inpatient status</h2>
+        <p>
+          Observation is an outpatient billing status, and whether your stay is
+          labeled observation or inpatient usually changes what you owe, even when
+          the care felt identical and you spent the night in a hospital bed. It is
+          worth checking which status applied to your stay, because it drives the
+          math on the bill.
+        </p>
+        <p>
+          The distinction matters most for Medicare patients, where the rules are
+          specific. For someone on Medicare, an inpatient admission is billed under
+          Part A, while an observation stay is billed as outpatient care under Part
+          B, which can carry different out of pocket costs and may not cover the
+          drugs you receive. Observation days also do not count toward the three
+          day inpatient stay that Medicare requires before it will pay for follow
+          up care in a skilled nursing facility. Because the status has these
+          consequences, hospitals must give Medicare patients a written notice,
+          called the Medicare Outpatient Observation Notice or MOON, when
+          observation runs beyond 24 hours.
+        </p>
+        <p>
+          If you were kept for a long time and later learn you were on observation
+          status, it is reasonable to ask why the stay was not an inpatient
+          admission, and to check whether you received the required notice.
+        </p>
+
+        <!-- SECTION 5 -->
+        <h2 id="upcoding">What is upcoding</h2>
+        <p>
+          Upcoding is when a service is billed at a higher, more expensive level
+          than the care that was actually delivered. It is one of the more common
+          ways a bill drifts upward, and it is easy to miss because the code looks
+          ordinary until you know what it represents.
+        </p>
+        <p>
+          Emergency room visits are the clearest example. An ER visit is billed at
+          one of five levels using the CPT codes 99281 through 99285, where the
+          level is meant to reflect how complex the visit was, and a higher level
+          means a higher charge. A short, simple visit for a minor issue billed at
+          the top level is the kind of mismatch that signals upcoding. You cannot
+          always tell from the code alone, but when the billed level seems out of
+          step with what happened, it is a fair question to raise with the billing
+          department.
+        </p>
+
+        <!-- SECTION 6 -->
+        <h2 id="trauma-activation-fee">
+          Trauma activation fees and other charges that surprise people
+        </h2>
+        <p>
+          A trauma activation fee is a charge for assembling the hospital's trauma
+          team when it is alerted, usually by paramedics, that a seriously injured
+          patient is on the way. Mobilizing that team is expensive, and the fee
+          reflects it. Studies of trauma centers have found the fee commonly runs
+          into the thousands of dollars, with a wide range from around one thousand
+          to well over sixty thousand depending on the center and the level of
+          activation.
+        </p>
+        <p>
+          The fee is legitimate when a trauma team was genuinely activated for a
+          major injury. It becomes questionable when it appears after a minor
+          injury where no full trauma response took place. If you see a large
+          trauma activation fee and you were not treated by a mobilized trauma
+          team, that is worth asking about. Other charges that catch people off
+          guard include separate professional fees from doctors you do not
+          remember meeting, such as a radiologist who read a scan, and supply
+          charges for routine items at prices far above what they cost outside a
+          hospital.
+        </p>
+
+        <!-- INTERACTIVE TOOL -->
+        <div class="generator" id="generator">
+          <h3 style="margin-top: 0">Hospital bill decoder</h3>
+          <p style="color: var(--ink-soft); margin-top: 0">
+            Pick a line item you are looking at to see what it is, whether it is
+            usually legitimate, and what to check. This is a quick reference, and
+            nothing you tap leaves your device.
+          </p>
+          <div class="bd-chips" id="bd-chips" role="group" aria-label="Bill elements"></div>
+          <div class="bd-panel" id="bd-panel" aria-live="polite"></div>
+        </div>
+
+        <!-- SECTION 7 -->
+        <h2 id="billing-errors">
+          Common medical billing errors and how to spot them
+        </h2>
+        <p>
+          Reading a hospital bill is worth the effort because medical billing
+          errors are common, and most of them are visible once the bill is
+          itemized. As you go line by line, the patterns worth watching for are:
+        </p>
+        <ul>
+          <li>
+            <strong>Duplicate charges,</strong> where the same service or supply
+            appears twice, sometimes under slightly different descriptions.
+          </li>
+          <li>
+            <strong>Services not received,</strong> a charge for a test, a room,
+            or an item you never got.
+          </li>
+          <li>
+            <strong>Wrong quantities,</strong> a count that is higher than what you
+            actually used.
+          </li>
+          <li>
+            <strong>Upcoding and unbundling,</strong> a visit billed at too high a
+            level, or one procedure split into several priced lines.
+          </li>
+          <li>
+            <strong>Charges that do not match your EOB,</strong> where the bill
+            asks for more than your plan says you owe.
+          </li>
+        </ul>
+        <p>
+          For a closer look at what these errors look like on a real statement, see
+          the red flags in our
+          <a class="inline" href="/guides/itemized-hospital-bill/#error">itemized bill guide</a>.
+          When you find a charge that looks wrong, the next step is to put it in
+          writing, and our guide to
+          <a class="inline" href="/guides/how-to-dispute-a-medical-bill/">how to dispute a medical bill</a>
+          walks through the process with a free dispute letter.
+        </p>
+        <p>
+          Reading the bill also tells you what to do next. If the charges are
+          correct but the total is more than you can pay, look into a hospital's
+          <a class="inline" href="/guides/medical-bill-forgiveness/">financial assistance or charity care</a>.
+          If an unpaid bill is moving toward a collector, know
+          <a class="inline" href="/guides/medical-bills-collections/">what to expect from medical bills and collections</a>.
+          And if the bill is large or complicated enough that you would rather hand
+          it off, a
+          <a class="inline" href="/guides/medical-bill-advocate/">medical bill advocate</a>
+          can review and negotiate it for a fee.
+        </p>
+      </article>
+
+      <!-- CTA BLOCK 1 (after the article body) -->
+      <div class="wrap">
+        <section class="cta cta-feature" aria-labelledby="cta1-title">
+          <div class="cta-content">
+            <h2 id="cta1-title">Let MedAdvocate read the bill for you</h2>
+            <p>
+              Snap a photo of your itemized bill and MedAdvocate decodes each line,
+              flags the charges worth questioning, and helps you write a letter
+              about them, all for a flat 29 dollars. No billing degree required.
+            </p>
+            <div class="store-row">
+              <a
+                class="store-badge"
+                href="https://apps.apple.com/us/app/medadvocate/id6783083802?utm_source=web&utm_medium=seo&utm_campaign=how-to-read-a-hospital-bill"
+                aria-label="Download MedAdvocate on the App Store"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.61-2.2.43-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"
+                  />
+                </svg>
+                <span>
+                  <span class="sb-eyebrow">Download on the</span>
+                  <span class="sb-label" style="display: block">App Store</span>
+                </span>
+              </a>
+              <a
+                class="store-badge"
+                href="https://play.google.com/store/apps/details?id=com.medadvocate.app&utm_source=web&utm_medium=seo&utm_campaign=how-to-read-a-hospital-bill"
+                aria-label="Get MedAdvocate on Google Play"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="g1-a" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#00DDFF" />
+                      <stop offset="1" stop-color="#00BBFF" />
+                    </linearGradient>
+                    <linearGradient id="g1-b" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stop-color="#FFCE00" />
+                      <stop offset="1" stop-color="#FF9500" />
+                    </linearGradient>
+                    <linearGradient id="g1-c" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0" stop-color="#FF3A44" />
+                      <stop offset="1" stop-color="#C31162" />
+                    </linearGradient>
+                    <linearGradient id="g1-d" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0" stop-color="#00C752" />
+                      <stop offset="1" stop-color="#00A047" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    d="M3.6 2.4 14 12 3.6 21.6c-.3-.2-.5-.5-.5-.9V3.3c0-.4.2-.7.5-.9z"
+                    fill="url(#g1-a)"
+                  />
+                  <path
+                    d="M14 12 3.6 21.6c.4.3 1 .3 1.5.1L17.5 14.6 14 12z"
+                    fill="url(#g1-c)"
+                  />
+                  <path
+                    d="M14 12 3.6 2.4c.4-.3 1-.3 1.5-.1L17.5 9.4 14 12z"
+                    fill="url(#g1-d)"
+                  />
+                  <path
+                    d="m17.5 9.4 3.4 1.9c.7.4.7 1.4 0 1.8l-3.4 1.5L14 12l3.5-2.6z"
+                    fill="url(#g1-b)"
+                  />
+                </svg>
+                <span>
+                  <span class="sb-eyebrow">Get it on</span>
+                  <span class="sb-label" style="display: block">Google Play</span>
+                </span>
+              </a>
+            </div>
+          </div>
+          <img
+            class="cta-phone"
+            src="/assets/phone2-cta.png"
+            width="1288"
+            height="2724"
+            alt="MedAdvocate scan screen"
+            loading="lazy"
+          />
+        </section>
+      </div>
+
+      <!-- FAQ -->
+      <section class="faq wrap" aria-labelledby="faq-title">
+        <h2
+          id="faq-title"
+          style="
+            font-family: var(--font-serif);
+            font-weight: 600;
+            font-size: clamp(24px, 3.4vw, 32px);
+            letter-spacing: -0.01em;
+          "
+        >
+          Frequently asked questions
+        </h2>
+        <details>
+          <summary>How do you read a hospital bill?</summary>
+          <p>
+            Start with the itemized bill, which lists every charge on its own line.
+            Confirm your name and account details, check that each date falls
+            within your stay, and read each line by its description, code,
+            quantity, and price. Compare it against your explanation of benefits if
+            you have insurance, and question any line you do not recognize or that
+            does not match your care.
+          </p>
+        </details>
+        <details>
+          <summary>What do the codes on a hospital bill mean?</summary>
+          <p>
+            Hospital bills use a few families of codes. CPT and HCPCS codes are
+            five character codes that describe a specific service or supply.
+            Revenue codes are three or four digit codes that sort each line into a
+            department such as pharmacy or the emergency room. ICD-10 diagnosis
+            codes describe the condition being treated and explain why a service
+            was provided.
+          </p>
+        </details>
+        <details>
+          <summary>What is a facility fee on a hospital bill?</summary>
+          <p>
+            A facility fee is a charge for the use of the hospital itself, meaning
+            the room, equipment, staff, and overhead, billed separately from the
+            fee for the clinician who treated you. It is common and generally
+            legitimate, especially at hospital owned clinics and emergency
+            departments, though the same care at an independent practice would not
+            carry one.
+          </p>
+        </details>
+        <details>
+          <summary>What is a UB-04 form?</summary>
+          <p>
+            The UB-04, also known as the CMS-1450, is the standard institutional
+            claim form that hospitals and other facilities use to bill insurers. It
+            is maintained by the National Uniform Billing Committee and organizes
+            charges into numbered boxes called form locators. The codes on it are
+            the same ones that appear on your itemized bill.
+          </p>
+        </details>
+        <details>
+          <summary>What is a revenue code on a hospital bill?</summary>
+          <p>
+            A revenue code is a three or four digit code that classifies each line
+            into a service category or department, such as room and board,
+            pharmacy, laboratory, or the emergency room. It sits alongside the
+            charge on a UB-04 form and helps you see what each charge is for. A
+            charge filed under the wrong category is a reason to ask for a plain
+            explanation.
+          </p>
+        </details>
+        <details>
+          <summary>What is upcoding in medical billing?</summary>
+          <p>
+            Upcoding is billing a service at a higher, more expensive level than
+            the care that was actually delivered. Emergency visits are the clearest
+            example, since they are billed at one of five levels using CPT codes
+            99281 through 99285. A short, simple visit billed at the top level is
+            the kind of mismatch that signals upcoding and is worth questioning.
+          </p>
+        </details>
+        <details>
+          <summary>
+            What is the difference between observation and inpatient status?
+          </summary>
+          <p>
+            Observation is an outpatient billing status, while inpatient means you
+            were formally admitted, and the label usually changes what you owe even
+            when the care felt the same. The difference matters most for Medicare
+            patients, where inpatient care is billed under Part A and observation
+            under Part B, and observation days do not count toward the three day
+            inpatient stay Medicare requires before covering a skilled nursing
+            facility.
+          </p>
+        </details>
+        <details>
+          <summary>What is a trauma activation fee?</summary>
+          <p>
+            A trauma activation fee is a charge for assembling the hospital's trauma
+            team when it is alerted that a seriously injured patient is arriving.
+            The fee commonly runs into the thousands of dollars. It is legitimate
+            when a trauma team was genuinely activated for a major injury, but it is
+            worth questioning if it appears after a minor injury with no full trauma
+            response.
+          </p>
+        </details>
+        <details>
+          <summary>Why is my hospital bill so high?</summary>
+          <p>
+            Hospital list prices are often far above what insurers or cash payers
+            actually pay, so a large number is not proof of an error on its own.
+            Bills also climb through facility fees, high drug and supply pricing,
+            separate professional fees, and billing errors such as duplicates or
+            upcoding. Reading the itemized bill line by line is how you tell a fair
+            charge from one worth questioning.
+          </p>
+        </details>
+        <details>
+          <summary>How do I find errors on my hospital bill?</summary>
+          <p>
+            Request the itemized bill, confirm your account details, and check each
+            line for duplicate charges, services you did not receive, wrong
+            quantities, and levels that seem too high for the care. Compare the bill
+            against your explanation of benefits, and flag anything that does not
+            match. When you find a wrong charge, put your dispute in writing with
+            the billing department.
+          </p>
+        </details>
+      </section>
+
+      <!-- CTA BLOCK 2 (end of page) -->
+      <div class="wrap">
+        <section class="cta cta-media" aria-labelledby="cta2-title">
+          <img
+            class="cta-phone-left"
+            src="/assets/ScanDiagonal.png"
+            width="815"
+            height="988"
+            alt="MedAdvocate analysis results screen"
+            loading="lazy"
+          />
+          <h2 id="cta2-title">Turn a wall of codes into plain answers</h2>
+          <p>
+            Snap a photo of your itemized bill and MedAdvocate reads each line for
+            the errors that hide on hospital statements, then helps you send a
+            dispute letter, all for a flat 29 dollars.
+          </p>
+          <div class="store-row">
+            <a
+              class="store-badge"
+              href="https://apps.apple.com/us/app/medadvocate/id6783083802?utm_source=web&utm_medium=seo&utm_campaign=how-to-read-a-hospital-bill"
+              aria-label="Download MedAdvocate on the App Store"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.61-2.2.43-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"
+                />
+              </svg>
+              <span>
+                <span class="sb-eyebrow">Download on the</span>
+                <span class="sb-label" style="display: block">App Store</span>
+              </span>
+            </a>
+            <a
+              class="store-badge"
+              href="https://play.google.com/store/apps/details?id=com.medadvocate.app&utm_source=web&utm_medium=seo&utm_campaign=how-to-read-a-hospital-bill"
+              aria-label="Get MedAdvocate on Google Play"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <defs>
+                  <linearGradient id="g2-a" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#00DDFF" />
+                    <stop offset="1" stop-color="#00BBFF" />
+                  </linearGradient>
+                  <linearGradient id="g2-b" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#FFCE00" />
+                    <stop offset="1" stop-color="#FF9500" />
+                  </linearGradient>
+                  <linearGradient id="g2-c" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0" stop-color="#FF3A44" />
+                    <stop offset="1" stop-color="#C31162" />
+                  </linearGradient>
+                  <linearGradient id="g2-d" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0" stop-color="#00C752" />
+                    <stop offset="1" stop-color="#00A047" />
+                  </linearGradient>
+                </defs>
+                <path
+                  d="M3.6 2.4 14 12 3.6 21.6c-.3-.2-.5-.5-.5-.9V3.3c0-.4.2-.7.5-.9z"
+                  fill="url(#g2-a)"
+                />
+                <path
+                  d="M14 12 3.6 21.6c.4.3 1 .3 1.5.1L17.5 14.6 14 12z"
+                  fill="url(#g2-c)"
+                />
+                <path
+                  d="M14 12 3.6 2.4c.4-.3 1-.3 1.5-.1L17.5 9.4 14 12z"
+                  fill="url(#g2-d)"
+                />
+                <path
+                  d="m17.5 9.4 3.4 1.9c.7.4.7 1.4 0 1.8l-3.4 1.5L14 12l3.5-2.6z"
+                  fill="url(#g2-b)"
+                />
+              </svg>
+              <span>
+                <span class="sb-eyebrow">Get it on</span>
+                <span class="sb-label" style="display: block">Google Play</span>
+              </span>
+            </a>
+          </div>
+        </section>
+      </div>
+
+      <div class="wrap">
+        <footer class="footer">
+          <div class="footer-brand">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 80 80"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M20 60C20 71.0457 11.0457 80 0 80V40C0 28.9543 8.95431 20 20 20V60Z"
+                fill="#153B62"
+              />
+              <path
+                d="M50 60C50 71.0457 41.0457 80 30 80V20C30 8.95431 38.9543 0 50 0V60Z"
+                fill="#153B62"
+              />
+              <path
+                d="M80 40C80 51.0457 71.0457 60 60 60V20C60 8.9543 68.9543 0 80 0V40Z"
+                fill="#153B62"
+              />
+            </svg>
+            <span
+              >© 2026 MedAdvocate, LLC. Helping patients understand and reduce
+              their medical bills.</span
+            >
+          </div>
+          <ul class="footer-links">
+            <li><a href="/guides/">Guides</a></li>
+            <li><a href="/privacy">Privacy</a></li>
+            <li><a href="/terms">Terms</a></li>
+          </ul>
+        </footer>
+      </div>
+    </main>
+
+    <!-- Article structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "How to Read a Hospital Bill: Codes, Fees, and Charges Explained",
+        "description": "How to read a hospital bill: the documents you get, the codes and charges, facility fees, observation status, upcoding, and trauma activation fees.",
+        "image": "https://www.medadvocate.net/assets/og-image.png",
+        "datePublished": "2026-07-22",
+        "dateModified": "2026-07-22",
+        "author": {
+          "@type": "Organization",
+          "name": "MedAdvocate",
+          "url": "https://www.medadvocate.net/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "MedAdvocate",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.medadvocate.net/assets/DarkBlue_Horizontal_Logo.png"
+          }
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://www.medadvocate.net/guides/how-to-read-a-hospital-bill/"
+        }
+      }
+    </script>
+
+    <!-- FAQPage structured data. Keep answers in sync with the visible FAQ. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do you read a hospital bill?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Start with the itemized bill, which lists every charge on its own line. Confirm your name and account details, check that each date falls within your stay, and read each line by its description, code, quantity, and price. Compare it against your explanation of benefits if you have insurance, and question any line you do not recognize or that does not match your care."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What do the codes on a hospital bill mean?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Hospital bills use a few families of codes. CPT and HCPCS codes are five character codes that describe a specific service or supply. Revenue codes are three or four digit codes that sort each line into a department such as pharmacy or the emergency room. ICD-10 diagnosis codes describe the condition being treated and explain why a service was provided."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is a facility fee on a hospital bill?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A facility fee is a charge for the use of the hospital itself, meaning the room, equipment, staff, and overhead, billed separately from the fee for the clinician who treated you. It is common and generally legitimate, especially at hospital owned clinics and emergency departments, though the same care at an independent practice would not carry one."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is a UB-04 form?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The UB-04, also known as the CMS-1450, is the standard institutional claim form that hospitals and other facilities use to bill insurers. It is maintained by the National Uniform Billing Committee and organizes charges into numbered boxes called form locators. The codes on it are the same ones that appear on your itemized bill."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is a revenue code on a hospital bill?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A revenue code is a three or four digit code that classifies each line into a service category or department, such as room and board, pharmacy, laboratory, or the emergency room. It sits alongside the charge on a UB-04 form and helps you see what each charge is for. A charge filed under the wrong category is a reason to ask for a plain explanation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is upcoding in medical billing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Upcoding is billing a service at a higher, more expensive level than the care that was actually delivered. Emergency visits are the clearest example, since they are billed at one of five levels using CPT codes 99281 through 99285. A short, simple visit billed at the top level is the kind of mismatch that signals upcoding and is worth questioning."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between observation and inpatient status?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Observation is an outpatient billing status, while inpatient means you were formally admitted, and the label usually changes what you owe even when the care felt the same. The difference matters most for Medicare patients, where inpatient care is billed under Part A and observation under Part B, and observation days do not count toward the three day inpatient stay Medicare requires before covering a skilled nursing facility."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is a trauma activation fee?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A trauma activation fee is a charge for assembling the hospital's trauma team when it is alerted that a seriously injured patient is arriving. The fee commonly runs into the thousands of dollars. It is legitimate when a trauma team was genuinely activated for a major injury, but it is worth questioning if it appears after a minor injury with no full trauma response."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is my hospital bill so high?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Hospital list prices are often far above what insurers or cash payers actually pay, so a large number is not proof of an error on its own. Bills also climb through facility fees, high drug and supply pricing, separate professional fees, and billing errors such as duplicates or upcoding. Reading the itemized bill line by line is how you tell a fair charge from one worth questioning."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I find errors on my hospital bill?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Request the itemized bill, confirm your account details, and check each line for duplicate charges, services you did not receive, wrong quantities, and levels that seem too high for the care. Compare the bill against your explanation of benefits, and flag anything that does not match. When you find a wrong charge, put your dispute in writing with the billing department."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <script src="/assets/guide.js"></script>
+    <script>
+      // Hospital bill decoder (page specific). A static client side reference:
+      // tap a chip, read the explanation. Nothing is entered or sent anywhere.
+      (function () {
+        var chipsWrap = document.getElementById("bd-chips");
+        var panel = document.getElementById("bd-panel");
+        if (!chipsWrap || !panel) return;
+
+        var ITEMS = [
+          {
+            key: "facility",
+            label: "Facility fee",
+            what: "A charge for the use of the hospital itself, the room, equipment, staff, and overhead, billed separately from the fee for the clinician who treated you.",
+            legit: "Usually. Hospitals are allowed to bill a facility fee, and it appears on many outpatient and emergency visits.",
+            check: "Whether the same care at an independent office would have avoided it, and whether you were told in advance. If the visit was minor, it is fair to ask why the fee is so high.",
+          },
+          {
+            key: "room",
+            label: "Room and board",
+            what: "The daily charge for an inpatient bed, meals, and routine nursing, grouped under revenue codes in the 0100 range.",
+            legit: "Usually, for the nights you were actually admitted as an inpatient.",
+            check: "The number of days billed against your real admission and discharge dates. A room charge for the discharge day, or a day you were not there, is worth questioning.",
+          },
+          {
+            key: "er",
+            label: "ER visit level (99281 to 99285)",
+            what: "Emergency visits are billed at one of five levels using CPT codes 99281 through 99285, where a higher number means a more complex visit and a higher charge.",
+            legit: "Yes as a system, but the level should match the care you received.",
+            check: "Whether the level fits what actually happened. A brief, simple visit billed at the highest level is a sign of upcoding worth asking about.",
+          },
+          {
+            key: "observation",
+            label: "Observation charge",
+            what: "A charge for being kept in the hospital for monitoring under observation status, which is billed as outpatient care rather than an inpatient admission.",
+            legit: "It can be, but the status affects what you owe. For Medicare patients, observation is billed under Part B and does not count toward the three day inpatient stay needed for later skilled nursing coverage.",
+            check: "Whether your status was observation or inpatient, and whether you received a notice about it. If you were kept a long time, it is fair to ask why it was not an inpatient admission.",
+          },
+          {
+            key: "pharmacy",
+            label: "Pharmacy line",
+            what: "Charges for medications given during your stay or visit, grouped under pharmacy revenue codes such as the 0250 range.",
+            legit: "Usually, though hospital drug pricing can be far above retail and quantity errors are common.",
+            check: "The quantity and the drug against what you actually received. Watch for doses you did not take or a routine medication billed at an unusually high amount.",
+          },
+          {
+            key: "revenue",
+            label: "Revenue code",
+            what: "A three or four digit code that sorts each line into a service category, such as room and board, pharmacy, laboratory, or the emergency room. It sits next to the charge on a UB-04 form.",
+            legit: "Yes. Revenue codes are a normal part of hospital billing and help you see what each charge is for.",
+            check: "That the category matches the care. A charge in the wrong category, or one you do not recognize, is a reason to ask for a plain explanation.",
+          },
+          {
+            key: "trauma",
+            label: "Trauma activation fee",
+            what: "A charge for assembling the trauma team when the hospital is alerted that a seriously injured patient is arriving. The fee can be several thousand dollars or more.",
+            legit: "Yes when a trauma team was genuinely activated for a major injury.",
+            check: "Whether a full trauma activation actually happened in your case. If you arrived with a minor injury and were not treated by a trauma team, the fee is worth questioning.",
+          },
+        ];
+
+        function render(item) {
+          panel.innerHTML =
+            '<p class="bd-panel-title">' +
+            item.label +
+            "</p>" +
+            '<div class="bd-row"><div class="bd-label">What it is</div><div class="bd-text">' +
+            item.what +
+            "</div></div>" +
+            '<div class="bd-row"><div class="bd-label">Commonly legitimate?</div><div class="bd-text">' +
+            item.legit +
+            "</div></div>" +
+            '<div class="bd-row"><div class="bd-label">What to check</div><div class="bd-text">' +
+            item.check +
+            "</div></div>";
+        }
+
+        ITEMS.forEach(function (item, i) {
+          var btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "bd-chip";
+          btn.textContent = item.label;
+          btn.setAttribute("aria-pressed", i === 0 ? "true" : "false");
+          btn.addEventListener("click", function () {
+            var all = chipsWrap.querySelectorAll(".bd-chip");
+            for (var j = 0; j < all.length; j++) {
+              all[j].setAttribute("aria-pressed", "false");
+            }
+            btn.setAttribute("aria-pressed", "true");
+            render(item);
+          });
+          chipsWrap.appendChild(btn);
+        });
+
+        render(ITEMS[0]);
+      })();
+    </script>
+  </body>
+</html>
