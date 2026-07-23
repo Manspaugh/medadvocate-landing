@@ -196,8 +196,8 @@
             Choose your month and year of service and where things stand. Nothing
             you enter leaves your device.
           </p>
-          <div class="gen-grid">
-            <div class="field">
+          <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end;">
+            <div class="field" style="width: 320px; max-width: 100%;">
               <label for="col-month">Date of Service</label>
               <div style="display: flex; gap: 8px;">
                 <select id="col-month" aria-label="Month of service" style="flex: 1;">
@@ -220,7 +220,7 @@
                 </select>
               </div>
             </div>
-            <div class="field">
+            <div class="field" style="width: 200px; max-width: 100%;">
               <label for="col-status">Current Status</label>
               <select id="col-status">
                 <option value="just">Just got the bill</option>
