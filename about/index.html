@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Delete Your Account — MedAdvocate</title>
+    <title>About MedAdvocate</title>
     <meta
       name="description"
-      content="How to delete your MedAdvocate account and associated data, what is deleted, and what is retained for legal, tax, and fraud-prevention purposes."
+      content="About MedAdvocate: who is behind it, why it exists, and what the site and app offer for reading, checking, and disputing medical bills."
     />
     <meta name="theme-color" content="#153B62" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://www.medadvocate.net/delete-account" />
+    <link rel="canonical" href="https://www.medadvocate.net/about/" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -117,10 +117,10 @@
         letter-spacing: -0.01em;
       }
 
-      .legal .updated {
+      .legal .lede {
         color: var(--ink-soft);
-        font-size: 15px;
-        margin: 0 0 40px;
+        font-size: 19px;
+        margin: 0 0 8px;
       }
 
       .legal h2 {
@@ -129,12 +129,6 @@
         font-size: clamp(22px, 3vw, 28px);
         margin: 44px 0 12px;
         letter-spacing: -0.01em;
-      }
-
-      .legal h3 {
-        font-weight: 700;
-        font-size: 19px;
-        margin: 28px 0 8px;
       }
 
       .legal p {
@@ -146,19 +140,41 @@
         font-weight: 700;
       }
 
-      .legal ul,
-      .legal ol {
+      .legal ul {
         margin: 0 0 16px;
         padding-left: 24px;
       }
 
       .legal li {
-        margin: 6px 0;
+        margin: 10px 0;
         color: var(--ink);
       }
 
       .legal a {
         color: var(--navy);
+      }
+
+      .placeholder {
+        border: 2px dashed var(--rule);
+        background: var(--bg-deep);
+        border-radius: 12px;
+        padding: 20px 22px;
+        margin: 24px 0;
+      }
+
+      .placeholder .ph-label {
+        display: block;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--navy);
+        margin-bottom: 6px;
+      }
+
+      .placeholder p {
+        margin: 0;
+        color: var(--ink-soft);
       }
 
       .legal-footer {
@@ -210,7 +226,7 @@
         <a class="brand" href="/" aria-label="MedAdvocate home">
           <img
             class="brand-logo"
-            src="assets/logo-horizontal-darkblue.svg"
+            src="/assets/logo-horizontal-darkblue.svg"
             width="187"
             height="28"
             alt="MedAdvocate"
@@ -221,29 +237,91 @@
 
     <main>
       <article class="wrap legal">
-        <p class="eyebrow">MedAdvocate</p>
-        <h1>Deleting your MedAdvocate account</h1>
-        <div class="updated">Last Updated: April 17, 2026</div>
+        <p class="eyebrow">About</p>
+        <h1>About MedAdvocate</h1>
+        <p class="lede">
+          MedAdvocate is a tool for reading, checking, and disputing medical
+          bills. It was built on a simple observation: medical bills are hard to
+          understand by design, errors in them are common, and most people pay
+          without ever checking. This page explains who is behind the project and
+          why it exists.
+        </p>
 
-        <p>To delete your MedAdvocate account and associated data:</p>
-        <ol>
-          <li>Open the MedAdvocate app and go to <strong>Settings &gt; Account &gt; Delete Account</strong>, or</li>
-          <li>Email <a href="mailto:team@medadvocate.net">team@medadvocate.net</a> from your account email requesting deletion.</li>
-        </ol>
+        <h2>Who is behind MedAdvocate</h2>
+        <p>
+          MedAdvocate is built by Dave Anspaugh, its founder and sole builder.
+          Every part of it, from the bill analysis in the app to the guides on
+          this site, is the work of one person who believes patients deserve a
+          fair shot at understanding what they are charged. MedAdvocate is
+          operated by MedAdvocate, LLC.
+        </p>
 
-        <h2>What is deleted</h2>
-        <p>Your account, email, uploaded bill images, and dispute letters.</p>
+        <div class="placeholder">
+          <span class="ph-label">Placeholder: founder headshot</span>
+          <p>
+            Dave will supply the image. Intended file path:
+            /assets/dave-anspaugh.jpg. Replace this block with an img element.
+          </p>
+        </div>
 
-        <h2>What is retained</h2>
-        <p>Payment and mailing records required for legal, tax, and fraud-prevention purposes, kept for seven (7) years, then deleted.</p>
+        <div class="placeholder">
+          <span class="ph-label">Placeholder: personal story</span>
+          <p>Dave will supply the final copy for this section.</p>
+        </div>
+
+        <h2>Why MedAdvocate exists</h2>
+        <p>
+          Medical billing is one of the few areas where people routinely pay a
+          bill they cannot read, from a provider they cannot easily question, for
+          an amount that is rarely the real price. Reviews of hospital bills
+          commonly turn up errors, from duplicate charges to services never
+          received to charges coded at the wrong level.
+        </p>
+        <p>
+          MedAdvocate exists to put the tools to catch those errors in the hands
+          of the person who gets the bill. The app does one thing well: you
+          photograph an itemized bill, it checks each line against the mistakes
+          that hide on medical statements, and it flags what is worth
+          questioning. It does not promise a specific result. It gives you a
+          clear, reviewable read of your own bill and helps you act on it.
+        </p>
+
+        <h2>What this site offers</h2>
+        <p>
+          MedAdvocate is two things, a set of free resources and a paid service,
+          and you are welcome to use only the free part.
+        </p>
+        <ul>
+          <li>
+            <strong>Free guides and tools.</strong> This site hosts a growing
+            library of
+            <a href="/guides/">guides</a>
+            on how to read a hospital bill, dispute a charge, handle collections,
+            understand the No Surprises Act, and more. Each one includes a free
+            interactive tool, such as a dispute letter generator, an out of pocket
+            estimator, or a bill decoder. Nothing you enter into the tools on this
+            site leaves your device.
+          </li>
+          <li>
+            <strong>The app.</strong> For a flat 29 dollars, the MedAdvocate app
+            analyzes your itemized bill, writes a dispute letter based on what it
+            finds, and mails it by certified mail on your behalf. A PDF copy of
+            the letter is emailed to you as well. There is no percentage of
+            savings and no subscription. It is available on iOS and Android.
+          </li>
+        </ul>
+        <p>
+          Whether you do it yourself with the free guides or hand the writing and
+          mailing to the app, the goal is the same: pay what you actually owe, not
+          what a mistake says you owe.
+        </p>
 
         <footer class="legal-footer">
           <div class="footer-nav">
-            <a href="privacy">Privacy Policy</a>
-            <a href="terms">Terms of Service</a>
-            <a href="/guides/">Guides</a>
-            <a href="/about/">About</a>
             <a href="/press/">Press</a>
+            <a href="/guides/">Guides</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
             <a href="/">Back to home</a>
           </div>
           © 2026 MedAdvocate. All rights reserved. ·
