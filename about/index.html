@@ -154,27 +154,14 @@
         color: var(--navy);
       }
 
-      .placeholder {
-        border: 2px dashed var(--rule);
-        background: var(--bg-deep);
-        border-radius: 12px;
-        padding: 20px 22px;
-        margin: 24px 0;
-      }
-
-      .placeholder .ph-label {
+      .headshot {
         display: block;
-        font-size: 13px;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--navy);
-        margin-bottom: 6px;
-      }
-
-      .placeholder p {
-        margin: 0;
-        color: var(--ink-soft);
+        width: 240px;
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+        border: 1px solid var(--rule);
+        margin: 24px 0;
       }
 
       .legal-footer {
@@ -256,18 +243,36 @@
           operated by MedAdvocate, LLC.
         </p>
 
-        <div class="placeholder">
-          <span class="ph-label">Placeholder: founder headshot</span>
-          <p>
-            Dave will supply the image. Intended file path:
-            /assets/dave-anspaugh.jpg. Replace this block with an img element.
-          </p>
-        </div>
+        <img
+          class="headshot"
+          src="/assets/dave-anspaugh.jpg"
+          width="240"
+          height="302"
+          alt="Dave Anspaugh, founder of MedAdvocate"
+        />
 
-        <div class="placeholder">
-          <span class="ph-label">Placeholder: personal story</span>
-          <p>Dave will supply the final copy for this section.</p>
-        </div>
+        <p>
+          I've worked on the technology side of healthcare for a while, and I
+          have come face to face with the red tape: the HIPAA regulations, the
+          complex coding guidelines, and the fact that nobody in the system is
+          paid to protect the patient. Hospital systems, insurers, and payers are
+          all built to capture as much money from every interaction as they can.
+          Almost half of all hospitals do not even comply with the federal
+          Hospital Price Transparency Rule.
+        </p>
+        <p>
+          The healthcare system is an organism with a million moving parts. Things
+          get lost, mistranslated, and flat out wrong. I built MedAdvocate to help
+          the average American fight back. The app is an easy way to catch those
+          mistakes and push back on your medical bill.
+        </p>
+        <p>
+          The cost of everything from groceries to gas to medicine keeps climbing,
+          and a medical bill should not be the thing that bankrupts you. Studies
+          have found that a large share of medical bills contain errors or
+          overcharges. If the mistakes are that common, finding them and disputing
+          them should be simple. That is the whole idea.
+        </p>
 
         <h2>Why MedAdvocate exists</h2>
         <p>

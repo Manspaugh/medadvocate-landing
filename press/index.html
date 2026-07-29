@@ -154,27 +154,14 @@
         color: var(--navy);
       }
 
-      .placeholder {
-        border: 2px dashed var(--rule);
-        background: var(--bg-deep);
-        border-radius: 12px;
-        padding: 20px 22px;
-        margin: 24px 0;
-      }
-
-      .placeholder .ph-label {
+      .headshot {
         display: block;
-        font-size: 13px;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--navy);
-        margin-bottom: 6px;
-      }
-
-      .placeholder p {
-        margin: 0;
-        color: var(--ink-soft);
+        width: 240px;
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+        border: 1px solid var(--rule);
+        margin: 24px 0;
       }
 
       .legal-footer {
@@ -246,10 +233,15 @@
         </p>
 
         <h2>About Dave Anspaugh</h2>
-        <div class="placeholder">
-          <span class="ph-label">Placeholder: short bio</span>
-          <p>Dave will supply the final bio copy for press use.</p>
-        </div>
+        <p>
+          Dave Anspaugh is the founder of MedAdvocate, an app that analyzes
+          medical bills for errors and overcharges, then writes and mails dispute
+          letters by certified mail for a flat fee. He built MedAdvocate solo
+          after years working on the technology side of healthcare, where he saw
+          how billing complexity works against patients. He is based in Salt Lake
+          City and available to comment on medical billing errors, patient billing
+          rights, the No Surprises Act, and medical debt.
+        </p>
 
         <h2>Topics Dave can speak to</h2>
         <ul>
@@ -291,19 +283,22 @@
         </ul>
 
         <h2>Founder headshot</h2>
-        <div class="placeholder">
-          <span class="ph-label">Placeholder: founder headshot</span>
-          <p>
-            For press use. Intended file path: /assets/dave-anspaugh.jpg. A high
-            resolution version is available on request.
-          </p>
-        </div>
+        <img
+          class="headshot"
+          src="/assets/dave-anspaugh.jpg"
+          width="240"
+          height="302"
+          alt="Dave Anspaugh, founder of MedAdvocate"
+        />
+        <p>
+          Dave Anspaugh, founder of MedAdvocate. A high resolution version is
+          available on request.
+        </p>
 
         <h2>Press contact</h2>
-        <div class="placeholder">
-          <span class="ph-label">Placeholder: press contact email</span>
-          <p>Dave will supply the final press contact address.</p>
-        </div>
+        <p>
+          <a href="mailto:press@medadvocate.net">press@medadvocate.net</a>
+        </p>
 
         <footer class="legal-footer">
           <div class="footer-nav">
