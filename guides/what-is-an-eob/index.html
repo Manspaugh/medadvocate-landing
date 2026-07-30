@@ -219,31 +219,48 @@
         <div class="generator" id="eob-decoder">
           <h3 style="margin-top: 0">EOB decoder</h3>
           <p style="color: var(--ink-soft); margin-top: 0">
-            Enter the four amounts from one line of your EOB. Nothing you enter
-            leaves your device.
+            Answer the network question and enter the amounts from one line of
+            your EOB. Nothing you enter leaves your device.
           </p>
-          <div class="gen-grid">
+          <p style="color: var(--ink-soft); margin: 0 0 16px; font-size: 14px">
+            EOBs use different column names. Match them to these fields: Submitted
+            Charge or Charged Amount is the Billed Amount; Allowed, Considered, or
+            Covered Charge is the Allowed Amount; Plan Paid or Benefit Amount is
+            Insurance Paid; and Patient Responsibility or You Owe is Your
+            Responsibility.
+          </p>
+          <div class="field" style="max-width: 420px">
+            <label for="eob-network">Was this provider in your network?</label>
+            <select id="eob-network" style="max-width: 100%">
+              <option value="">Select one</option>
+              <option value="in">In network</option>
+              <option value="out">Out of network</option>
+              <option value="unsure">Not sure</option>
+            </select>
+          </div>
+          <div class="gen-grid" style="margin-top: 16px">
             <div class="field">
               <label for="eob-billed">Billed Amount</label>
-              <input id="eob-billed" type="text" inputmode="decimal" placeholder="e.g. 680" />
+              <input id="eob-billed" type="text" inputmode="decimal" placeholder="e.g. 214" />
             </div>
             <div class="field">
               <label for="eob-allowed">Allowed Amount</label>
-              <input id="eob-allowed" type="text" inputmode="decimal" placeholder="e.g. 420" />
+              <input id="eob-allowed" type="text" inputmode="decimal" placeholder="e.g. 85" />
             </div>
             <div class="field">
               <label for="eob-paid">Insurance Paid</label>
-              <input id="eob-paid" type="text" inputmode="decimal" placeholder="e.g. 336" />
+              <input id="eob-paid" type="text" inputmode="decimal" placeholder="e.g. 28" />
             </div>
             <div class="field">
               <label for="eob-resp">Your Responsibility</label>
-              <input id="eob-resp" type="text" inputmode="decimal" placeholder="e.g. 84" />
-              <p id="resp-hint" style="display: none; margin: 6px 0 0; font-size: 13px; color: var(--ink-soft);">
-                Filled in from your other numbers. Edit it to match your EOB.
-              </p>
+              <input id="eob-resp" type="text" inputmode="decimal" placeholder="e.g. 186" />
+            </div>
+            <div class="field">
+              <label for="eob-deductible">Deductible (optional)</label>
+              <input id="eob-deductible" type="text" inputmode="decimal" placeholder="e.g. 50" />
             </div>
           </div>
-          <div id="eob-output" aria-live="polite"></div>
+          <div id="eob-output" aria-live="polite" style="margin-top: 16px"></div>
         </div>
 
         <h2 id="eob-vs-bill">EOB vs bill: how to compare them</h2>
@@ -814,10 +831,12 @@
         var out = document.getElementById("eob-output");
         if (!out) return;
         var fields = {
+          network: document.getElementById("eob-network"),
           billed: document.getElementById("eob-billed"),
           allowed: document.getElementById("eob-allowed"),
           paid: document.getElementById("eob-paid"),
           resp: document.getElementById("eob-resp"),
+          deductible: document.getElementById("eob-deductible"),
         };
         var ICON =
           '<svg class="note-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M11.2845 1.66669L11.3756 1.6732C11.5843 1.70187 11.7692 1.82792 11.8711 2.0163C11.9875 2.23171 11.9766 2.49372 11.8424 2.69859L9.89972 5.66669H12.666C12.9304 5.66669 13.1696 5.82313 13.276 6.06512C13.3824 6.30709 13.3361 6.58902 13.1575 6.78387L5.8242 14.7839C5.61321 15.0141 5.27058 15.0666 4.99998 14.9108C4.72953 14.755 4.60359 14.4327 4.6966 14.1348L6.09308 9.66669H3.33266C3.10161 9.66669 2.88708 9.54682 2.76561 9.35028C2.64422 9.15376 2.63301 8.90845 2.73631 8.70184L6.06964 2.03518L6.11717 1.95445C6.24046 1.7758 6.44503 1.66669 6.666 1.66669H11.2845Z" fill="#FC761F"/></svg>';
@@ -849,136 +868,233 @@
             "</p></div>"
           );
         }
-
-        // Autofill: while the user has not typed their own responsibility, keep
-        // it set to allowed minus insurance paid (blank if that would be
-        // negative). A user value is never overwritten; clearing it resumes.
-        var hint = document.getElementById("resp-hint");
-        var respUserOwned = false;
-        function trimNum(n) {
-          return (Math.round(n * 100) / 100).toString();
+        function bigCard(inner) {
+          return (
+            '<div style="margin: 14px 0; padding: 14px 16px; background: var(--bg-deep); border-radius: 12px; text-align: center; font-family: var(--font-serif); font-size: 18px; color: var(--navy);">' +
+            inner +
+            "</div>"
+          );
         }
-        function showHint() {
-          if (hint) hint.style.display = "block";
-        }
-        function hideHint() {
-          if (hint) hint.style.display = "none";
-        }
-        function manageResp() {
-          if (respUserOwned) return;
-          var b = num(fields.billed.value);
-          var a = num(fields.allowed.value);
-          var p = num(fields.paid.value);
-          if (b !== null && a !== null && p !== null) {
-            var c = a - p;
-            if (c >= 0) {
-              fields.resp.value = trimNum(c);
-              showHint();
-              return;
-            }
-          }
-          fields.resp.value = "";
-          hideHint();
+        function dedSentence(d) {
+          return d !== null
+            ? " Of that, " + money(d) + " went to your deductible."
+            : "";
         }
 
         function build() {
+          var net = fields.network.value;
           var b = num(fields.billed.value);
           var a = num(fields.allowed.value);
           var p = num(fields.paid.value);
           var r = num(fields.resp.value);
+          var d = num(fields.deductible.value);
 
-          if (b === null && a === null && p === null && r === null) {
+          if (
+            b === null &&
+            a === null &&
+            p === null &&
+            r === null &&
+            d === null
+          ) {
             out.innerHTML =
               '<p style="color: var(--ink-soft); margin: 0;">Enter your amounts above to see what each number means and whether they add up.</p>';
             return;
           }
 
           var html = "";
-          var priceReady = b !== null && a !== null && a <= b;
-          var splitReady = a !== null && p !== null && r !== null;
-
           if (b !== null && a !== null && a > b) {
             html += noteCard(
               "Double check these two",
               "The allowed amount is usually not higher than the billed amount. Recheck those figures on your EOB."
             );
           }
+          var priceReady = b !== null && a !== null && a <= b;
 
-          if (priceReady) {
+          if (net === "") {
             html +=
-              '<p style="margin: 0 0 4px;"><strong>Step 1, the price.</strong> Your plan negotiated the price down from ' +
-              money(b) +
-              " billed to " +
-              money(a) +
-              " allowed. The " +
-              money(b - a) +
-              " difference is written off. Nobody pays it.</p>";
+              '<p style="color: var(--ink-soft); margin: 0;">Choose whether this provider was in or out of network above. That changes everything below it: out of network, the difference between the billed and allowed amounts is often not written off, and the provider can bill you for it.</p>';
+            out.innerHTML = html;
+            return;
           }
 
-          if (splitReady) {
-            var sum = p + r;
-            if (Math.abs(sum - a) <= 0.5) {
+          if (net === "in") {
+            if (priceReady) {
               html +=
-                '<div style="margin: 14px 0; padding: 14px 16px; background: var(--bg-deep); border-radius: 12px; text-align: center; font-family: var(--font-serif); font-size: 18px; color: var(--navy);">Allowed (<strong>' +
+                '<p style="margin: 0 0 4px;"><strong>Step 1, the price.</strong> Your plan negotiated the price down from ' +
+                money(b) +
+                " billed to " +
                 money(a) +
-                "</strong>) = Insurance paid (<strong>" +
-                money(p) +
-                "</strong>) + Your responsibility (<strong>" +
-                money(r) +
-                "</strong>)</div>";
-              html +=
-                '<p style="margin: 4px 0 0;"><strong>Step 2, the split.</strong> That ' +
-                money(a) +
-                " price is split between you and your plan: your plan pays " +
-                money(p) +
-                " and you pay " +
-                money(r) +
-                ". Your share comes from your copay, deductible, and coinsurance.</p>";
-              html += noteCard(
-                "This adds up",
-                "Your bill should ask for " +
-                  money(r) +
-                  (b !== null ? ", not the billed amount (" + money(b) + ")" : "") +
-                  ". If it asks for more, that is worth checking. Scan your bill with MedAdvocate to compare each charge."
-              );
-            } else {
-              html += noteCard(
-                "These numbers do not add up",
-                "Your plan paid " +
-                  money(p) +
-                  " plus your responsibility " +
-                  money(r) +
-                  " comes to " +
-                  money(sum) +
-                  ", but the allowed amount is " +
-                  money(a) +
-                  ". On an EOB, those two should be equal, so check the numbers you entered against your EOB. If the EOB looks right but your bill asks for more than " +
-                  money(r) +
-                  ", scan your bill with MedAdvocate to compare each charge."
-              );
+                " allowed. Because this provider is in your network, the " +
+                money(b - a) +
+                " difference is written off. You do not owe it.</p>";
             }
-          } else {
-            html +=
-              '<p style="color: var(--ink-soft); margin: ' +
-              (priceReady ? "12px 0 0" : "0") +
-              ';">Enter all four amounts to see how the price is split between you and your plan.</p>';
+            if (a !== null && p !== null && r !== null) {
+              var sum = p + r;
+              if (Math.abs(sum - a) <= 0.5) {
+                html += bigCard(
+                  "Allowed (<strong>" +
+                    money(a) +
+                    "</strong>) = Insurance paid (<strong>" +
+                    money(p) +
+                    "</strong>) + Your responsibility (<strong>" +
+                    money(r) +
+                    "</strong>)"
+                );
+                html +=
+                  '<p style="margin: 4px 0 0;"><strong>Step 2, the split.</strong> That ' +
+                  money(a) +
+                  " price is split between you and your plan: your plan pays " +
+                  money(p) +
+                  " and you pay " +
+                  money(r) +
+                  ". Your share comes from your copay, deductible, and coinsurance." +
+                  dedSentence(d) +
+                  "</p>";
+                html += noteCard(
+                  "This adds up",
+                  "Your bill should ask for " +
+                    money(r) +
+                    (b !== null
+                      ? ", not the billed amount (" + money(b) + ")"
+                      : "") +
+                    ". If it asks for more, that is worth checking. Scan your bill with MedAdvocate to compare each charge."
+                );
+              } else {
+                html += noteCard(
+                  "These numbers do not add up",
+                  "Your plan paid " +
+                    money(p) +
+                    " plus your responsibility " +
+                    money(r) +
+                    " comes to " +
+                    money(sum) +
+                    ", but the allowed amount is " +
+                    money(a) +
+                    ". In network, those two should be equal, so check the numbers against your EOB. If the EOB looks right but your bill asks for more than " +
+                    money(r) +
+                    ", scan your bill with MedAdvocate to compare each charge."
+                );
+              }
+            } else {
+              html +=
+                '<p style="color: var(--ink-soft); margin: ' +
+                (priceReady ? "12px 0 0" : "0") +
+                ';">Enter the allowed amount, insurance paid, and your responsibility to see how the price is split between you and your plan.</p>';
+            }
+            out.innerHTML = html;
+            return;
           }
 
+          if (net === "out") {
+            if (priceReady) {
+              html +=
+                '<p style="margin: 0 0 4px;"><strong>Step 1, the price.</strong> This provider is out of your network, so the ' +
+                money(b - a) +
+                " difference between the billed amount (" +
+                money(b) +
+                ") and the allowed amount (" +
+                money(a) +
+                ") is often not written off. An out of network provider can bill you for that difference, which is called balance billing.</p>";
+            }
+            if (b !== null && p !== null && b - p >= 0) {
+              var poss = b - p;
+              html += bigCard(
+                "Possible total responsibility: up to <strong>" +
+                  money(poss) +
+                  "</strong>"
+              );
+              html +=
+                '<p style="margin: 4px 0 0;">That is the billed amount (' +
+                money(b) +
+                ") minus the " +
+                money(p) +
+                " your plan paid. It assumes the provider bills you the full " +
+                (a !== null ? money(b - a) : "difference") +
+                " above the allowed amount on top of your plan share. Whether you actually owe that depends on the provider and your plan.</p>";
+              if (r !== null) {
+                var allowedShare = a !== null ? a - p : null;
+                if (Math.abs(r - poss) <= 1) {
+                  html +=
+                    '<p style="margin: 10px 0 0;">Your EOB already appears to include the balance billed amount. Your responsibility of ' +
+                    money(r) +
+                    " matches the billed amount minus what your plan paid, so " +
+                    money(r) +
+                    " is likely what the provider will bill you.</p>";
+                } else if (
+                  allowedShare !== null &&
+                  Math.abs(r - allowedShare) <= 1
+                ) {
+                  html +=
+                    '<p style="margin: 10px 0 0;">Your EOB appears to show only your share of the allowed amount (' +
+                    money(r) +
+                    ")." +
+                    dedSentence(d) +
+                    " The provider may bill the " +
+                    money(b - a) +
+                    " difference above the allowed amount on top of that, bringing your total as high as " +
+                    money(poss) +
+                    ".</p>";
+                } else {
+                  html +=
+                    '<p style="margin: 10px 0 0;">Your responsibility of ' +
+                    money(r) +
+                    " does not clearly match either your share of the allowed amount or the billed amount minus what your plan paid, so check it against your EOB. Either way, out of network your total could reach " +
+                    money(poss) +
+                    " if the provider balance bills the difference.</p>";
+                }
+              } else {
+                html +=
+                  '<p style="color: var(--ink-soft); margin: 10px 0 0;">Enter your responsibility from the EOB to see whether it already includes the balance billed amount.</p>';
+              }
+            } else {
+              html +=
+                '<p style="color: var(--ink-soft); margin: ' +
+                (priceReady ? "12px 0 0" : "0") +
+                ';">Enter the billed amount and insurance paid to see how high your responsibility could go out of network.</p>';
+            }
+            html += noteCard(
+              "Out of network does not always mean you owe the difference",
+              'Some out of network balance billing is not allowed, especially for emergencies and for an out of network provider at an in network facility, under the No Surprises Act. See what is protected in our guide to the <a class="inline" href="/guides/out-of-network-balance-billing/">No Surprises Act</a>, and if you were balance billed for a charge that should be covered, here is <a class="inline" href="/guides/how-to-dispute-a-medical-bill/">how to dispute a medical bill</a>.'
+            );
+            out.innerHTML = html;
+            return;
+          }
+
+          // net === "unsure"
+          html += noteCard(
+            "How to tell if the provider was in network",
+            "Two things on your EOB usually reveal it. First, look for a remark, message, or note line: most EOBs state when a non network or out of network provider was used. Second, look at how the difference between the billed and allowed amounts is labeled. When the provider is in network, that difference is usually called a plan discount, network savings, or contractual adjustment, and you do not owe it. If it is not labeled that way, the provider may be out of network and can bill you for it."
+          );
+          if (
+            b !== null &&
+            a !== null &&
+            p !== null &&
+            b - p >= 0 &&
+            a - p >= 0
+          ) {
+            html += bigCard(
+              "If in network, about <strong>" +
+                money(a - p) +
+                "</strong>. If out of network, up to <strong>" +
+                money(b - p) +
+                "</strong>."
+            );
+            html +=
+              '<p style="margin: 4px 0 0;">Depending on network status, your responsibility is likely about ' +
+              money(a - p) +
+              " if in network, from your share of the allowed amount, and could be as high as " +
+              money(b - p) +
+              " if out of network. Once you know which it is, choose In network or Out of network above for the full breakdown.</p>";
+          }
           out.innerHTML = html;
         }
 
-        ["billed", "allowed", "paid"].forEach(function (k) {
-          fields[k].addEventListener("input", function () {
-            manageResp();
-            build();
-          });
+        ["billed", "allowed", "paid", "resp", "deductible"].forEach(function (
+          k
+        ) {
+          fields[k].addEventListener("input", build);
         });
-        fields.resp.addEventListener("input", function () {
-          respUserOwned = fields.resp.value.trim() !== "";
-          hideHint();
-          if (!respUserOwned) manageResp();
-          build();
-        });
+        fields.network.addEventListener("change", build);
         build();
       })();
     </script>
