@@ -189,12 +189,22 @@
             Estimate your share of an ER bill from your plan terms. This is an
             estimate, not a quote, and nothing you enter leaves your device.
           </p>
+          <div class="field" style="max-width: 460px">
+            <label for="er-network">
+              Was this an in network visit or a protected emergency?
+            </label>
+            <select id="er-network" style="max-width: 100%">
+              <option value="in">Yes, in network or a protected emergency</option>
+              <option value="out">No, out of network and not protected</option>
+            </select>
+          </div>
           <div
             style="
               display: flex;
               flex-wrap: wrap;
               gap: 16px;
               align-items: flex-end;
+              margin-top: 16px;
             "
           >
             <div class="field" style="flex: 1 1 150px; margin-bottom: 0">
@@ -852,6 +862,7 @@
       (function () {
         var out = document.getElementById("er-output");
         if (!out) return;
+        var netI = document.getElementById("er-network");
         var billI = document.getElementById("er-bill");
         var dedI = document.getElementById("er-deductible");
         var coinsI = document.getElementById("er-coinsurance");
@@ -886,10 +897,10 @@
           var dedPortion = Math.min(bill, ded);
           var remainder = bill - dedPortion;
           var coinsPortion = remainder * (coins / 100);
-          var share = dedPortion + coinsPortion;
+          var estimate = dedPortion + coinsPortion;
           var capped = false;
-          if (oop !== null && oop >= 0 && share > oop) {
-            share = oop;
+          if (oop !== null && oop >= 0 && estimate > oop) {
+            estimate = oop;
             capped = true;
           }
 
@@ -932,19 +943,51 @@
               ".</li>";
           }
 
-          out.innerHTML =
-            '<div style="background:#fffcf7;border:1px solid var(--rule);border-radius:14px;padding:18px 20px;">' +
-            '<div style="font-family:var(--font-sans);font-size:13px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink-soft);">Estimated patient share</div>' +
-            '<div style="font-family:var(--font-serif);font-size:34px;color:var(--navy);line-height:1.1;margin-top:4px;">' +
-            money(share) +
-            "</div></div>" +
-            '<div class="note" style="margin:14px 0 0;"><div class="note-head"><span class="note-title">How this is figured</span></div>' +
-            '<ol class="note-body" style="margin:0;padding-left:22px;">' +
+          var cardOpen =
+            '<div style="background:#fffcf7;border:1px solid var(--rule);border-radius:14px;padding:18px 20px;">';
+          var cardLabel =
+            '<div style="font-family:var(--font-sans);font-size:13px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink-soft);">';
+          var cardBig =
+            '<div style="font-family:var(--font-serif);font-size:34px;color:var(--navy);line-height:1.1;margin-top:4px;">';
+          var stepsNote =
+            '<div class="note" style="margin:14px 0 0;"><div class="note-head"><span class="note-title">' +
+            (netI.value === "out"
+              ? "How the lower end is figured"
+              : "How this is figured") +
+            '</span></div><ol class="note-body" style="margin:0;padding-left:22px;">' +
             steps +
-            "</ol></div>" +
+            "</ol></div>";
+
+          if (netI.value === "out") {
+            out.innerHTML =
+              cardOpen +
+              cardLabel +
+              "Estimated patient share, out of network</div>" +
+              cardBig +
+              money(estimate) +
+              " to " +
+              money(bill) +
+              "</div></div>" +
+              stepsNote +
+              '<p style="font-size:15px;color:var(--ink);margin:12px 0 0;">Out of network and not protected, your share can run well above that lower figure. Coinsurance is often higher out of network, your out of pocket maximum may not apply, and any amount the provider balance bills above what your plan allows sits on top with no cap. That can push your responsibility toward the full billed amount of ' +
+              money(bill) +
+              ".</p>" +
+              '<p style="font-size:14px;color:var(--ink-soft);margin:12px 0 0;">This is a range, not a quote, and out of network it depends heavily on your plan\'s allowed amount, which is not entered here. If your ER visit was a genuine emergency, the No Surprises Act likely protects you and your share should be the lower figure. See <a class="inline" href="#nsa">your No Surprises Act protections in the ER</a>.</p>';
+            return;
+          }
+
+          out.innerHTML =
+            cardOpen +
+            cardLabel +
+            "Estimated patient share</div>" +
+            cardBig +
+            money(estimate) +
+            "</div></div>" +
+            stepsNote +
             '<p style="font-size:14px;color:var(--ink-soft);margin:12px 0 0;">This is an estimate that depends on your exact plan terms, and some plans charge a flat emergency room copay instead of coinsurance. It also only holds if the bill itself is correct. Review your ER bill with the steps further down before you pay, then question anything that looks off.</p>';
         }
 
+        netI.addEventListener("change", build);
         billI.addEventListener("input", build);
         dedI.addEventListener("input", build);
         coinsI.addEventListener("input", build);
