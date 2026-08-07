@@ -582,36 +582,37 @@
         border-left: 3px solid var(--yellow);
       }
 
-      /* Problem stats as light cards on the navy section */
       .stats-grid {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
       }
       .stat {
-        background: #fffcf7;
-        border: 1px solid var(--rule);
-        border-radius: 16px;
-        padding: 28px 26px;
+        padding: 32px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+      }
+      .stat:last-child {
+        border-bottom: none;
       }
       .stat-num {
         font-family: var(--font-serif);
         font-weight: 300;
-        font-size: clamp(48px, 8vw, 72px);
-        color: var(--navy);
+        font-size: clamp(64px, 11vw, 88px);
+        color: var(--yellow);
         line-height: 1;
         letter-spacing: -0.03em;
       }
       .stat-label {
-        font-family: var(--font-sans);
         font-size: clamp(15px, 1.7vw, 17px);
         line-height: 1.4;
-        color: var(--ink);
-        margin: 12px 0 10px;
+        font-weight: 300;
+        margin: 14px 0 12px;
+        color: rgba(255, 255, 255, 0.92);
       }
       .stat-src {
         font-size: 11px;
-        color: var(--ink-soft);
+        color: rgba(255, 255, 255, 0.5);
         letter-spacing: 0.04em;
         text-transform: uppercase;
       }
@@ -627,11 +628,46 @@
         }
         .stats-grid {
           grid-template-columns: 1fr 1fr;
+          border-top: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        .stat {
+          padding: 36px 24px 36px 0;
+          border-right: 1px solid rgba(255, 255, 255, 0.18);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        .stat:nth-child(2n) {
+          border-right: none;
+          padding-right: 0;
+          padding-left: 24px;
+        }
+        .stat:nth-last-child(-n + 2) {
+          border-bottom: none;
+          padding-bottom: 0;
         }
       }
       @media (min-width: 1024px) {
         .problem {
           padding: 100px 0 96px;
+        }
+        .stats-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+        .stat {
+          padding: 40px 24px 0;
+          border-right: 1px solid rgba(255, 255, 255, 0.18);
+          border-bottom: none;
+        }
+        .stat:nth-child(2n) {
+          padding-left: 24px;
+          padding-right: 24px;
+          border-right: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        .stat:last-child {
+          border-right: none;
+          padding-right: 0;
+        }
+        .stat:first-child {
+          padding-left: 0;
         }
       }
 
