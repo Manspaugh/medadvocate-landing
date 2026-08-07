@@ -517,6 +517,13 @@ button {
 /* ─────────────────────────────────────────────────────────
  CTA block
  ───────────────────────────────────────────────────────── */
+/* Rotating end CTA: both variants ship hidden; guide.js reveals one at
+   random on load. They sit at the page bottom, below the fold, so the
+   reveal does not cause a visible or measured layout shift. */
+.cta-rotate {
+  display: none;
+}
+
 .cta {
   background: var(--navy);
   color: var(--white);

@@ -29,3 +29,14 @@
     if (e.target.tagName === "A") setOpen(false);
   });
 })();
+
+// Rotating end CTA. Each guide ships both banner designs at the end of the
+// page marked .cta-rotate and hidden by CSS. Reveal exactly one at random so
+// the banner varies between page loads. They live below the fold, so the
+// reveal does not shift anything in view.
+(function () {
+  var variants = document.querySelectorAll(".cta-rotate");
+  if (!variants.length) return;
+  var pick = Math.floor(Math.random() * variants.length);
+  variants[pick].style.display = "block";
+})();
