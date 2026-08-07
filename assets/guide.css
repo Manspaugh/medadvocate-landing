@@ -767,14 +767,21 @@ button {
   margin: 0 auto;
   padding: 8px var(--gutter) 48px;
   display: grid;
+  grid-template-columns: 1fr;
   gap: 16px;
 }
+@media (min-width: 768px) {
+  .guide-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 .guide-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
   background: var(--white);
   border: 1px solid var(--rule);
   border-radius: 14px;
-  padding: 24px 26px;
+  padding: 22px 24px;
   text-decoration: none;
   color: inherit;
   transition: transform 0.15s, box-shadow 0.15s;
@@ -783,16 +790,71 @@ button {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(27, 44, 61, 0.1);
 }
+.guide-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  margin-bottom: 12px;
+}
+.guide-cat {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.guide-time {
+  font-size: 13px;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
 .guide-card h2 {
   font-family: var(--font-serif);
   font-weight: 600;
-  font-size: 22px;
+  font-size: 20px;
   line-height: 1.2;
-  margin: 0 0 6px;
+  margin: 0 0 8px;
   color: var(--navy);
 }
 .guide-card p {
-  margin: 0;
+  margin: 0 0 18px;
   color: var(--ink-soft);
-  font-size: 16px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.guide-card-foot {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+}
+.guide-tool {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.guide-tool-ico {
+  color: var(--navy);
+  flex: none;
+}
+.guide-read {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+  white-space: nowrap;
+}
+.guide-card:hover .guide-read {
+  gap: 9px;
 }
