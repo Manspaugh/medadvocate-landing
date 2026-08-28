@@ -2253,12 +2253,28 @@
       (function () {
         var ANALYTICS =
           "https://82bptss0rj.execute-api.us-east-2.amazonaws.com/";
-        function track(ev) {
+        function track(ev, extra) {
           try {
-            navigator.sendBeacon(ANALYTICS, JSON.stringify({ event: ev }));
+            var p = { event: ev };
+            if (extra) for (var k in extra) p[k] = extra[k];
+            navigator.sendBeacon(ANALYTICS, JSON.stringify(p));
           } catch (e) {}
         }
-        track("pageview");
+        // Referrer hostname only (no path or query), and drop self referrals so
+        // internal navigation does not show up as a traffic source.
+        var ref = "";
+        try {
+          if (document.referrer) {
+            var rh = new URL(document.referrer).hostname.toLowerCase();
+            if (rh && rh !== location.hostname) ref = rh;
+          }
+        } catch (e) {}
+        var q = new URLSearchParams(location.search);
+        track("pageview", {
+          ref: ref,
+          utm_source: (q.get("utm_source") || "").toLowerCase().slice(0, 64),
+          utm_medium: (q.get("utm_medium") || "").toLowerCase().slice(0, 64),
+        });
         document
           .querySelectorAll('a[href*="apps.apple.com"]')
           .forEach(function (a) {

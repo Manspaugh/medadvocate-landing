@@ -1,8 +1,10 @@
 // landing-analytics Lambda — cookieless pageview + click counters for the
 // MedAdvocate marketing site. Backed by a single DynamoDB table of atomic
 // counters. Exposed via a Lambda Function URL:
-//   POST  { "event": "pageview" | "click_app_store" | "click_google_play" }
-//   GET   ?days=30  -> { total, daily: [...] }  (read-only, used by /secret-stats)
+//   POST  { "event": "pageview" | "click_app_store" | "click_google_play",
+//           "ref"?: <referrer hostname>, "utm_source"?, "utm_medium"? }
+//   GET   ?days=30  -> { total, daily, sources, utm_sources, utm_mediums }
+//         (read-only, used by /secret-stats)
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import {
   DynamoDBDocumentClient,
@@ -47,6 +49,28 @@ function keyOk(provided) {
 }
 
 const todayUTC = () => new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+
+// Reduce a client-supplied referrer to a bare hostname we can safely use as a
+// DynamoDB attribute name. Strips any scheme/path/query and a leading "www.",
+// lowercases, and allows only hostname characters. Anything else returns ""
+// so the caller can fall back to "direct".
+function cleanHost(v) {
+  const h = String(v || "")
+    .toLowerCase()
+    .trim()
+    .replace(/^https?:\/\//, "")
+    .split("/")[0]
+    .split("?")[0]
+    .replace(/^www\./, "");
+  return /^[a-z0-9.-]{1,120}$/.test(h) ? h : "";
+}
+
+// Sanitize a utm_source / utm_medium tag: lowercase, length capped, and
+// limited to a safe charset. Returns "" for anything invalid so it is dropped.
+function cleanTag(v) {
+  const t = String(v || "").toLowerCase().trim().slice(0, 64);
+  return /^[a-z0-9][a-z0-9._-]*$/.test(t) ? t : "";
+}
 
 function lastNDates(n) {
   const out = [];
@@ -98,7 +122,23 @@ export const handler = async (event) => {
       return { statusCode: 400, headers: baseHeaders, body: '{"error":"unknown event"}' };
 
     // One counter for all-time, one for the day, so we get totals + a trend.
-    await Promise.all([bump("TOTAL", name), bump(todayUTC(), name)]);
+    const day = todayUTC();
+    const writes = [bump("TOTAL", name), bump(day, name)];
+
+    // On a pageview, also record where the visit came from. Referrer hostname
+    // is stored as an attribute on a per-day SRC item ("direct" when absent),
+    // and utm_source / utm_medium on parallel per-day items. All values are
+    // sanitized server side and never trusted from the client. This runs after
+    // the bot check above, so bot traffic is excluded from source counts too.
+    if (name === "pageview") {
+      writes.push(bump(`SRC#${day}`, cleanHost(body.ref) || "direct"));
+      const us = cleanTag(body.utm_source);
+      const um = cleanTag(body.utm_medium);
+      if (us) writes.push(bump(`UTM_SRC#${day}`, us));
+      if (um) writes.push(bump(`UTM_MED#${day}`, um));
+    }
+
+    await Promise.all(writes);
     return { statusCode: 204, headers: cors(origin) };
   }
 
@@ -132,12 +172,57 @@ export const handler = async (event) => {
   );
   const daily = dates.map((date) => ({ date, ...zero(), ...(byDate[date] || {}) }));
 
+  // Referrer + campaign sources for the same window. Each is stored as one
+  // item per day whose attributes are the hostnames / tags. Fetch each prefix
+  // in its own batch (so we stay under the 100-key BatchGet cap even at 90
+  // days), merge the per-day counts, and return the totals sorted by count.
+  const [srcMap, utmSrcMap, utmMedMap] = await Promise.all([
+    fetchMerged(dates.map((d) => `SRC#${d}`)),
+    fetchMerged(dates.map((d) => `UTM_SRC#${d}`)),
+    fetchMerged(dates.map((d) => `UTM_MED#${d}`)),
+  ]);
+
   return {
     statusCode: 200,
     headers: baseHeaders,
-    body: JSON.stringify({ total: { ...zero(), ...total }, daily }),
+    body: JSON.stringify({
+      total: { ...zero(), ...total },
+      daily,
+      sources: topList(srcMap, 50),
+      utm_sources: topList(utmSrcMap, 50),
+      utm_mediums: topList(utmMedMap, 50),
+    }),
   };
 };
+
+// BatchGet a set of pks and sum every non-pk (counter) attribute across them
+// into a single { name: count } map.
+async function fetchMerged(pks) {
+  if (!pks.length) return {};
+  const res = await ddb.send(
+    new BatchGetCommand({
+      RequestItems: { [TABLE]: { Keys: pks.map((pk) => ({ pk })) } },
+    })
+  );
+  const out = {};
+  for (const it of res.Responses?.[TABLE] || []) {
+    for (const [k, v] of Object.entries(it)) {
+      if (k === "pk") continue;
+      out[k] = (out[k] || 0) + (typeof v === "number" ? v : Number(v) || 0);
+    }
+  }
+  return out;
+}
+
+// { name: count } map -> array sorted by count desc, positive counts only,
+// capped at n entries.
+function topList(map, n) {
+  return Object.entries(map)
+    .map(([name, count]) => ({ name, count }))
+    .filter((r) => r.count > 0)
+    .sort((a, b) => b.count - a.count)
+    .slice(0, n);
+}
 
 const zero = () => ({ pageview: 0, click_app_store: 0, click_google_play: 0 });
 function strip(item) {
