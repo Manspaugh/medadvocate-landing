@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Player</title>
+    <!--
+      A YouTube player for the Motiv8 app's exercise sheet.
+
+      Not a page for people: it is loaded inside the app's web view and its
+      address is never shown. It exists because YouTube refuses to play an embed
+      that cannot tell it which site is asking, and a web view serving its own
+      HTML has no site to name. Served from a real domain, the same embed plays.
+
+      Takes the video id as ?v=, e.g. /player/?v=dQw4w9WgXcQ.
+    -->
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background: #000;
+        overflow: hidden;
+      }
+      iframe {
+        border: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      p {
+        margin: 0;
+        padding: 24px;
+        color: #b8c2cc;
+        font: 16px/1.4 -apple-system, system-ui, sans-serif;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      (function () {
+        var id = new URLSearchParams(window.location.search).get('v') || '';
+        // Ids are 11 characters of the URL safe alphabet. Anything else is not
+        // a video id, and interpolating it would be an injection.
+        if (!/^[A-Za-z0-9_-]{11}$/.test(id)) {
+          document.body.innerHTML = '<p>No video.</p>';
+          return;
+        }
+        var frame = document.createElement('iframe');
+        frame.src =
+          'https://www.youtube.com/embed/' +
+          id +
+          '?playsinline=1&rel=0&modestbranding=1';
+        frame.allow = 'accelerometer; encrypted-media; gyroscope; picture-in-picture';
+        frame.allowFullscreen = true;
+        document.body.appendChild(frame);
+      })();
+    </script>
+  </body>
+</html>
