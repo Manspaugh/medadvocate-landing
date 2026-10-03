@@ -40,13 +40,23 @@
          functions), so this cannot be a real 302. The markup below is the
          visible fallback for the script-blocked case.
 
+         Two kinds of link land here:
+           • share link (/get) — from the app's share sheet, tagged share/app.
+           • ad link (/get?ad=NAME[&src=SOURCE]) — paid ads. NAME becomes the
+             App Store campaign token (ct) and the Play referrer's
+             utm_campaign; SOURCE (default "facebook") becomes utm_source,
+             with utm_medium=cpc. Both are normalised to [a-z0-9._-] so the
+             store reports and our own counters use the same spelling.
+
          Analytics (cookieless, existing landing-analytics Lambda) is split by
          path so a visit is counted exactly once:
-           • mobile — beacon a pageview carrying the share UTMs, plus the same
+           • mobile — beacon a pageview carrying the UTMs, plus the same
              store-click counter the rest of the site fires, then hand off.
-           • desktop — beacon nothing; pass the UTMs through on the homepage URL
-             and let the homepage's own tracker record the pageview. Beaconing
+           • desktop — no pageview; pass the UTMs through on the homepage URL
+             and let the homepage's own tracker record it. Beaconing a pageview
              here as well would count the same visitor twice.
+         Ad links additionally beacon ad_click (name + platform, desktop
+         included) — a separate per-ad counter, not a pageview.
          sendBeacon is queued by the browser and survives navigation, so the
          redirect fires in the same tick — nothing is delayed waiting on it.
          ───────────────────────────────────────────────────────────────────── -->
@@ -54,12 +64,36 @@
       (function () {
         var ANALYTICS =
           "https://82bptss0rj.execute-api.us-east-2.amazonaws.com/";
-        var UTM = "utm_source=share&utm_medium=app";
-        var APP_STORE =
-          "https://apps.apple.com/us/app/medadvocate/id6783083802?" + UTM;
-        var PLAY =
-          "https://play.google.com/store/apps/details?id=com.medadvocate.app&" +
-          UTM;
+
+        // Lowercase, collapse anything outside [a-z0-9._-] to "-", must start
+        // with a letter/digit. Capped at 40 — Apple's limit for ct. Mirrors
+        // cleanTag() in analytics/index.mjs, which re-validates server side.
+        function clean(v) {
+          return String(v || "")
+            .toLowerCase()
+            .replace(/[^a-z0-9._-]+/g, "-")
+            .replace(/^[^a-z0-9]+/, "")
+            .slice(0, 40)
+            .replace(/-+$/, "");
+        }
+        var q = new URLSearchParams(location.search);
+        var ad = clean(q.get("ad"));
+        var src = clean(q.get("src")) || "facebook";
+
+        var utmSource = ad ? src : "share";
+        var utmMedium = ad ? "cpc" : "app";
+        var UTM = "utm_source=" + utmSource + "&utm_medium=" + utmMedium;
+        var APP_STORE = ad
+          ? "https://apps.apple.com/app/id6783083802?pt=128907049&ct=" +
+            ad +
+            "&mt=8"
+          : "https://apps.apple.com/us/app/medadvocate/id6783083802?" + UTM;
+        var PLAY = ad
+          ? "https://play.google.com/store/apps/details?id=com.medadvocate.app&referrer=" +
+            encodeURIComponent(UTM + "&utm_campaign=" + ad)
+          : "https://play.google.com/store/apps/details?id=com.medadvocate.app&" +
+            UTM;
+        var HOME = "/?" + UTM + (ad ? "&utm_campaign=" + ad : "");
 
         var ua = navigator.userAgent || "";
         // iPadOS 13+ reports a Macintosh UA, so a touch-capable "Mac" is an
@@ -70,17 +104,24 @@
           (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
         var isAndroid = /android/i.test(ua);
 
-        if (!isIOS && !isAndroid) {
-          location.replace("/?" + UTM);
-          return;
-        }
-
         function track(ev, extra) {
           try {
             var p = { event: ev };
             if (extra) for (var k in extra) p[k] = extra[k];
             navigator.sendBeacon(ANALYTICS, JSON.stringify(p));
           } catch (e) {}
+        }
+
+        if (ad) {
+          track("ad_click", {
+            ad: ad,
+            platform: isIOS ? "ios" : isAndroid ? "android" : "desktop",
+          });
+        }
+
+        if (!isIOS && !isAndroid) {
+          location.replace(HOME);
+          return;
         }
 
         // Referrer hostname only (no path or query), dropping self referrals —
@@ -95,8 +136,8 @@
 
         track("pageview", {
           ref: ref,
-          utm_source: "share",
-          utm_medium: "app",
+          utm_source: utmSource,
+          utm_medium: utmMedium,
         });
         track(isIOS ? "click_app_store" : "click_google_play");
 

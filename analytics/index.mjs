@@ -3,7 +3,9 @@
 // counters. Exposed via a Lambda Function URL:
 //   POST  { "event": "pageview" | "click_app_store" | "click_google_play",
 //           "ref"?: <referrer hostname>, "utm_source"?, "utm_medium"? }
-//   GET   ?days=30  -> { total, daily, sources, utm_sources, utm_mediums }
+//   POST  { "event": "ad_click", "ad": <ad name>,
+//           "platform": "ios" | "android" | "desktop" }   (from /get?ad=)
+//   GET   ?days=30  -> { total, daily, sources, utm_sources, utm_mediums, ads }
 //         (read-only, used by /secret-stats)
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import {
@@ -18,7 +20,8 @@ const ddb = DynamoDBDocumentClient.from(new DynamoDBClient({}));
 
 // Only these counters can be incremented — anything else is ignored so the
 // endpoint can't be used to write arbitrary attributes.
-const EVENTS = new Set(["pageview", "click_app_store", "click_google_play"]);
+const EVENTS = new Set(["pageview", "click_app_store", "click_google_play", "ad_click"]);
+const PLATFORMS = new Set(["ios", "android", "desktop"]);
 
 const ALLOWED_ORIGINS = new Set([
   "https://www.medadvocate.net",
@@ -121,9 +124,19 @@ export const handler = async (event) => {
     if (!EVENTS.has(name))
       return { statusCode: 400, headers: baseHeaders, body: '{"error":"unknown event"}' };
 
+    // An ad click must name a valid ad and platform, else nothing is counted.
+    const ad = cleanTag(body.ad);
+    const platform = String(body.platform || "");
+    if (name === "ad_click" && (!ad || !PLATFORMS.has(platform)))
+      return { statusCode: 400, headers: baseHeaders, body: '{"error":"bad ad_click"}' };
+
     // One counter for all-time, one for the day, so we get totals + a trend.
     const day = todayUTC();
     const writes = [bump("TOTAL", name), bump(day, name)];
+
+    // Per-ad clicks: one item per day whose attributes are "<ad>:<platform>".
+    // cleanTag never emits ":", so the split on read is unambiguous.
+    if (name === "ad_click") writes.push(bump(`AD#${day}`, `${ad}:${platform}`));
 
     // On a pageview, also record where the visit came from. Referrer hostname
     // is stored as an attribute on a per-day SRC item ("direct" when absent),
@@ -176,10 +189,11 @@ export const handler = async (event) => {
   // item per day whose attributes are the hostnames / tags. Fetch each prefix
   // in its own batch (so we stay under the 100-key BatchGet cap even at 90
   // days), merge the per-day counts, and return the totals sorted by count.
-  const [srcMap, utmSrcMap, utmMedMap] = await Promise.all([
+  const [srcMap, utmSrcMap, utmMedMap, adMap] = await Promise.all([
     fetchMerged(dates.map((d) => `SRC#${d}`)),
     fetchMerged(dates.map((d) => `UTM_SRC#${d}`)),
     fetchMerged(dates.map((d) => `UTM_MED#${d}`)),
+    fetchMerged(dates.map((d) => `AD#${d}`)),
   ]);
 
   return {
@@ -191,6 +205,7 @@ export const handler = async (event) => {
       sources: topList(srcMap, 50),
       utm_sources: topList(utmSrcMap, 50),
       utm_mediums: topList(utmMedMap, 50),
+      ads: adList(adMap, 50),
     }),
   };
 };
@@ -221,6 +236,25 @@ function topList(map, n) {
     .map(([name, count]) => ({ name, count }))
     .filter((r) => r.count > 0)
     .sort((a, b) => b.count - a.count)
+    .slice(0, n);
+}
+
+// { "<ad>:<platform>": count } map -> [{ name, ios, android, desktop, total }]
+// sorted by total desc, capped at n ads.
+function adList(map, n) {
+  const byAd = {};
+  for (const [k, count] of Object.entries(map)) {
+    const i = k.lastIndexOf(":");
+    const name = k.slice(0, i);
+    const platform = k.slice(i + 1);
+    if (!name || !PLATFORMS.has(platform)) continue;
+    const r = (byAd[name] ||= { name, ios: 0, android: 0, desktop: 0, total: 0 });
+    r[platform] += count;
+    r.total += count;
+  }
+  return Object.values(byAd)
+    .filter((r) => r.total > 0)
+    .sort((a, b) => b.total - a.total)
     .slice(0, n);
 }
 
