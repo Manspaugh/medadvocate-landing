@@ -5,8 +5,10 @@
 //           "ref"?: <referrer hostname>, "utm_source"?, "utm_medium"? }
 //   POST  { "event": "ad_click", "ad": <ad name>,
 //           "platform": "ios" | "android" | "desktop" }   (from /get?ad=)
-//   GET   ?days=30  -> { total, daily, sources, utm_sources, utm_mediums, ads }
-//         (read-only, used by /secret-stats)
+//   GET   ?days=30  -> { total, daily, sources, utm_sources, utm_mediums, ads,
+//                       ads_daily }
+//         (read-only, used by /secret-stats and by anything that needs the ad
+//         clicks one day at a time rather than summed over the window)
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import {
   DynamoDBDocumentClient,
@@ -75,6 +77,24 @@ function cleanTag(v) {
   return /^[a-z0-9][a-z0-9._-]*$/.test(t) ? t : "";
 }
 
+// An ad name as a tag: lowercase, anything outside [a-z0-9._-] collapsed to a
+// hyphen, must start with a letter or digit, capped at 40 (Apple's limit for
+// ct), no trailing hyphens. The same rule as clean() in get/index.html, which
+// is what actually produces the tag: "Bill Shock" arrives here as "bill-shock".
+//
+// It normalises rather than rejects. A tag that fails validation used to count
+// nothing at all, so a click that did happen simply vanished, and the only
+// symptom was an ad showing zero. A test holds this and the page's copy to the
+// same answers. Returns "" only when nothing usable is left.
+export function normalizeTag(v) {
+  return String(v ?? "")
+    .toLowerCase()
+    .replace(/[^a-z0-9._-]+/g, "-")
+    .replace(/^[^a-z0-9]+/, "")
+    .slice(0, 40)
+    .replace(/-+$/, "");
+}
+
 function lastNDates(n) {
   const out = [];
   const d = new Date();
@@ -124,8 +144,9 @@ export const handler = async (event) => {
     if (!EVENTS.has(name))
       return { statusCode: 400, headers: baseHeaders, body: '{"error":"unknown event"}' };
 
-    // An ad click must name a valid ad and platform, else nothing is counted.
-    const ad = cleanTag(body.ad);
+    // An ad click must name an ad and a valid platform, else nothing is counted.
+    // The name is normalised, not validated: see normalizeTag.
+    const ad = normalizeTag(body.ad);
     const platform = String(body.platform || "");
     if (name === "ad_click" && (!ad || !PLATFORMS.has(platform)))
       return { statusCode: 400, headers: baseHeaders, body: '{"error":"bad ad_click"}' };
@@ -135,7 +156,7 @@ export const handler = async (event) => {
     const writes = [bump("TOTAL", name), bump(day, name)];
 
     // Per-ad clicks: one item per day whose attributes are "<ad>:<platform>".
-    // cleanTag never emits ":", so the split on read is unambiguous.
+    // normalizeTag never emits ":", so the split on read is unambiguous.
     if (name === "ad_click") writes.push(bump(`AD#${day}`, `${ad}:${platform}`));
 
     // On a pageview, also record where the visit came from. Referrer hostname
@@ -189,12 +210,15 @@ export const handler = async (event) => {
   // item per day whose attributes are the hostnames / tags. Fetch each prefix
   // in its own batch (so we stay under the 100-key BatchGet cap even at 90
   // days), merge the per-day counts, and return the totals sorted by count.
-  const [srcMap, utmSrcMap, utmMedMap, adMap] = await Promise.all([
+  const [srcMap, utmSrcMap, utmMedMap, adItems] = await Promise.all([
     fetchMerged(dates.map((d) => `SRC#${d}`)),
     fetchMerged(dates.map((d) => `UTM_SRC#${d}`)),
     fetchMerged(dates.map((d) => `UTM_MED#${d}`)),
-    fetchMerged(dates.map((d) => `AD#${d}`)),
+    fetchItems(dates.map((d) => `AD#${d}`)),
   ]);
+  // The window's total per ad, as before, and the same clicks one day at a
+  // time. Both come from the same items, so they cannot disagree.
+  const adMap = mergeCounters(adItems);
 
   return {
     statusCode: 200,
@@ -206,27 +230,52 @@ export const handler = async (event) => {
       utm_sources: topList(utmSrcMap, 50),
       utm_mediums: topList(utmMedMap, 50),
       ads: adList(adMap, 50),
+      ads_daily: adsDaily(adItems),
     }),
   };
 };
 
-// BatchGet a set of pks and sum every non-pk (counter) attribute across them
-// into a single { name: count } map.
-async function fetchMerged(pks) {
-  if (!pks.length) return {};
+// BatchGet a set of pks and return the items as they are.
+async function fetchItems(pks) {
+  if (!pks.length) return [];
   const res = await ddb.send(
     new BatchGetCommand({
       RequestItems: { [TABLE]: { Keys: pks.map((pk) => ({ pk })) } },
     })
   );
+  return res.Responses?.[TABLE] || [];
+}
+
+// Sum every non-pk (counter) attribute across items into one { name: count }.
+function mergeCounters(items) {
   const out = {};
-  for (const it of res.Responses?.[TABLE] || []) {
+  for (const it of items) {
     for (const [k, v] of Object.entries(it)) {
       if (k === "pk") continue;
       out[k] = (out[k] || 0) + (typeof v === "number" ? v : Number(v) || 0);
     }
   }
   return out;
+}
+
+// BatchGet a set of pks and sum their counters into a single { name: count }.
+async function fetchMerged(pks) {
+  return mergeCounters(await fetchItems(pks));
+}
+
+// "AD#<day>" items -> [{ date, name, ios, android, desktop, total }], one row
+// per ad per day, oldest day first. The per-day form of adList: a reader that
+// keeps its own history needs days, because a sum over "the last 30 days"
+// means a different thirty days every time it is asked.
+export function adsDaily(items) {
+  const rows = [];
+  for (const it of items || []) {
+    const date = String(it.pk || "").slice(3);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) continue;
+    const { pk, ...counters } = it;
+    for (const r of adList(counters, Infinity)) rows.push({ date, ...r });
+  }
+  return rows.sort((a, b) => a.date.localeCompare(b.date) || b.total - a.total);
 }
 
 // { name: count } map -> array sorted by count desc, positive counts only,
