@@ -1,0 +1,18 @@
+# MedAdvocate
+
+MedAdvocate is an iOS and Android app that scans a medical bill, finds billing errors, and writes the dispute or negotiation letter for you. The guides below explain how US medical billing works and what to do about a bill that looks wrong.
+
+## Guides
+
+- [How to Dispute a Medical Bill](https://www.medadvocate.net/guides/how-to-dispute-a-medical-bill/): The full process for challenging a charge you think is wrong, from requesting records to sending the letter.
+- [How to Read a Hospital Bill](https://www.medadvocate.net/guides/how-to-read-a-hospital-bill/): What each column, code, and fee on a hospital bill means, and which documents you need to check it.
+- [Itemized Hospital Bill](https://www.medadvocate.net/guides/itemized-hospital-bill/): How to request a line by line itemized bill and the errors that tend to surface once you have one.
+- [What Is an EOB](https://www.medadvocate.net/guides/what-is-an-eob/): What an explanation of benefits shows, what each amount means, and why it is not a bill.
+- [How to Negotiate a Hospital Bill](https://www.medadvocate.net/guides/negotiate-hospital-bill/): How to ask for discounts, settlements, and payment plans, including what to say and when.
+- [Medical Bill Forgiveness](https://www.medadvocate.net/guides/medical-bill-forgiveness/): How hospital financial assistance and charity care work, who qualifies, and how to apply.
+- [Medical Bill Advocate](https://www.medadvocate.net/guides/medical-bill-advocate/): What a medical bill advocate does, what they charge, and when hiring one is worth it.
+- [Can Medical Bills Be Sent to Collections](https://www.medadvocate.net/guides/medical-bills-collections/): The realistic timeline before a medical bill reaches collections and what a collector can and cannot do.
+- [Do Medical Bills Affect Your Credit](https://www.medadvocate.net/guides/do-medical-bills-affect-your-credit/): When a medical bill can appear on your credit report under the current rules, and when it cannot.
+- [The No Surprises Act](https://www.medadvocate.net/guides/out-of-network-balance-billing/): What the federal surprise billing law protects, what it leaves out, and how to tell if your bill breaks it.
+- [ER Visit Cost With Insurance](https://www.medadvocate.net/guides/er-bill/): What an emergency room visit costs, how your share is calculated, and how to lower the bill.
+- [How to Negotiate an Ambulance Bill](https://www.medadvocate.net/guides/ambulance-bill/): Why ambulance bills are high, why the No Surprises Act usually does not cover ground transport, and how to push back.
