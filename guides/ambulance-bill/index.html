@@ -3,9 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      How to Negotiate an Ambulance Bill (and Why It Is Not Covered)
-    </title>
+    <title>How to Negotiate an Ambulance Bill in 2026 (No Surprises Act Gap)</title>
     <meta
       name="description"
       content="How to negotiate an ambulance bill, why ground ambulances are largely left out of the No Surprises Act, and a step by step playbook. Includes a free ambulance bill action planner."
@@ -19,7 +17,7 @@
     <!-- Open Graph -->
     <meta
       property="og:title"
-      content="How to Negotiate an Ambulance Bill (and Why It Is Not Covered)"
+      content="How to Negotiate an Ambulance Bill in 2026 (No Surprises Act Gap)"
     />
     <meta
       property="og:description"
@@ -42,7 +40,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="How to Negotiate an Ambulance Bill (and Why It Is Not Covered)"
+      content="How to Negotiate an Ambulance Bill in 2026 (No Surprises Act Gap)"
     />
     <meta
       name="twitter:description"
@@ -62,6 +60,67 @@
     />
 
     <link rel="stylesheet" href="/assets/guide.css" />
+    <style>
+      /* Data tables and the updated stamp. Scoped to this guide because no
+         other guide uses a table yet; move to guide.css when a second one does. */
+      .updated {
+        font-family: var(--font-sans);
+        font-size: 14px;
+        color: var(--ink-soft);
+        margin: 0 0 18px;
+      }
+      .data-table-wrap {
+        overflow-x: auto;
+        margin: 22px 0 8px;
+      }
+      .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--white);
+        border: 1px solid var(--rule);
+        font-family: var(--font-sans);
+        font-size: 15px;
+      }
+      .data-table caption {
+        caption-side: top;
+        text-align: left;
+        font-size: 14px;
+        line-height: 1.55;
+        color: var(--ink-soft);
+        padding: 0 0 10px;
+      }
+      .data-table th,
+      .data-table td {
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--rule);
+        text-align: left;
+        vertical-align: top;
+      }
+      .data-table thead th {
+        background: var(--bg-deep);
+        color: var(--ink);
+        font-weight: 600;
+        font-size: 14px;
+      }
+      .data-table tbody tr:last-child td {
+        border-bottom: 0;
+      }
+      .data-table td.num {
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+      }
+      .table-source {
+        font-size: 14px;
+        line-height: 1.6;
+        color: var(--ink-soft);
+        margin: 0 0 26px;
+      }
+      @media (max-width: 600px) {
+        .data-table {
+          font-size: 14px;
+        }
+      }
+    </style>
   </head>
   <body>
     <!-- ============================================================
@@ -138,16 +197,19 @@
       </div>
 
       <article class="article wrap">
-        <h1>How to Negotiate an Ambulance Bill</h1>
+        <h1>How to Negotiate an Ambulance Bill in 2026</h1>
+        <p class="updated">Updated October 2026</p>
         <p class="lede">
-          A ground ambulance bill is usually open to negotiation, because the No
-          Surprises Act does not cover ground transport and leaves the amount
-          between you and the ambulance company. Ask for an itemized bill first,
-          then check that the base rate, the mileage, and the level of service
-          match the ride you actually took. From there you can ask for a lower
-          self pay price, a discount, or a payment plan, and it is worth
-          checking your own state too, since roughly two dozen states had some
-          protection against surprise ground ambulance bills as of early 2026.
+          A ground ambulance ride is usually billed far above what Medicare would
+          pay for the same trip. Medicare's 2026 fee schedule pays $455.30 for a
+          basic life support emergency transport before any local adjustment, plus
+          $9.15 for each loaded mile. A Washington state study of real claims found
+          the allowed amount, meaning what a health plan agrees to pay, ran from
+          172 percent to 340 percent of the Medicare rate for the two most common
+          emergency codes. For non emergency rides that study put it at 350 percent
+          to over 600 percent of Medicare. The No Surprises Act does not cover
+          ground ambulances, so in most states the company can still bill you the
+          difference.
         </p>
 
         <!-- SECTION 1 -->
@@ -188,6 +250,140 @@
         </p>
 
         <!-- SECTION 2 -->
+        <!-- SECTION 1b -->
+        <h2 id="medicare-rates">What Medicare pays for an ambulance ride in 2026</h2>
+        <p>
+          The clearest way to judge an ambulance bill is to compare it with what
+          Medicare pays for the same trip. Medicare sets a single national base
+          rate, called the conversion factor, which is $284.56 for 2026. It then
+          multiplies that base by a value assigned to each level of service, so a
+          basic life support emergency transport is worth 1.60 times the base, or
+          $455.30. Loaded mileage is paid separately, at $9.15 a mile.
+        </p>
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <caption>
+              Medicare ground ambulance payment for 2026. The national column is
+              the conversion factor multiplied by the value units set in 42 CFR
+              414.610. What Medicare pays in your own area differs, because a
+              geographic index is applied to 70 percent of the base rate, so the
+              last column shows the real spread across the 109 payment localities
+              in the fee schedule file.
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Level of service</th>
+                <th scope="col">Code</th>
+                <th scope="col">Value units</th>
+                <th scope="col">2026 national</th>
+                <th scope="col">Range across localities</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Basic life support, non emergency</td>
+                <td class="num">A0428</td>
+                <td class="num">1.00</td>
+                <td class="num">$284.56</td>
+                <td class="num">$261.60 to $380.05</td>
+              </tr>
+              <tr>
+                <td>Basic life support, emergency</td>
+                <td class="num">A0429</td>
+                <td class="num">1.60</td>
+                <td class="num">$455.30</td>
+                <td class="num">$418.56 to $608.09</td>
+              </tr>
+              <tr>
+                <td>Advanced life support 1, non emergency</td>
+                <td class="num">A0426</td>
+                <td class="num">1.20</td>
+                <td class="num">$341.47</td>
+                <td class="num">$313.92 to $456.07</td>
+              </tr>
+              <tr>
+                <td>Advanced life support 1, emergency</td>
+                <td class="num">A0427</td>
+                <td class="num">1.90</td>
+                <td class="num">$540.66</td>
+                <td class="num">$497.05 to $722.10</td>
+              </tr>
+              <tr>
+                <td>Advanced life support 2</td>
+                <td class="num">A0433</td>
+                <td class="num">2.75</td>
+                <td class="num">$782.54</td>
+                <td class="num">$719.41 to $1,045.15</td>
+              </tr>
+              <tr>
+                <td>Loaded mileage, per mile</td>
+                <td class="num">A0425</td>
+                <td class="num">n/a</td>
+                <td class="num">$9.15</td>
+                <td class="num">$9.33 urban, $9.42 rural</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-source">
+          Sources: value units and the payment formula from
+          <a class="inline" href="https://www.ecfr.gov/current/title-42/section-414.610">42 CFR 414.610</a>; dollar amounts computed
+          from the
+          <a class="inline" href="https://www.cms.gov/medicare/payment/fee-schedules/ambulance/ambulance-fee-schedule-public-use-files">CMS calendar year 2026 Ambulance Fee Schedule public use file</a>;
+          the 2.0 percent inflation update for 2026 from
+          <a class="inline" href="https://www.cms.gov/files/document/r13464cp.pdf">CMS Transmittal 13464</a>.
+        </p>
+        <p>
+          Those are payment rates, not what gets billed. A
+          <a class="inline" href="https://www.insurance.wa.gov/sites/default/files/2024-09/ground_ambulance_balance_billing_report_final.pdf">Washington state study</a> of real claims
+          found the allowed amount for a basic life support emergency transport ran
+          from 172 percent to 327 percent of the Medicare rate, and from 186
+          percent to 340 percent for advanced life support level 1, with potential
+          balance bills above $500 in every part of the state. For non emergency
+          transports the same study put allowed amounts at 350 percent to over 600
+          percent of Medicare.
+        </p>
+
+        <p>
+          The same study recorded what providers actually billed. For a basic life
+          support emergency transport, the average billed charge was $802.92 from a
+          public provider and $1,195.53 from a private company, against a Medicare
+          national rate of $455.30. Providers put their own average cost for that
+          same transport at $1,382.25, which is part of why the gap between the
+          Medicare rate and the bill is so wide. For advanced life support level 1
+          in an emergency, average billed charges were $1,039.89 from public
+          providers and $1,714.00 from private ones.
+        </p>
+        <h3>Rural pickups and long rides</h3>
+        <p>
+          Where the ambulance collected you changes the arithmetic. The fee
+          schedule pays a little more when the pickup point is rural, and it pays a
+          higher mileage rate: $9.42 a mile rural against $9.33 urban. On a rural
+          trip the first 17 miles are paid at $14.13 a mile, half again the
+          standard rural rate, because short rural transports cost more for each
+          mile to run. So a long ride to a distant hospital pushes the bill up
+          through mileage even when the level of service stays the same.
+        </p>
+
+        <!-- SECTION 1c -->
+        <h2 id="how-often">How often ambulance bills go out of network</h2>
+        <p>
+          Getting billed out of network is the normal case, not bad luck. An
+          analysis of large employer claims by the
+          <a class="inline" href="https://www.healthsystemtracker.org/brief/ground-ambulance-rides-and-potential-for-surprise-billing/">Peterson KFF Health System Tracker</a> found
+          that 51 percent of emergency ground ambulance rides included an out of
+          network charge, along with 39 percent of non emergency rides. It
+          estimated that up to 1.5 million privately insured people a year are
+          taken to an emergency room by ambulance and may face a surprise bill.
+        </p>
+        <p>
+          Part of the reason is who runs the service. Government bodies provided 62
+          percent of emergency ground ambulance rides, with fire departments alone
+          at 37 percent, so the bill often arrives from a city, a county, or a fire
+          district rather than a company, and those providers frequently have no
+          contract with your plan.
+        </p>
+
         <h2 id="no-surprises-act">
           What the No Surprises Act covers and does not
         </h2>
@@ -213,14 +409,10 @@
         </p>
         <p>
           The protection that does exist is at the state level, and it is growing.
-          As of early 2026, roughly two dozen states had enacted some protection
-          against surprise ground ambulance bills, and more are adding them. These
-          state laws usually apply only to state regulated insurance plans, which
-          means they may not cover a self funded employer plan or an uninsured
-          patient, and the details differ from state to state. Because this
-          changes often, the practical move is to check your own state. Search for
-          your state name along with ground ambulance balance billing, or call your
-          state department of insurance, to find out whether you are protected.
+          These state laws usually apply only to state regulated insurance plans,
+          which means they may not cover a self funded employer plan or an
+          uninsured patient, and the details differ from state to state. The next
+          section lists the states that have acted and what each one requires.
         </p>
         <h3>Air ambulance bills</h3>
         <p>
@@ -259,6 +451,174 @@
           </p>
         </div>
 
+
+        <!-- SECTION 2b -->
+        <h2 id="state-protections">Does your state protect you</h2>
+        <p>
+          Because there is no federal ban, whether you can be balance billed for a
+          ground ambulance comes down to your state. The list below is the baseline
+          published by Washington state's insurance regulator, followed by the laws
+          passed since that report.
+        </p>
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <caption>
+              States with ground ambulance balance billing protections and the year
+              each was enacted, from Table 9 of the Washington State Office of the
+              Insurance Commissioner's Ground Ambulance Balance Billing Study,
+              October 1, 2023, which adapts a tally by the Georgetown Center on
+              Health Insurance Reforms.
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">State</th>
+                <th scope="col">Enacted</th>
+                <th scope="col">What the insurer must pay</th>
+                <th scope="col">Scope and limits</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Connecticut</td>
+                <td class="num">1988</td>
+                <td>Lesser of the commissioner's annual maximum or the billed charge</td>
+                <td>Emergency only. Does not expressly ban balance billing</td>
+              </tr>
+              <tr>
+                <td>Vermont</td>
+                <td class="num">1994</td>
+                <td>None set</td>
+                <td>Emergency only</td>
+              </tr>
+              <tr>
+                <td>West Virginia</td>
+                <td class="num">1997</td>
+                <td>The provider's normal charges</td>
+                <td>State programs, non emergency. Does not apply to PPO plans</td>
+              </tr>
+              <tr>
+                <td>Delaware</td>
+                <td class="num">2001</td>
+                <td>None set</td>
+                <td>Emergency only. Excludes volunteer fire departments</td>
+              </tr>
+              <tr>
+                <td>Illinois</td>
+                <td class="num">2011</td>
+                <td>None set</td>
+                <td>Emergency only</td>
+              </tr>
+              <tr>
+                <td>Maryland</td>
+                <td class="num">2015</td>
+                <td>The rate paid to a contracted provider for the same service in the same region</td>
+                <td>Public providers. Requires an assignment of benefits</td>
+              </tr>
+              <tr>
+                <td>New York</td>
+                <td class="num">2015</td>
+                <td>Usual and customary, and not excessive or unreasonable</td>
+                <td>Emergency only. Excludes interfacility transport</td>
+              </tr>
+              <tr>
+                <td>Colorado</td>
+                <td class="num">2019</td>
+                <td>325 percent of Medicare, or a negotiated rate</td>
+                <td>Private providers, emergency only</td>
+              </tr>
+              <tr>
+                <td>Maine</td>
+                <td class="num">2020</td>
+                <td>The out of network provider's rate</td>
+                <td>Both public and private, as of October 2023</td>
+              </tr>
+              <tr>
+                <td>Ohio</td>
+                <td class="num">2020</td>
+                <td>The greatest of the median in network rate, usual and customary, or Medicare, then arbitration</td>
+                <td>Emergency only</td>
+              </tr>
+              <tr>
+                <td>Arkansas</td>
+                <td class="num">2023</td>
+                <td>A local government rate, or the lesser of the Workers Compensation rate or the billed charge</td>
+                <td>Both. Does not expressly ban balance billing</td>
+              </tr>
+              <tr>
+                <td>Louisiana</td>
+                <td class="num">2023</td>
+                <td>A local rate, or the lesser of 325 percent of Medicare or the billed charge</td>
+                <td>Emergency only</td>
+              </tr>
+              <tr>
+                <td>Texas</td>
+                <td class="num">2023</td>
+                <td>A political subdivision rate, or the lesser of 325 percent of Medicare or the billed charge</td>
+                <td>Public providers, emergency only</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-source">
+          Source:
+          <a class="inline" href="https://www.insurance.wa.gov/sites/default/files/2024-09/ground_ambulance_balance_billing_report_final.pdf">Washington State Office of the Insurance Commissioner, Ground Ambulance Balance Billing Study, October 1, 2023</a>, Table 9.
+        </p>
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <caption>
+              Laws enacted after that report, each linked to its own bill text or
+              state regulator page.
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">State</th>
+                <th scope="col">Law</th>
+                <th scope="col">Effective</th>
+                <th scope="col">What it does</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>California</td>
+                <td><a class="inline" href="https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202320240AB716">AB 716</a></td>
+                <td class="num">2024</td>
+                <td>Extends balance billing protection to ground ambulance</td>
+              </tr>
+              <tr>
+                <td>Texas (update)</td>
+                <td><a class="inline" href="https://www.tdi.texas.gov/medical-billing/providers.html">Sunset extended to September 2027</a></td>
+                <td class="num">2024</td>
+                <td>State insurance department says the ban covers ground trips on or after January 1, 2024</td>
+              </tr>
+              <tr>
+                <td>North Dakota</td>
+                <td><a class="inline" href="https://ndlegis.gov/assembly/69-2025/regular/documents/25-0744-06000.pdf">HB 1322</a></td>
+                <td class="num">2025</td>
+                <td>The lesser of 250 percent of Medicare or the billed charges</td>
+              </tr>
+              <tr>
+                <td>New Hampshire</td>
+                <td><a class="inline" href="https://www.insurance.nh.gov/about-us/reports/reimbursement-ground-ambulance-services-health-carriers-under-sb-245">SB 245</a></td>
+                <td class="num">2025</td>
+                <td>Bars out of network ground ambulance balance billing</td>
+              </tr>
+              <tr>
+                <td>Oregon</td>
+                <td><a class="inline" href="https://dfr.oregon.gov/business/reg/health/Pages/ground-ambulance-rate-reporting.aspx">HB 3243</a></td>
+                <td class="num">January 2026</td>
+                <td>Self funded employer plans may opt in</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-source">
+          State ambulance billing laws change often. This list was last checked on
+          October 20, 2026. Most of these laws reach only state regulated plans, so
+          a self funded employer plan may not be covered. To check your own state,
+          search for your state name along with ground ambulance balance billing,
+          or call your state department of insurance.
+        </p>
+
         <!-- SECTION 3 -->
         <h2 id="first-moves">First moves when the ambulance bill arrives</h2>
         <p>
@@ -296,6 +656,40 @@
         </ul>
 
         <!-- SECTION 4 -->
+        <!-- SECTION 3b -->
+        <h2 id="read-the-bill">Reading the ambulance bill line by line</h2>
+        <p>
+          An ambulance bill is short, which makes it easy to check once you know
+          what the lines mean. Ask for the itemized version, then look at four
+          things.
+        </p>
+        <ul>
+          <li>
+            <strong>The base rate.</strong> One charge for the transport itself,
+            tied to the level of service. The code tells you which level was
+            billed: A0428 for basic life support, A0429 for basic life support in
+            an emergency, A0426 and A0427 for advanced life support level 1, and
+            A0433 for advanced life support level 2.
+          </li>
+          <li>
+            <strong>Loaded mileage.</strong> Billed as code A0425, once for each
+            mile you were carried. Only loaded miles count, meaning the distance
+            with you on board, not the trip the ambulance made to reach you. Check
+            it against the real distance to the hospital.
+          </li>
+          <li>
+            <strong>The level of service.</strong> Advanced life support bills far
+            more than basic, so confirm the level matches the care you actually
+            received. If nobody started an IV, gave a drug, or did anything beyond
+            basic monitoring, an advanced life support charge is worth questioning.
+          </li>
+          <li>
+            <strong>Extras.</strong> Oxygen, supplies, and waiting time sometimes
+            appear as separate lines. Ask what each one covers and whether it is
+            already included in the base rate.
+          </li>
+        </ul>
+
         <h2 id="negotiate">How to negotiate an ambulance bill</h2>
         <p>
           Once you understand the bill, negotiation is often your strongest tool,
@@ -527,6 +921,41 @@
             and question any charge for a service you did not receive.
           </p>
         </details>
+        <details>
+          <summary>Does Medicare cover ambulance rides?</summary>
+          <p>
+            Medicare Part B covers a ground ambulance ride when travelling any
+            other way could endanger your health. You pay 20 percent of the
+            Medicare approved amount after you have met your Part B
+            deductible. Medicare pays only for transport to the nearest
+            appropriate facility, so if you ask to go to a hospital farther
+            away, you may owe the difference.
+          </p>
+        </details>
+        <details>
+          <summary>Why did I get an ambulance bill from the fire department?</summary>
+          <p>
+            Because most emergency ambulance service is run by government.
+            Government bodies provided 62 percent of emergency ground
+            ambulance rides, and fire departments alone accounted for 37
+            percent, so the bill often comes from a city, a county, or a fire
+            district. Those providers frequently have no contract with your
+            insurance plan, which is why the charge can arrive as out of
+            network.
+          </p>
+        </details>
+        <details>
+          <summary>Does insurance cover a non emergency ambulance ride?</summary>
+          <p>
+            Often not automatically. Medicare generally requires a written
+            order from your provider saying the transport is medically
+            necessary, and the ambulance company may give you a notice warning
+            that Medicare might not pay. Non emergency rides are also where
+            charges run highest: a Washington state study put allowed amounts
+            for non emergency transports at 350 percent to over 600 percent of
+            Medicare.
+          </p>
+        </details>
       </section>
 
       <!-- ROTATING CTA variant A (guide.js reveals one at random) -->
@@ -742,11 +1171,11 @@
       {
         "@context": "https://schema.org",
         "@type": "Article",
-        "headline": "How to Negotiate an Ambulance Bill (and Why It Is Not Covered)",
+        "headline": "How to Negotiate an Ambulance Bill in 2026 (No Surprises Act Gap)",
         "description": "How to negotiate an ambulance bill, why ground ambulances are largely left out of the No Surprises Act, and a step by step playbook.",
         "image": "https://www.medadvocate.net/assets/og-image.png",
         "datePublished": "2026-07-22",
-        "dateModified": "2026-10-19",
+        "dateModified": "2026-10-20",
         "author": {
           "@type": "Organization",
           "name": "MedAdvocate",
@@ -851,6 +1280,30 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "If you received and were transported by the ambulance, you are generally responsible for the bill even if someone else called 911, though you can still dispute errors and negotiate. If you were not transported, or you declined care, a bill may be incorrect, so request the itemized record and question any charge for a service you did not receive."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Medicare cover ambulance rides?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Medicare Part B covers a ground ambulance ride when travelling any other way could endanger your health. You pay 20 percent of the Medicare approved amount after you have met your Part B deductible. Medicare pays only for transport to the nearest appropriate facility, so if you ask to go to a hospital farther away, you may owe the difference."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why did I get an ambulance bill from the fire department?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Because most emergency ambulance service is run by government. Government bodies provided 62 percent of emergency ground ambulance rides, and fire departments alone accounted for 37 percent, so the bill often comes from a city, a county, or a fire district. Those providers frequently have no contract with your insurance plan, which is why the charge can arrive as out of network."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does insurance cover a non emergency ambulance ride?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Often not automatically. Medicare generally requires a written order from your provider saying the transport is medically necessary, and the ambulance company may give you a notice warning that Medicare might not pay. Non emergency rides are also where charges run highest: a Washington state study put allowed amounts for non emergency transports at 350 percent to over 600 percent of Medicare."
             }
           }
         ]
